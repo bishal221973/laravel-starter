@@ -509,4 +509,5 @@
     </script>
 </body>
 
+@yield('datatable')
 </html>

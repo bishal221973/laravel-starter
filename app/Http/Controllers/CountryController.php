@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -11,7 +12,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('address.country');
+        $countries=Country::latest()->get();
+        return view('address.country',compact('countries'));
     }
 
     /**

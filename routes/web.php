@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\OTPController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -56,3 +57,5 @@ Route::get('create-role',[RoleController::class,'create'])->name('role.create');
 Route::post('store-role',[RoleController::class,'store'])->name('role.store');
 
 Route::resource('country',CountryController::class);
+
+Route::get('/',[FrontController::class,'index'])->name('front.index');

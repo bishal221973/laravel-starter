@@ -171,6 +171,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         QCod\Settings\SettingsServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        \Yajra\DataTables\DataTablesServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -186,7 +187,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        "Settings" => QCod\Settings\Facade::class
+        "Settings" => QCod\Settings\Facade::class,
+        "Datatables"=>\Yajra\DataTables\Facades\DataTables::class,
     ])->toArray(),
 
 ];

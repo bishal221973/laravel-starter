@@ -26,7 +26,7 @@
             <div class="px-5 col-12 d-flex ">
                 <div class="card col-xl-4">
                     <div class="card-body text-dark">
-                        <form action="" method="GET">
+                        <form action="{{route('front.list')}}" method="GET">
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="way" checked id="inlineRadio1"
@@ -62,15 +62,6 @@
 
                                     <div class="wrapper ">
                                         <label class="text-secondary text-uppercase">Destination :</label>
-                                        {{-- <div class="search-input">
-                                            <a href="" target="_blank" hidden></a>
-                                            <input required type="text" list="destinationDataList" name="destination"
-                                                placeholder="CITY CODE">
-                                            <div class="icon"><i class="fa-solid fa-plane-arrival"></i></div>
-                                            <datalist id="destinationDataList">
-                                            </datalist>
-                                        </div> --}}
-
                                         <div class="search-input search-inputs">
                                             <a href="" target="_blank" hidden></a>
                                             <input type="text" class="destination" placeholder="Type to search..">

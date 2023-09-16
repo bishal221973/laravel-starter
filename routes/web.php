@@ -59,3 +59,4 @@ Route::post('store-role',[RoleController::class,'store'])->name('role.store');
 Route::resource('country',CountryController::class);
 
 Route::get('/',[FrontController::class,'index'])->name('front.index');
+Route::get('/flight-lists',[FrontController::class,'list'])->name('front.list');

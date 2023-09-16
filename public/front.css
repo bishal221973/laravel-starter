@@ -289,6 +289,7 @@ datalist {
     padding: 10px;
     margin-bottom: 20px;
 }
+
 .hr1 {
     width: 100%;
     border-bottom: 1px dashed #ccc;
@@ -379,16 +380,20 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #3199DA; /* Background color for the preloader */
+    background-color: #3199DA;
+    /* Background color for the preloader */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Ensure the preloader is on top of other elements */
+    z-index: 9999;
+    /* Ensure the preloader is on top of other elements */
 }
 
 .loader {
-    border: 4px solid #3498db; /* Customize the loader styles */
+    border: 4px solid #3498db;
+    /* Customize the loader styles */
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
@@ -437,7 +442,8 @@ ul {
         transform: translateY(0) scale(1, 1);
     }
 }
-.airline-list{
+
+.airline-list {
     border-radius: 0px;
     border-top: 1px solid red;
     height: 100px;
@@ -445,25 +451,30 @@ ul {
     padding-bottom: 10px;
     position: relative;
 }
-.airline-list .airline-logo{
+
+.airline-list .airline-logo {
     height: 100%;
     /* width: 100%; */
     position: relative;
     display: block;
 }
-.f-detail{
+
+.f-detail {
     border-right: 1px solid #ccc;
 }
-.padding-left{
+
+.padding-left {
     padding-left: 20px !important;
 }
-.img-fly{
+
+.img-fly {
     height: 45px !important;
     width: 45px !important;
     border-radius: 3px;
     box-shadow: 1px 1px 1px 0.8px;
 }
-.btn-more{
+
+.btn-more {
     /* background-color: #31B0D5; */
     border: 1px solid #31B0D5;
     background-color: transparent;
@@ -476,101 +487,104 @@ ul {
     border-radius: 5px;
     transition: .5s;
 }
-.btn-more:hover{
+
+.btn-more:hover {
     background-color: #31B0D5;
     color: #fff;
     box-shadow: 1px 1px 1px 0.5px;
 }
 
-.bg-white1{
+.bg-white1 {
     background-color: #E1E1E1;
 }
-.border-right{
+
+.border-right {
     border-right: 1.5px solid #888585;
 }
-.rightSide{
+
+.rightSide {
     transform: rotate(180deg);
 }
-.test{
+
+.test {
     align-items: end !important;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 
-            .wrapper .search-input {
-                background: #fff;
-                width: 100%;
-                border-radius: 5px;
-                position: relative;
-                box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-            }
+.wrapper .search-input {
+    background: #fff;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
 
-            .search-input input,
-            .search-input select {
-                height: 55px;
-            width: 100%;
-            outline: none;
-            border: none;
-            border-radius: 5px;
-            padding: 0 20px 0 60px;
-            font-size: 18px;
-        }
+.search-input input,
+.search-input select {
+    height: 55px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 20px 0 60px;
+    font-size: 18px;
+}
 
-        .search-input.active input {
-            border-radius: 5px 5px 0 0;
-        }
+.search-input.active input {
+    border-radius: 5px 5px 0 0;
+}
 
-        .search-input .autocom-box {
-            padding: 0;
-            opacity: 0;
-            pointer-events: none;
-            max-height: 280px;
-            overflow-y: auto;
-            position: absolute;
-            background-color: #fff;
-            width: 100%;
-            z-index: 9;
-            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+.search-input .autocom-box {
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    max-height: 280px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    z-index: 9;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
-        }
+}
 
-        .search-input.active .autocom-box {
-            padding: 10px 8px;
-            opacity: 1;
-            pointer-events: auto;
-        }
+.search-input.active .autocom-box {
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+}
 
-        .autocom-box li {
-            list-style: none;
-            padding: 8px 12px;
-            display: none;
-            width: 100%;
-            cursor: default;
-            border-radius: 3px;
-        }
+.autocom-box li {
+    list-style: none;
+    padding: 8px 12px;
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
 
-        .search-input.active .autocom-box li {
-            display: block;
-        }
+.search-input.active .autocom-box li {
+    display: block;
+}
 
-        .autocom-box li:hover {
-            background: #efefef;
-        }
+.autocom-box li:hover {
+    background: #efefef;
+}
 
-        .search-input .icon {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            height: 55px;
-            width: 55px;
-            text-align: center;
-            line-height: 55px;
-            font-size: 20px;
-            color: #31B0D5;
-            cursor: pointer;
-        }
-
-
+.search-input .icon {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 20px;
+    color: #31B0D5;
+    cursor: pointer;
+}
 
 
 
@@ -581,39 +595,68 @@ ul {
 
 
 
-        .search-input .autocom-box1 {
-            padding: 0;
-            opacity: 0;
-            pointer-events: none;
-            max-height: 280px;
-            overflow-y: auto;
-            position: absolute;
-            background-color: #fff;
-            width: 100%;
-            z-index: 9;
-            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
-        }
 
-        .search-input.active .autocom-box1 {
-            padding: 10px 8px;
-            opacity: 1;
-            pointer-events: auto;
-        }
+.search-input .autocom-box1 {
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    max-height: 280px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    z-index: 9;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
-        .autocom-box1 li {
-            list-style: none;
-            padding: 8px 12px;
-            display: none;
-            width: 100%;
-            cursor: default;
-            border-radius: 3px;
-        }
+}
 
-        .search-input.active .autocom-box1 li {
-            display: block;
-        }
+.search-input.active .autocom-box1 {
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+}
 
-        .autocom-box1 li:hover {
-            background: #efefef;
-        }
+.autocom-box1 li {
+    list-style: none;
+    padding: 8px 12px;
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
+
+.search-input.active .autocom-box1 li {
+    display: block;
+}
+
+.autocom-box1 li:hover {
+    background: #efefef;
+}
+
+.btn-select {
+    background-color: #31B0D5;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: .5s;
+    border: 1px solid #ccc;
+}
+
+.btn-select:hover {
+    background-color: #31B0D5;
+    color: #fff;
+}
+
+.border-right{
+    border-right: 1px solid #ccc;
+}
+.border-bottom{
+    border-bottom: 1px solid #ccc;
+}
+.card1,.card1 label{
+    cursor: pointer;
+}

@@ -244,6 +244,10 @@
             font-size: 21px !important;
             padding-right: 10px;
         }
+        .register-panel{
+            height: 100vh !important;
+            background-image: url('flight2.jpg') !important;
+        }
     </style>
 </head>
 

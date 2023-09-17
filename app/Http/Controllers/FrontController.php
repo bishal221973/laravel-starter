@@ -12,9 +12,6 @@ class FrontController extends Controller
     public function __construct()
     {
         $this->amadeus = Amadeus::builder("IyIEHFKtolObKGs3QtjtCA393VpKS2cN", "G8Q4JKsjSjxSvYSX")->build();
-
-
-        $this->middleware('auth');
     }
     public function index()
     {
@@ -52,18 +49,18 @@ class FrontController extends Controller
         $jsonData = json_encode($requestData);
 
         try {
-            $response = $this->amadeus->getClient()->postWithStringBody("/v1/shopping/flight-offers/pricing?include=detailed-fare-rules,bags", $jsonData);
+            // $response = $this->amadeus->getClient()->postWithStringBody("/v1/shopping/flight-offers/pricing?include=detailed-fare-rules,bags", $jsonData);
 
-            if ($response->getStatusCode() === 200) {
-                $flightDetail = $response->getBody();
-                session()->put("test", $flightDetail);
+            // if ($response->getStatusCode() === 200) {
+            //     $flightDetail = $response->getBody();
+            //     session()->put("test", $flightDetail);
                 $flightDetail = session()->get('test');
                 $flightDetail = json_decode($flightDetail);
                 // return $flightDetail;
                 return view('front.detail', compact('flightDetail'));
-            } else {
-                return "API request failed.";
-            }
+            // } else {
+            //     return "API request failed.";
+            // }
         } catch (Exception $e) {
             return $e->getMessage();
         }

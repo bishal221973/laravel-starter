@@ -809,3 +809,15 @@ ul {
 .nav-link{
     color: #31B0D5 !important;
 }
+
+.user-profile-div{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: -70px;
+}
+.user-profile{
+    height: 100%;
+}

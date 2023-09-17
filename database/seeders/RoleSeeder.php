@@ -43,5 +43,6 @@ class RoleSeeder extends Seeder
 
         // permissions to admin
         $admin = Role::firstOrCreate(['name' => 'admin']);
+        $admin = Role::firstOrCreate(['name' => 'user']);
     }
 }

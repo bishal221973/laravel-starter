@@ -1275,12 +1275,14 @@
                         </div>
 
                         <div class="d-flex justify-content-center mb-5">
-                            <button class="btn btn-info pt-2 pb-2" type="submit">
+                            <button class="btn btn-info pt-2 pb-2 {{Auth()->user() ? '' : 'disable'}}" type="submit">
                                 <h3 class="px-5 m-0 text-white text-uppercase fw-bold">Book Now</h3>
                                 <span class="text-uppercase"><i class="fa-solid fa-lock"></i>&nbsp;secure
                                     payment</span>
                             </button>
                         </div>
+
+                        <label class="col-12 text-center py-2"><span class="text-warning text-uppercase">Warning : </span><span class="text-muted"><i>You are not loged in. Please login to book.</i></span></label>
                     </form>
                 </div>
                 <div class="col-xl-3">

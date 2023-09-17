@@ -821,3 +821,6 @@ ul {
 .user-profile{
     height: 100%;
 }
+.disable{
+    pointer-events: none;
+}

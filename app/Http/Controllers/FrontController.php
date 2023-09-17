@@ -49,18 +49,18 @@ class FrontController extends Controller
         $jsonData = json_encode($requestData);
 
         try {
-            // $response = $this->amadeus->getClient()->postWithStringBody("/v1/shopping/flight-offers/pricing?include=detailed-fare-rules,bags", $jsonData);
+            $response = $this->amadeus->getClient()->postWithStringBody("/v1/shopping/flight-offers/pricing?include=detailed-fare-rules,bags", $jsonData);
 
-            // if ($response->getStatusCode() === 200) {
-            //     $flightDetail = $response->getBody();
+            if ($response->getStatusCode() === 200) {
+                $flightDetail = $response->getBody();
             //     session()->put("test", $flightDetail);
-                $flightDetail = session()->get('test');
+                // $flightDetail = session()->get('test');
                 $flightDetail = json_decode($flightDetail);
                 // return $flightDetail;
                 return view('front.detail', compact('flightDetail'));
-            // } else {
-            //     return "API request failed.";
-            // }
+            } else {
+                return "API request failed.";
+            }
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -70,82 +70,82 @@ class FrontController extends Controller
     {
         $travelers = [];
 
-        // foreach ($request->first_name as $key => $item) {
-        //     $traveler = [
-        //         "id" => $key + 1,
-        //         "dateOfBirth" => $request->dob[$key],
-        //         "name" => [
-        //             "firstName" => $request->first_name[$key],
-        //             "lastName" => $request->last_name[$key],
-        //         ],
-        //         "gender" => $request->gender[$key],
-        //         "documents" => [
-        //             [
-        //                 "documentType" => "PASSPORT",
-        //                 "number" => $request->password_number[$key],
-        //                 "expiryDate" => $request->expiry_date[$key],
-        //                 "issuanceCountry" => $request->issueCountry[$key],
-        //                 "holder" => true,
-        //                 "nationality" => $request->nationality[$key],
-        //             ]
-        //         ]
-        //     ];
+        foreach ($request->first_name as $key => $item) {
+            $traveler = [
+                "id" => $key + 1,
+                "dateOfBirth" => $request->dob[$key],
+                "name" => [
+                    "firstName" => $request->first_name[$key],
+                    "lastName" => $request->last_name[$key],
+                ],
+                "gender" => $request->gender[$key],
+                "documents" => [
+                    [
+                        "documentType" => "PASSPORT",
+                        "number" => $request->password_number[$key],
+                        "expiryDate" => $request->expiry_date[$key],
+                        "issuanceCountry" => $request->issueCountry[$key],
+                        "holder" => true,
+                        "nationality" => $request->nationality[$key],
+                    ]
+                ]
+            ];
 
-        //     $travelers[] = $traveler;
-        // }
+            $travelers[] = $traveler;
+        }
 
-        // $flightDetail = session()->get('filghtData');
+        $flightDetail = session()->get('filghtData');
 
-        // $requestData = [
-        //     "data" => [
-        //         "type" => "flight-order",
-        //         "flightOffers" => [
-        //             json_decode($flightDetail)
-        //         ],
-        //         "travelers" => $travelers,
+        $requestData = [
+            "data" => [
+                "type" => "flight-order",
+                "flightOffers" => [
+                    json_decode($flightDetail)
+                ],
+                "travelers" => $travelers,
 
-        //         "contacts" => [
-        //             [
-        //                 "addresseeName" => [
-        //                     "firstName" => Auth()->user()->first_name,
-        //                     "lastName" => Auth()->user()->last_name,
-        //                 ],
-        //                 "companyName" => Auth()->user()->first_name,
-        //                 "purpose" => "STANDARD",
-        //                 // "phones" => [
-        //                 //     [
-        //                 //         "deviceType" => "MOBILE",
-        //                 //         "countryCallingCode" => "33",
-        //                 //         "number" => "480080072"
-        //                 //     ]
-        //                 // ],
-        //                 "emailAddress" => Auth()->user()->email,
-        //                 "address" => [
-        //                     "lines" => [
-        //                         $request->address
-        //                     ],
-        //                     "postalCode" => $request->postalCode,
-        //                     "cityName" => $request->city,
-        //                     "countryCode" => $request->country,
-        //                 ]
-        //             ]
-        //         ]
-        //     ]
-        // ];
-        // $jsonData = json_encode($requestData);
+                "contacts" => [
+                    [
+                        "addresseeName" => [
+                            "firstName" => Auth()->user()->first_name,
+                            "lastName" => Auth()->user()->last_name,
+                        ],
+                        "companyName" => Auth()->user()->first_name,
+                        "purpose" => "STANDARD",
+                        // "phones" => [
+                        //     [
+                        //         "deviceType" => "MOBILE",
+                        //         "countryCallingCode" => "33",
+                        //         "number" => "480080072"
+                        //     ]
+                        // ],
+                        "emailAddress" => Auth()->user()->email,
+                        "address" => [
+                            "lines" => [
+                                $request->address
+                            ],
+                            "postalCode" => $request->postalCode,
+                            "cityName" => $request->city,
+                            "countryCode" => $request->country,
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        $jsonData = json_encode($requestData);
 
-        // try {
+        try {
 
-        //     $response = $this->amadeus->getClient()->postWithStringBody("/v1/booking/flight-orders", $jsonData);
+            $response = $this->amadeus->getClient()->postWithStringBody("/v1/booking/flight-orders", $jsonData);
 
-        //     $flightDetail = $response->getBody();
-        //     $flightDetail = json_decode($flightDetail);
-        //     session()->put('detail', $flightDetail);
+            $flightDetail = $response->getBody();
+            $flightDetail = json_decode($flightDetail);
+            // session()->put('detail', $flightDetail);
 
-            $flightDetail = session()->get('detail');
+            // $flightDetail = session()->get('detail');
             return view('front.invoice', compact('flightDetail'));
-        // } catch (Exception $e) {
-        //     return $e->getMessage();
-        // }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

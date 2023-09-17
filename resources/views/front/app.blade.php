@@ -163,4 +163,5 @@
 
 @yield('datatable')
 
+@stack('script')
 </html>

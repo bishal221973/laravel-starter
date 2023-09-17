@@ -660,3 +660,13 @@ ul {
 .card1,.card1 label{
     cursor: pointer;
 }
+.card1{
+    position: relative;
+    display: flex;
+}
+.card1 input{
+    z-index: 99;
+    /* transform: scaleX(2); */
+    /* height: 100px   ; */
+    position: absolute;
+}

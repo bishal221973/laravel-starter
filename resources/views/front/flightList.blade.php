@@ -131,38 +131,44 @@
                         <div class="card-body">
                             <h5 class="text-uppercase mb-3">Flights Stop</h5>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" value="" id="nonStop"
+                                    onclick="nonStopFunction()">
+                                <label class="form-check-label" for="nonStop">
                                     Non Stop
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input class="form-check-input" type="checkbox" value="" id="stop"
+                                    onclick="stopFunction()">
+                                <label class="form-check-label" for="stop">
                                     1 Stop
                                 </label>
                             </div>
                             <hr>
                             <h5 class="text-uppercase mb-3">Price Range</h5>
 
-                            <input type="number" class="form-control mb-2" placeholder="Min Price">
-                            <input type="number" class="form-control" placeholder="Max Price">
+                            <input type="number" id="minPrice" class="form-control mb-2" placeholder="Min Price">
+                            <input type="number" id="maxPrice" class="form-control" placeholder="Max Price">
 
                             <hr>
 
                             <h5 class="text-uppercase mb-3">Depature time</h5>
                             <div class="row">
-                                <div class="col-xl-6 card card1 py-2 mb-2">
+                                <div class="col-xl-6 card card1 py-2 mb-2" id="">
+                                    <input type="checkbox" name="1" id="earlyMorning">
                                     <div class="m-0 p-0 col-12">
                                         <div class=" d-flex mb-2 justify-content-center">
 
                                             <i class="fa-solid fa-sun"></i>
                                         </div>
-                                        <label class="col-12 text-center m-0 p-0">Early Morning</label>
-                                        <small class="text-center m-0 p-0" style="font-size: 12px">12::00am-4:59am</small>
+                                        <label class="col-12 text-center m-0 p-0" for="earlyMorning">Early Morning</label>
+                                        <small class="text-center m-0 p-0" for="earlyMorning"
+                                            style="font-size: 12px">12::00am-4:59am</small>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 card card1 py-2 mb-2">
+                                    <input type="checkbox" name="1" id="morning">
+
                                     <div class="m-0 p-0 col-12">
                                         <div class=" d-flex mb-2 justify-content-center">
 
@@ -174,6 +180,7 @@
                                 </div>
 
                                 <div class="col-xl-6 card card1 py-2 mb-2">
+                                    <input type="checkbox" name="1" id="afternoon">
                                     <div class="m-0 p-0 col-12">
                                         <div class=" d-flex mb-2 justify-content-center">
 
@@ -184,6 +191,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-6 card card1 py-2 mb-2">
+                                    <input type="checkbox" name="1" id="evening">
                                     <div class="m-0 p-0 col-12">
                                         <div class=" d-flex mb-2 justify-content-center">
 
@@ -233,85 +241,244 @@
                     </div>
 
                     <div style="height: 30px"></div>
-                    @foreach ($flightLists as $flightList)
-                        <div class="card mb-2">
-                            <div class="card-body py-0">
-                                <div class="row border-bottom ">
-                                    <div class="col-xl-9 border-right m-0 p-0">
+                    <table id="list">
+                        <tr>
+                            @foreach ($flightLists as $flightList)
+                                {{-- 1 --}}
+                                <div class="card mb-2 listCard">
+                                    {{-- 2 --}}
+                                    <div class="card-body py-0">
+                                        {{-- 3 --}}
+                                        <div class="row border-bottom ">
+                                            {{-- 4 --}}
+                                            <div class="col-xl-9 border-right m-0 p-0">
 
-                                        @foreach ($flightList->itineraries as $itinerary)
-                                            @foreach ($itinerary->segments as $segment)
-                                                @if ($loop->first)
-                                                    @php
-                                                        $firstDate = $segment->departure->at;
-                                                    @endphp
-                                                @endif
-                                                @if ($loop->last)
-                                                    @php
-                                                        $lastDate = $segment->arrival->at;
-                                                    @endphp
-                                                @endif
-                                            @endforeach
-                                            {{-- @foreach ($itinerary->segments as $segment) --}}
-                                            <div class="col-12 pt-2">
-                                                <div class="row d-flex align-items-center">
-                                                    <div class="col-xl-3">
-                                                        <img src="{{ asset('flight4.png') }}" class="rounded"
-                                                            alt="" style="height: 45px;width: 45px"> <br>
-                                                        <label class="mt-3">Buddha Air</label>
-                                                    </div>
-                                                    <div class="p-2 border">
-                                                        {{ $segment->departure->iataCode }}
-                                                    </div>
-                                                    <div class="col-xl-2">
-                                                        <label><b>{{ getTime($firstDate) }}</b></label>
-                                                        <label
-                                                            class="m-0 p-0 font-weight-normal">{{ getDates($firstDate) }}</label>
-                                                    </div>
-                                                    <div class="col-xl-3">
-                                                        <label
-                                                            class="col-12 text-center">{{ computeTime($firstDate, $lastDate) }}</label>
-                                                        <hr class="m-0 p-0">
-                                                        <label
-                                                            class="col-12 text-center">{{ countArray($itinerary->segments) == 0 ? 'Non Stop' : countArray($itinerary->segments) . ' Stop' }}</label>
-                                                    </div>
-                                                    <div class="col-xl-2">
-                                                        <label><b>{{ getTime($lastDate) }}</b></label>
-                                                        <label
-                                                            class="m-0 p-0 font-weight-normal">{{ getDates($lastDate) }}</label>
-                                                    </div>
+                                                @foreach ($flightList->itineraries as $itinerary)
+                                                    @foreach ($itinerary->segments as $segment)
+                                                        @if ($loop->first)
+                                                            @php
+                                                                $firstDate = $segment->departure->at;
+                                                            @endphp
+                                                        @endif
+                                                        @if ($loop->last)
+                                                            @php
+                                                                $lastDate = $segment->arrival->at;
+                                                            @endphp
+                                                        @endif
+                                                    @endforeach
+                                                    {{-- @foreach ($itinerary->segments as $segment) --}}
+                                                    {{-- 5 --}}
+                                                    <div class="col-12 pt-2">
+                                                        {{-- 6 --}}
+                                                        <div class="row d-flex align-items-center">
+                                                            {{-- 7 --}}
+                                                            <div class="col-xl-3">
+                                                                <img src="{{ asset('flight4.png') }}" class="rounded"
+                                                                    alt="" style="height: 45px;width: 45px"> <br>
+                                                                <label class="mt-3">Buddha Air</label>
+                                                            </div>
+                                                            <div class="p-2 border">
+                                                                {{ $segment->departure->iataCode }}
+                                                            </div>
+                                                            <div class="col-xl-2">
+                                                                <label
+                                                                    class="time"><b>{{ getTime($firstDate) }}</b></label>
+                                                                <label
+                                                                    class="m-0 p-0 font-weight-normal">{{ getDates($firstDate) }}</label>
+                                                            </div>
+                                                            <div class="col-xl-3">
+                                                                <label
+                                                                    class="col-12 text-center">{{ computeTime($firstDate, $lastDate) }}</label>
+                                                                <hr class="m-0 p-0">
+                                                                <span> <label
+                                                                        class="col-12 text-center stopNum">{{ countArray($itinerary->segments) == 0 ? 'Non Stop' : countArray($itinerary->segments) . ' Stop' }}</label></span>
+                                                            </div>
+                                                            <div class="col-xl-2">
+                                                                <label><b>{{ getTime($lastDate) }}</b></label>
+                                                                <label
+                                                                    class="m-0 p-0 font-weight-normal">{{ getDates($lastDate) }}</label>
+                                                            </div>
 
-                                                    <div class="p-2 border">
-                                                        {{ $segment->arrival->iataCode }}
+                                                            <div class="p-2 border">
+                                                                {{ $segment->arrival->iataCode }}
 
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    {{-- @endforeach --}}
+                                                    <hr class="m-0 p-0">
+                                                @endforeach
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <h5 class="text-info text-center mt-5 priceNum">
+                                                    {{ $flightList->price->total }} EUR
+                                                </h5>
+                                                <label class="col-12 text-center m-0 p-0">Price per persion</label>
+                                                <label class="col-12 text-center m-0 p-0 text-secondary">(incl. taxes &
+                                                    fees)</label>
+
+                                                <div class="col-12 mt-4 d-flex justify-content-center">
+                                                    <button class="btn-select">Select</button>
                                                 </div>
                                             </div>
-                                            {{-- @endforeach --}}
-                                            <hr class="m-0 p-0">
-                                        @endforeach
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <h5 class="text-info text-center mt-5">200 EUR</h5>
-                                        <label class="col-12 text-center m-0 p-0">Price per persion</label>
-                                        <label class="col-12 text-center m-0 p-0 text-secondary">(incl. taxes &
-                                            fees)</label>
 
-                                        <div class="col-12 mt-4 d-flex justify-content-center">
-                                            <button class="btn-select">Select</button>
                                         </div>
+                                        <button class="border-0 bg-transparent py-2">Flight details</button>
+
+
                                     </div>
-
                                 </div>
-                                <button class="border-0 bg-transparent py-2">Flight details</button>
-
-
-                            </div>
-                        </div>
-                    @endforeach
+                            @endforeach
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
         <div class="col-xl-2"></div>
     </div>
 @endsection
+
+@push('script')
+
+
+    <script>
+        // DOM elements
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const flightCards = document.querySelectorAll(".listCard");
+        const noStopCheckbox = document.getElementById("nonStop");
+        const stopCheckbox = document.getElementById("stop");
+        const minPriceInput = document.getElementById("minPrice");
+        const maxPriceInput = document.getElementById("maxPrice");
+        const earlyMorningCheckbox = document.getElementById("earlyMorning");
+        const morningCheckbox = document.getElementById("morning");
+        const afternoonCheckbox = document.getElementById("afternoon");
+        const eveningCheckbox = document.getElementById("evening");
+
+        // Event listeners
+        noStopCheckbox.addEventListener("change", filterFlightCards);
+        stopCheckbox.addEventListener("change", filterFlightCards);
+        minPriceInput.addEventListener("input", filterFlightCards);
+        maxPriceInput.addEventListener("input", filterFlightCards);
+        earlyMorningCheckbox.addEventListener("change", departure);
+        morningCheckbox.addEventListener("change", departure);
+        afternoonCheckbox.addEventListener("change", departure);
+        eveningCheckbox.addEventListener("change", departure);
+
+        // Function to convert 12-hour time to 24-hour format
+        function convertTo24HourFormat(time12Hour) {
+            const [time, period] = time12Hour.split(' ');
+            let [hours, minutes] = time.split(':');
+
+            if (period === 'PM' && hours !== '12') {
+                hours = String(Number(hours) + 12);
+            } else if (period === 'AM' && hours === '12') {
+                hours = '00';
+            }
+
+            // Pad with zeros if necessary
+            hours = hours.padStart(2, '0');
+            minutes = minutes.padStart(2, '0');
+
+            return `${hours}:${minutes}:00`;
+        }
+
+        function departure() {
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        checkboxes.forEach(otherCheckbox => {
+                            if (otherCheckbox !== this) {
+                                otherCheckbox.checked = false;
+                            }
+                        });
+                    }
+                });
+            });
+            filterFlightCards();
+        }
+        // Function to filter flight cards
+        function filterFlightCards() {
+            // Get the current checkbox states
+            const noStopChecked = noStopCheckbox.checked;
+            const stopChecked = stopCheckbox.checked;
+            const earlyMorningChecked = earlyMorningCheckbox.checked;
+            const morningChecked = morningCheckbox.checked;
+            const afternoonChecked = afternoonCheckbox.checked;
+            const eveningChecked = eveningCheckbox.checked;
+
+            flightCards.forEach((flightCard) => {
+                // Extract relevant data from the flight card
+                const price1 = parseInt(flightCard.querySelector(".priceNum").textContent);
+                const time = flightCard.querySelector(".time").textContent;
+                const price = flightCard.querySelector(".stopNum").textContent;
+                const isNonStop = price === "Non Stop";
+                const is1Stop = price === "1 Stop";
+                const minPrice = parseInt(minPriceInput.value) || 0;
+                const maxPrice = parseInt(maxPriceInput.value) || Infinity;
+                const earlyFrom = convertTo24HourFormat(time);
+
+                // Determine whether the card should be displayed
+                let displayCard = true;
+
+                if (earlyMorningChecked) {
+                    const earlyFromTime = new Date(`2023-09-15T${earlyFrom}`);
+                    const earlyMorningStart = new Date(`2023-09-15T00:00:00`);
+                    const earlyMorningEnd = new Date(`2023-09-15T04:59:00`);
+                    if (earlyFromTime >= earlyMorningStart && earlyFromTime <= earlyMorningEnd) {
+                        displayCard = true; // Early Morning checkbox is checked
+                    } else {
+                        displayCard = false;
+                    }
+                }
+
+                if (morningChecked) {
+                    const earlyFromTime = new Date(`2023-09-15T${earlyFrom}`);
+                    const earlyMorningStart = new Date(`2023-09-15T05:00:00`);
+                    const earlyMorningEnd = new Date(`2023-09-15T11:59:00`);
+                    if (earlyFromTime >= earlyMorningStart && earlyFromTime <= earlyMorningEnd) {
+                        displayCard = true; // Early Morning checkbox is checked
+                    } else {
+                        displayCard = false;
+                    }
+                }
+                if (afternoonChecked) {
+                    const earlyFromTime = new Date(`2023-09-15T${earlyFrom}`);
+                    const earlyMorningStart = new Date(`2023-09-15T12:00:00`);
+                    const earlyMorningEnd = new Date(`2023-09-15T17:59:00`);
+                    if (earlyFromTime >= earlyMorningStart && earlyFromTime <= earlyMorningEnd) {
+                        displayCard = true; // Early Morning checkbox is checked
+                    } else {
+                        displayCard = false;
+                    }
+                }
+                if (eveningChecked) {
+                    const earlyFromTime = new Date(`2023-09-15T${earlyFrom}`);
+                    const earlyMorningStart = new Date(`2023-09-15T18:00:00`);
+                    const earlyMorningEnd = new Date(`2023-09-15T23:59:00`);
+                    if (earlyFromTime >= earlyMorningStart && earlyFromTime <= earlyMorningEnd) {
+                        displayCard = true; // Early Morning checkbox is checked
+                    } else {
+                        displayCard = false;
+                    }
+                }
+
+                if (noStopChecked && isNonStop && displayCard) {
+                    displayCard = true; // Non Stop checkbox is checked, and it's a Non Stop flight
+                } else if (stopChecked && is1Stop && displayCard) {
+                    displayCard = true; // 1 Stop checkbox is checked, and it's a 1 Stop flight
+                } else if (!noStopChecked && !stopChecked && displayCard) {
+                    displayCard = true; // Both checkboxes unchecked
+                } else {
+                    displayCard = false; // None of the conditions met
+                }
+
+                // Apply the final condition for displaying the card
+                if (price1 >= minPrice && price1 <= maxPrice && displayCard) {
+                    flightCard.style.display = "block"; // Show the card
+                } else {
+                    flightCard.style.display = "none"; // Hide the card
+                }
+            });
+        }
+    </script>
+@endpush

@@ -80,3 +80,6 @@ function getCountry($codes)
     }
 }
 
+function segment($segmentId){
+    return $segmentId;
+}

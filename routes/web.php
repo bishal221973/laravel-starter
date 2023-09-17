@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Auth::routes();
 
@@ -60,3 +57,5 @@ Route::resource('country',CountryController::class);
 
 Route::get('/',[FrontController::class,'index'])->name('front.index');
 Route::get('/flight-lists',[FrontController::class,'list'])->name('front.list');
+Route::post('/flight-detail/{amadeus}',[FrontController::class,'detail'])->name('front.detail');
+Route::post('/flight-booking',[FrontController::class,'book'])->name('front.book');

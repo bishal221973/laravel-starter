@@ -243,7 +243,7 @@
                     <div style="height: 30px"></div>
                     <table id="list">
                         <tr>
-                            @foreach ($flightLists as $flightList)
+                            @foreach ($flightLists as $index => $flightList)
                                 {{-- 1 --}}
                                 <div class="card mb-2 listCard">
                                     {{-- 2 --}}
@@ -278,7 +278,7 @@
                                                                 <label class="mt-3">Buddha Air</label>
                                                             </div>
                                                             <div class="p-2 border">
-                                                                {{ $segment->departure->iataCode }}
+                                                                {{ $itinerary->segments[0]->departure->iataCode }}
                                                             </div>
                                                             <div class="col-xl-2">
                                                                 <label
@@ -317,15 +317,104 @@
                                                 <label class="col-12 text-center m-0 p-0 text-secondary">(incl. taxes &
                                                     fees)</label>
 
+                                                @php
+                                                    $amadeus = urlencode(json_encode($flightList));
+                                                @endphp
+
                                                 <div class="col-12 mt-4 d-flex justify-content-center">
-                                                    <button class="btn-select">Select</button>
+                                                    <form action="{{route('front.detail',$amadeus)}}" method="POST">
+                                                    @csrf
+                                                    <button
+                                                        class="btn-select">Select</button>
+                                                    </form>
+                                                    {{-- <a href="{{ route('front.detail', ['amadeus' => $amadeus]) }}"
+                                                        class="btn-select">Select</a> --}}
                                                 </div>
                                             </div>
 
                                         </div>
-                                        <button class="border-0 bg-transparent py-2">Flight details</button>
+                                        <button class="border-0 bg-transparent py-2 btn-detail"
+                                            data-index="{{ $index }}">Flight details</button>
+                                    </div>
+
+                                    <div class="d-none" id="hidable{{ $index }}">
+                                        @foreach ($flightList->itineraries as $key => $itinerary)
+                                            <div class="card-body m-0 ">
+                                                <div class="header-dr">
+                                                    <div class="row d-flex align-items-center">
+                                                        <div class="col-xl-3 d-flex align-items-center">
+                                                            {{-- @if ($key == 0) --}}
+                                                            <i
+                                                                class="fa-solid fa-plane fa-2x text-info {{ $key == 1 ? 'left' : '' }}"></i>
+                                                            <h5 class="ml-2 text-upercase text-info">
+                                                                {{ $key == 1 ? 'return' : 'Depart' }}</h5>
+                                                            {{-- @endif --}}
+                                                        </div>
+                                                        <div class="col-xl-9 d-flex justify-content-end">
+                                                            {{ $key == 0 ? getCity(request('depart')) : getCity(request('destination')) }}
+                                                            ({{ $key == 0 ? request('depart') : request('destination') }})
+                                                            -{{ $key == 0 ? getCity(request('destination')) : getCity(request('depart')) }}
+                                                            ({{ $key == 0 ? request('destination') : request('depart') }})
+                                                            |
+                                                            <i class="fa-solid fa-chair px-2 mt-1"></i>
+                                                            {{ $flightList->numberOfBookableSeats }} | <i
+                                                                class="fa-solid fa-suitcase-rolling px-2 mt-1"></i>
+                                                            {{ $flightList->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weight }}
+                                                            {{ $flightList->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weightUnit }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @foreach ($itinerary->segments as $segment)
+                                                    {{-- 5 --}}
+                                                    <div class="col-12 pt-2">
+                                                        {{-- 6 --}}
+                                                        <div class="row d-flex align-items-center">
+                                                            {{-- 7 --}}
+                                                            <div class="col-xl-3">
+                                                                {{-- <img src="{{ asset('flight4.png') }}" class="rounded"
+                                                                alt="" style="height: 45px;width: 45px"> <br> --}}
+                                                                <label class="mt-3">Buddha Air</label> <br>
+                                                                {{ $segment->carrierCode }}-{{ $segment->number }}
+                                                            </div>
+                                                            <div class="p-2 border">
+                                                                {{ $segment->departure->iataCode }}
+                                                            </div>
+                                                            <div class="col-xl-2">
+                                                                <label
+                                                                    class="time m-0 p-0"><b>{{ getTime($segment->departure->at) }}</b></label>
+                                                                <label
+                                                                    class="m-0 p-0 font-weight-normal">{{ getDates($segment->departure->at) }}</label>
+                                                                <br>
+                                                                {{ getCity($segment->departure->iataCode) }}
+                                                            </div>
+                                                            <div class="col-xl-1"></div>
+                                                            <div class="col-xl-2">
+                                                                <span class="d-flex justify-content-end"><label
+                                                                        class="time m-0 p-0"><b>{{ getTime($segment->arrival->at) }}</b></label>
+                                                                    <label
+                                                                        class="m-0 p-0 font-weight-normal">{{ getDates($segment->arrival->at) }}</label></span>
+                                                                <span
+                                                                    class="d-flex justify-content-end">{{ getCity($segment->arrival->iataCode) }}</span>
+                                                            </div>
 
 
+
+                                                            <div class="p-2 border">
+                                                                {{ $segment->arrival->iataCode }}
+
+                                                            </div>
+                                                            <div class="col-xl-2 p-0 m-0">
+                                                                <label
+                                                                    class="col-12 d-flex p-0 m-0 justify-content-end">{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @if (!$loop->last)
+                                                        <div class="hr1"></div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             @endforeach
@@ -339,8 +428,6 @@
 @endsection
 
 @push('script')
-
-
     <script>
         // DOM elements
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -363,6 +450,7 @@
         morningCheckbox.addEventListener("change", departure);
         afternoonCheckbox.addEventListener("change", departure);
         eveningCheckbox.addEventListener("change", departure);
+
 
         // Function to convert 12-hour time to 24-hour format
         function convertTo24HourFormat(time12Hour) {
@@ -480,5 +568,18 @@
                 }
             });
         }
+    </script>
+@endpush
+
+@push('script')
+    <script>
+        $(".btn-detail").on('click', function() {
+            var btnText = $(this).text();
+
+            var indexVal = $(this).data('index');
+            var id = "hidable" + indexVal;
+            // alert(id);
+            $("#" + id).toggleClass("d-none");
+        })
     </script>
 @endpush

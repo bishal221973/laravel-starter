@@ -35,13 +35,14 @@
                             <h3 class="fw-bold text-uppercase bg-info text-white d-flex justify-content-center align-items-center"
                                 style="height: 50px;width:50px;border-radius:50%">
                                 @php
-                                    echo substr(Auth()->user()->name, 0, 1);
+                                    echo substr(Auth()->user()->first_name, 0, 1);
                                 @endphp
                             </h3>
                         @else
                             <a href="#" class="btn btn-info text-white"><i class="fa-solid fa-lock"></i> &nbsp;
                                 Login</a>
                         @endauth
+                        {{-- {{ Auth()->user()->first_name}} --}}
                     </div>
                 </div>
             </div>

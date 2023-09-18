@@ -651,67 +651,85 @@ ul {
     color: #fff;
 }
 
-.border-right{
+.border-right {
     border-right: 1px solid #ccc;
 }
-.border-bottom{
+
+.border-bottom {
     border-bottom: 1px solid #ccc;
 }
-.card1,.card1 label{
+
+.card1,
+.card1 label {
     cursor: pointer;
 }
-.card1{
+
+.card1 {
     position: relative;
     display: flex;
 }
-.card1 input{
+
+.card1 input {
     z-index: 99;
     /* transform: scaleX(2); */
     /* height: 100px   ; */
     position: absolute;
 }
-.header-dr{
+
+.header-dr {
     background-color: #dddddd;
-    padding-top:5px;
-    padding-bottom:5px;
-    padding-left:10px;
-    padding-right:10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 5px;
 }
-.left{
+
+.left {
     transform: rotate(180deg);
 }
-.font-10{
+
+.font-10 {
     font-size: 10px !important;
 }
-.font-11{
+
+.font-11 {
     font-size: 11px !important;
 }
-.font-12{
+
+.font-12 {
     font-size: 12px !important;
 }
-.font-13{
+
+.font-13 {
     font-size: 13px !important;
 }
-.font-14{
+
+.font-14 {
     font-size: 14px !important;
 }
-.font-15{
+
+.font-15 {
     font-size: 15px !important;
 }
-.font-16{
+
+.font-16 {
     font-size: 16px !important;
 }
-.font-17{
+
+.font-17 {
     font-size: 17px !important;
 }
-.font-18{
+
+.font-18 {
     font-size: 18px !important;
 }
-.font-19{
+
+.font-19 {
     font-size: 19px !important;
 }
-.font-20{
+
+.font-20 {
     font-size: 20px !important;
 }
 
@@ -719,98 +737,96 @@ ul {
 
 
 
-.custom-radio input
-{
-  display: none;
-}
-.radio-btn
-{
-  margin: 10px;
-  width: 380px;
-  height: 70px;
-  border: 3px solid transparent;
-  display: inline-block;
-  border-radius: 10px;
-  position: relative;
-  text-align: center;
-  box-shadow: 0 0 20px #c3c3c367;
-  cursor: pointer;
+.custom-radio input {
+    display: none;
 }
 
-.radio-btn > i {
-  color: #ffffff;
-  background-color: #FFDAE9;
-  font-size: 20px;
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%) scale(2);
-  border-radius: 50px;
-  padding: 3px;
-  transition: 0.5s;
-  pointer-events: none;
-  opacity: 0;
+.radio-btn {
+    margin: 10px;
+    width: 380px;
+    height: 70px;
+    border: 3px solid transparent;
+    display: inline-block;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 20px #c3c3c367;
+    cursor: pointer;
 }
 
-.radio-btn .hobbies-icon
-{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 55%;
-  left: 55%;
-  transform: translate(-50%, -50%);
-}
-.radio-btn .hobbies-icon img
-{
-  display:block;
-  width:60px;
-  height: 50px;
-
-}
-.radio-btn .hobbies-icon i
-{
-  color: #FFDAE9;
-  line-height: 80px;
-  font-size: 60px;
+.radio-btn>i {
+    color: #ffffff;
+    background-color: #FFDAE9;
+    font-size: 20px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+    border-radius: 50px;
+    padding: 3px;
+    transition: 0.5s;
+    pointer-events: none;
+    opacity: 0;
 }
 
-.radio-btn .hobbies-icon h3
-{
-  color: #555;
-  font-size: 18px;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing:1px;
-  position: absolute;
-  top: 30%;
-  right: 40px;
+.radio-btn .hobbies-icon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -50%);
 }
 
-.custom-radio input:checked + .radio-btn
-{
-  border: 2px solid #FFDAE9;
+.radio-btn .hobbies-icon img {
+    display: block;
+    width: 60px;
+    height: 50px;
+
 }
 
-.custom-radio input:checked + .radio-btn > i
-{
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
+.radio-btn .hobbies-icon i {
+    color: #FFDAE9;
+    line-height: 80px;
+    font-size: 60px;
 }
-.policy-height{
+
+.radio-btn .hobbies-icon h3 {
+    color: #555;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 30%;
+    right: 40px;
+}
+
+.custom-radio input:checked+.radio-btn {
+    border: 2px solid #FFDAE9;
+}
+
+.custom-radio input:checked+.radio-btn>i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.policy-height {
     max-height: 300px;
     overflow-x: scroll;
     transition: .5s;
 }
-.nav-link.active{
+
+.nav-link.active {
     background-color: #31B0D5 !important;
     color: #fff !important;
 }
-.nav-link{
+
+.nav-link {
     color: #31B0D5 !important;
 }
 
-.user-profile-div{
+.user-profile-div {
     height: 150px;
     width: 150px;
     border-radius: 50%;
@@ -818,20 +834,69 @@ ul {
     position: absolute;
     top: -70px;
 }
-.user-profile{
+
+.user-profile {
     height: 100%;
 }
-.disable{
+
+.disable {
     pointer-events: none;
 }
-.dropdown-menu{
+
+.dropdown-menu {
     width: 400px !important;
 }
-.btn1{
+
+.btn1 {
     width: 30px !important;
     height: 30px !important;
     border-radius: 50%;
     background-color: #31B0D5;
     border: none;
     color: #fff;
+}
+
+.img-div {
+    border: 1.9px solid #000;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.front-card1 label {
+    width: 100%;
+    font-size: 13px !important;
+    letter-spacing: .7px;
+    text-align: center;
+    font-weight: normal !important;
+}
+
+.front-card1 {
+    transition: 0.9s;
+    position: relative;
+    height: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.front-card1:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.my-row {
+    display: flex; /* Use Flexbox */
+    flex-wrap: wrap; /* Allow the cards to wrap to the next row */
+    justify-content: space-between; /* Distribute space between columns */
+}
+
+.my-col {
+    flex: 1; /* Allow columns to grow equally within the row */
+    max-width: calc(50% - 20px); /* Adjust the max-width as needed */
+    margin: 10px; /* Add margin for spacing between columns */
 }

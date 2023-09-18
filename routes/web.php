@@ -52,6 +52,7 @@ Route::get('/email-verification-code', [SettingController::class, "verifyEmailCo
 
 Route::post('/app-setting', [SettingController::class, "appSetting"])->name('setting.appSetting')->middleware('role');
 Route::post('/mail-setting', [SettingController::class, "mailSetting"])->name('setting.mailSetting')->middleware('role');
+Route::post('/organization-setting', [SettingController::class, "orgSetting"])->name('setting.orgSetting')->middleware('role');
 
 Route::get('create-role',[RoleController::class,'create'])->name('role.create')->middleware('role');
 Route::post('store-role',[RoleController::class,'store'])->name('role.store')->middleware('role');

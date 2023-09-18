@@ -175,9 +175,10 @@
                         </form>
                     </div>
                 </div>
+                <div class="col-xl-2"></div>
                 <div class="ml-5" style="margin-left: 17%">
                     <span class="d-flex fw-bold" style="    font-family: 'Ubuntu', sans-serif;">
-                        <h1 class="text-uppercase fw-bold">Welcome in <span class="text-danger">FlightsMojo</span>
+                        <h1 class="text-uppercase fw-bold text-center">Welcome in <span class="text-danger">FlightsMojo</span>
                         </h1>
                     </span>
                     <span style="position: relative;top:-10px;letter-spacing: 1px;" class="signika"><i>Your Dream
@@ -187,8 +188,8 @@
                         destinations. Your journey begins here. Discover, compare, and reserve flights effortlessly with
                         our user-friendly platform. Elevate your travel experience today!"</label>
 
-                    <div class="d-flex mt-5 pt-5 justify-content-center col-xl-6">
-                        <a href="#" class="neon-button text-decoration-none" style="margin-left: 15%">Popular
+                    <div class="d-flex mt-5 pt-5  col-xl-6">
+                        <a href="#" class="neon-button text-decoration-none">Popular
                             Routes</a>
                     </div>
                 </div>

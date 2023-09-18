@@ -86,12 +86,16 @@
                                             <a class="nav-link rounded py-3" data-toggle="tab" href="#mailSetting" role="tab"
                                                 aria-selected="false"><i class="fa-solid fa-envelope pr-2"></i>Mail Setting</a>
                                         </li>
+                                        <li class="nav-item ">
+                                            <a class="nav-link rounded py-3" data-toggle="tab" href="#orgSetting" role="tab"
+                                                aria-selected="false"><i class="fa-solid fa-envelope pr-2"></i>Organization Setting</a>
+                                        </li>
                                     @endrole
                                 </ul>
                             </div>
                             <div class="col-md-9 col-sm-12 ">
                                 <div class="tab-content" style="max-height: 100%;">
-                                    <div class="tab-pane fade show active" id="home7" role="tabpanel">
+                                    <div class="tab-pane fade " id="home7" role="tabpanel">
                                         <h5 class="text-uppercase">personal details</h5>
                                         <small style="font-size: 14px"
                                             class="p-0 m-0">{{ Auth()->user()->first_name . ' ' . Auth()->user()->middel_name . ' ' . Auth()->user()->last_name }}
@@ -540,6 +544,53 @@
                                                 </div>
 
                                                 <input type="submit" value="Change Address" class="btn btn-info col-12">
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade show active" id="orgSetting" role="tabpanel"
+                                        style="overflow: scroll">
+                                        <div class="pd-20">
+                                            <h5 class="text-uppercase">Organization Setting</h5>
+                                            <small style="font-size: 14px"
+                                                class="p-0 m-0">{{ Auth()->user()->first_name . ' ' . Auth()->user()->middel_name . ' ' . Auth()->user()->last_name }}
+                                                <i
+                                                    class="fa-solid fa-minus text-secondary px-2"></i>{{ settings()->get('full_name', $default = null) }}
+                                                {{ settings()->get('short_name') ? '(' . settings()->get('short_name') . ')' : '' }}</small>
+                                            <br>
+
+
+
+
+                                            <hr>
+                                            <h5 class="text-uppercase mb-3">Change Organization Setting</h5>
+                                            <form action="{{ route('setting.orgSetting') }}" method="POST">
+                                                @csrf
+
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <x-input required="true" type="text" name="org_name"
+                                                            label="Organization Name :" placeholder="Organization Name"
+                                                            default="{{ settings()->get('org_name', $default = null) }}" />
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <x-input required="true" type="text" name="org_email"
+                                                            label="Organization Email :" placeholder="Organization Email"
+                                                            default="{{ settings()->get('org_email', $default = null) }}" />
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <x-input required="true" type="text" name="org_contact"
+                                                            label="Organization Contact :" placeholder="Organization Contact"
+                                                            default="{{ settings()->get('org_contact', $default = null) }}" />
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <x-input required="true" type="text" name="org_address"
+                                                            label="Organization Address :" placeholder="Organization Address"
+                                                            default="{{ settings()->get('org_address', $default = null) }}" />
+                                                    </div>
+
+                                                </div>
+
+                                                <input type="submit" value="Change  " class="btn btn-info col-12">
                                             </form>
                                         </div>
                                     </div>

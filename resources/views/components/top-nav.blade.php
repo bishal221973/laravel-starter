@@ -12,21 +12,21 @@
                             <span class="micon bg-primary"><i class="fa-solid fa-phone-volume "></i></span>
                             <div class="d-block">
                                 <small class="text-uppercase nav-text1">Offline Call</small> <br>
-                                <label class="nav-text1">(977) 9813668499</label>
+                                <label class="nav-text1">{{settings()->get('org_contact', $default = null)}}</label>
                             </div>
                         </div>
                         <div class="d-flex align-items-center border-lr">
                             <span class="micon bg-success"><i class="fa-solid fa-phone-volume "></i></span>
                             <div class="d-block">
                                 <small class="text-uppercase nav-text1">Online support</small> <br>
-                                <label class="nav-text1">bishalcodeslaravel@gmail.com</label>
+                                <label class="nav-text1">{{settings()->get('org_email', $default = null)}}</label>
                             </div>
                         </div>
                         <div class="d-flex align-items-center mx-4">
                             <span class="micon bg-warning"><i class="fa-solid fa-location-dot "></i></span>
                             <div class="d-block">
                                 <small class="text-uppercase nav-text1">Our Location</small> <br>
-                                <label class="nav-text1">Dhangadhi, Motichok</label>
+                                <label class="nav-text1">{{settings()->get('org_address', $default = null)}}</label>
                             </div>
                         </div>
                     </div>

@@ -236,6 +236,26 @@ class SettingController extends Controller
             'mail_from_name' => $request->mail_from_name,
         ]);
 
-        return redirect()->back()->with('success',"Mail setting changed.");
+        return redirect()->back()->with('success', "Mail setting changed.");
+    }
+
+    public function orgSetting(Request $request)
+    {
+        if ($request->org_name) {
+            settings()->set("org_name", $request->org_name);
+        }
+        if ($request->org_email) {
+            settings()->set("org_email", $request->org_email);
+        }
+        if ($request->org_contact) {
+            settings()->set("org_contact", $request->org_contact);
+        }
+        if ($request->org_address) {
+            settings()->set("org_address", $request->org_address);
+        }
+
+        return redirect()->back()->with('success', "Mail setting changed.");
+
+
     }
 }

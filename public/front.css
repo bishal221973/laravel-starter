@@ -824,3 +824,14 @@ ul {
 .disable{
     pointer-events: none;
 }
+.dropdown-menu{
+    width: 400px !important;
+}
+.btn1{
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50%;
+    background-color: #31B0D5;
+    border: none;
+    color: #fff;
+}

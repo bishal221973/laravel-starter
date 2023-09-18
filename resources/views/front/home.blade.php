@@ -26,7 +26,7 @@
             <div class="px-5 col-12 d-flex ">
                 <div class="card col-xl-4">
                     <div class="card-body text-dark">
-                        <form action="{{route('front.list')}}" method="GET">
+                        <form action="{{ route('front.list') }}" method="GET">
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="way" checked id="inlineRadio1"
@@ -98,69 +98,57 @@
                                         </div>
                                     </div>
 
+                                    <input type="hidden" name="adult" id="txtAdultNum" value="1">
+                                    <input type="hidden" name="child" id="txtChildNum" value="0">
+                                    <input type="hidden" name="infants" id="txtInfantNum" value="0">
                                     <div class="col-6 mb-4">
                                         <div class="wrapper">
                                             <label class="text-secondary text-uppercase">Passenger(s) :</label>
                                             <div class="search-input">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" readonly value="1 passenger(s)"
-                                                    placeholder="Type to search..">
+                                                    placeholder="Type to search.." id="dropdownMenuButton"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#">
+                                                        <div class="col-12 d-flex justify-content-between">
+                                                            <label>Adults 11+ Years</label>
+                                                            <div class="d-flex align-items-center">
+                                                                <button type="button" class="btn1" id="adultSub">-</button>
+                                                                <span id="adultNums" class="px-2">1</span>
+                                                                <button type="button" class="btn1"
+                                                                    id="adultAdd">+</button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item" href="#">
+                                                        <div class="col-12 d-flex justify-content-between">
+                                                            <label>Children 2 - 11 Years</label>
+                                                            <div class="d-flex align-items-center">
+                                                                <button type="button" class="btn1" id="childSub">-</button>
+                                                                <span id="childNums" class="px-2">0</span>
+                                                                <button type="button" class="btn1" id="childAdd">+</button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item" href="#">
+                                                        <div class="col-12 d-flex justify-content-between">
+                                                            <label>Infants < 2 Years</label>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <button type="button" class="btn1" id="infantSub">-</button>
+                                                                        <span class="px-2" id="infantNums">0</span>
+                                                                        <button type="button" class="btn1" id="infantAdd">+</button>
+                                                                    </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                                 <div class="icon"><i class="fa-solid fa-users"></i></div>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
-                                        data-keyboard="false" data-backdrop="static">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
 
-                                                <div class="modal-body">
-                                                    <h4 class="text-uppercase fw-bold mb-5">Passanger</h4>
 
-                                                    <div class="d-flex justify-content-between mb-3 border-bottom py-3">
-                                                        <label>Adults 11+ Years</label>
-                                                        <div class="d-flex">
-                                                            <span class="btn-minus mx-3"><i
-                                                                    class="fa-solid fa-minus"></i></span>
-                                                            <span class="fw-bold">1</span>
-                                                            <span class="btn-plus mx-3"><i
-                                                                    class="fa-solid fa-plus"></i></span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="d-flex justify-content-between mb-3 border-bottom py-3">
-                                                        <label>Children 2-11 Years</label>
-                                                        <div class="d-flex">
-                                                            <span class="btn-minus mx-3"><i
-                                                                    class="fa-solid fa-minus"></i></span>
-                                                            <span class="fw-bold">0</span>
-                                                            <span class="btn-plus mx-3"><i
-                                                                    class="fa-solid fa-plus"></i></span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="d-flex justify-content-between mb-3 border-bottom py-3">
-                                                        <label>Infants Less then 2 Years</label>
-                                                        <div class="d-flex">
-                                                            <span class="btn-minus mx-3"><i
-                                                                    class="fa-solid fa-minus"></i></span>
-                                                            <span class="fw-bold">0</span>
-                                                            <span class="btn-plus mx-3"><i
-                                                                    class="fa-solid fa-plus"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 d-flex justify-content-center">
-
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-6 mb-4">
                                         <div class="wrapper">
                                             <label class="text-secondary text-uppercase">Cabin :</label>
@@ -213,3 +201,71 @@
 
     </section>
 @endsection
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-toggle').dropdown();
+
+            // Disable auto-close behavior
+            $('.dropdown-menu').on('click', function(e) {
+                e.stopPropagation();
+            });
+
+
+        });
+    </script>
+
+    <script>
+        var adultNumber = 1;
+        var childNumber = 0;
+        var infantNumber = 0;
+        $('#adultAdd').on('click', function() {
+            // alert(adultNumber);
+            if (adultNumber <= '11') {
+                adultNumber = adultNumber+1;
+                $("#adultNums").text(adultNumber);
+                $('#txtAdultNum').val(adultNumber);
+            }
+        });
+        $('#adultSub').on('click', function() {
+            // alert(adultNumber);
+            if (adultNumber >= '2') {
+                adultNumber = adultNumber-1;
+                $("#adultNums").text(adultNumber);
+                $('#txtAdultNum').val(adultNumber);
+            }
+        });
+        $('#childAdd').on('click', function() {
+            // alert(adultNumber);
+            if (childNumber <= '11') {
+                childNumber = childNumber+1;
+                $("#childNums").text(childNumber);
+                $('#txtChildNum').val(childNumber);
+            }
+        });
+        $('#childSub').on('click', function() {
+            // alert(adultNumber);
+            if (childNumber >= '1') {
+                childNumber = childNumber-1;
+                $("#childNums").text(childNumber);
+                $('#txtChildNum').val(childNumber);
+            }
+        });
+        $('#infantAdd').on('click', function() {
+            // alert(adultNumber);
+            if (infantNumber <= '11') {
+                infantNumber = infantNumber+1;
+                $("#infantNums").text(infantNumber);
+                $('#txtInfantNum').val(infantNumber);
+            }
+        });
+        $('#infantSub').on('click', function() {
+            // alert(adultNumber);
+            if (infantNumber >= '1') {
+                infantNumber = infantNumber-1;
+                $("#infantNums").text(infantNumber);
+                $('#txtInfantNum').val(infantNumber);
+            }
+        });
+    </script>
+@endpush

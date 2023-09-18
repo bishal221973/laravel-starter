@@ -132,6 +132,7 @@
                                 </div>
                             </div>
                         </form>
+                        <label class="mt-4">Not a user ? <a href="{{route('register')}}" class="text-info">Register</a> from here. </label>
                     </div>
                 </div>
             </div>

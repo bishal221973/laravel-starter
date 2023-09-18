@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Amadeus\Amadeus;
+use Exception;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -18,26 +19,34 @@ class FrontController extends Controller
         return view('front.home');
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $amadeus = Amadeus::builder("IyIEHFKtolObKGs3QtjtCA393VpKS2cN", "G8Q4JKsjSjxSvYSX")->build();
-        $apiUrl = '/v2/shopping/flight-offers?originLocationCode=DEL&destinationLocationCode=BOM&departureDate=2023-09-17&returnDate=2023-09-18&adults=2&nonStop=false&max=100'; // Replace with your API URL
-        $response = $amadeus->getClient()->getWithOnlyPath($apiUrl);
-        $flightList = $response->getBody();
+        if ($request->returnTime == "") {
+            $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&adults=' . $request->adult . '&nonStop=false&max=100'; // Replace with your API URL
+        } else {
+            $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&returnDate=' . $request->returnTime . '&adults=' . $request->adult . '&children=' . $request->child . '&infants=' . $request->infants . '&nonStop=false&max=100'; // Replace with your API URL
+        }
+        try {
+            $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
+            $flightList = $response->getBody();
 
-        session()->put('lists', $flightList);
+            session()->put('lists', $flightList);
 
-        $flightList = session()->get('lists');
-        $flightList = json_decode($flightList);
-        // return $flightList->data[10];
-        $flightLists = $flightList->data;
-        return view('front.flightList', compact('flightLists'));
+            $flightList = session()->get('lists');
+            $flightList = json_decode($flightList);
+            // return $flightList->data[10];
+            $flightLists = $flightList->data;
+            return view('front.flightList', compact('flightLists'));
+        } catch (Exception $e) {
+            $error= $e->getMessage();
+            return redirect()->back()->with('error',$error);
+        }
     }
 
     public function detail(Request $request, $amadeus)
     {
 
-        session()->put('filghtData',$amadeus);
+        session()->put('filghtData', $amadeus);
         $requestData = [
             'data' => [
                 'type' => 'flight-offers-pricing',
@@ -53,7 +62,7 @@ class FrontController extends Controller
 
             if ($response->getStatusCode() === 200) {
                 $flightDetail = $response->getBody();
-            //     session()->put("test", $flightDetail);
+                //     session()->put("test", $flightDetail);
                 // $flightDetail = session()->get('test');
                 $flightDetail = json_decode($flightDetail);
                 // return $flightDetail;

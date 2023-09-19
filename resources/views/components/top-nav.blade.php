@@ -7,30 +7,30 @@
                     <div>
                         <img src="{{ asset('logo.png') }}" class="logo">
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center contact-container">
                         <div class="d-flex align-items-center mx-3 border-right">
                             <span class="micon bg-primary"><i class="fa-solid fa-phone-volume "></i></span>
                             <div class="d-block">
-                                <small class="text-uppercase nav-text1">Offline Call</small> <br>
+                                <small class="text-uppercase nav-text1"><i class="fa-solid fa-phone-volume d-none icon1"></i>Offline Call</small> <br>
                                 <label class="nav-text1">{{settings()->get('org_contact', $default = null)}}</label>
                             </div>
                         </div>
                         <div class="d-flex align-items-center border-lr">
                             <span class="micon bg-success"><i class="fa-solid fa-phone-volume "></i></span>
                             <div class="d-block">
-                                <small class="text-uppercase nav-text1">Online support</small> <br>
+                                <small class="text-uppercase nav-text1"><i class="fa-solid fa-phone-volume d-none icon1"></i>Online support</small> <br>
                                 <label class="nav-text1">{{settings()->get('org_email', $default = null)}}</label>
                             </div>
                         </div>
                         <div class="d-flex align-items-center mx-4">
                             <span class="micon bg-warning"><i class="fa-solid fa-location-dot "></i></span>
                             <div class="d-block">
-                                <small class="text-uppercase nav-text1">Our Location</small> <br>
+                                <small class="text-uppercase nav-text1"><i class="fa-solid fa-phone-volume d-none icon1"></i>Our Location</small> <br>
                                 <label class="nav-text1">{{settings()->get('org_address', $default = null)}}</label>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center btn-login-container">
                         @auth
                             <div class="dropdown">
                                 <h3 class="fw-bold text-uppercase bg-info text-white d-flex justify-content-center align-items-center"

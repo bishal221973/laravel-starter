@@ -113,6 +113,7 @@ body {
     display: flex;
     /* justify-content: center; */
     align-items: center;
+    justify-content: center;
 }
 
 .carousel-item {
@@ -889,18 +890,26 @@ ul {
 .front-card1:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
+
 .my-row {
-    display: flex; /* Use Flexbox */
-    flex-wrap: wrap; /* Allow the cards to wrap to the next row */
-    justify-content: space-between; /* Distribute space between columns */
+    display: flex;
+    /* Use Flexbox */
+    flex-wrap: wrap;
+    /* Allow the cards to wrap to the next row */
+    justify-content: space-between;
+    /* Distribute space between columns */
 }
 
 .my-col {
-    flex: 1; /* Allow columns to grow equally within the row */
-    max-width: calc(50% - 20px); /* Adjust the max-width as needed */
-    margin: 10px; /* Add margin for spacing between columns */
+    flex: 1;
+    /* Allow columns to grow equally within the row */
+    max-width: calc(50% - 20px);
+    /* Adjust the max-width as needed */
+    margin: 10px;
+    /* Add margin for spacing between columns */
 }
-.text-profile{
+
+.text-profile {
     background-color: #31B0D5;
     display: flex;
     justify-content: center;
@@ -912,25 +921,226 @@ ul {
     border-radius: 50%;
 
 }
-.front-menu{
+
+.front-menu {
     padding-left: 10px;
     transition: .8s;
 }
-.front-menu.border{
+
+.front-menu.border {
     border-bottom: 1px solid #000;
 
 }
-.front-menu label{
+
+.front-menu label {
     font-size: 20px;
     margin-top: 10px;
     cursor: pointer;
     transition: .8s;
 }
-.front-menu i{
+
+.front-menu i {
     transition: .8s;
 
 }
-.front-menu:hover{
+
+.front-menu:hover {
     background-color: #31B0D5;
     color: #fff;
+}
+
+.carousel-inner .carousel-item,
+.carousel {
+    height: 65vh;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============ */
+.card-search {
+    min-width: 495px !important;
+}
+
+.welcome-msg-pnl {
+    padding-left: 200px !important;
+}
+
+.welcome-msg {
+    width: 80%;
+}
+
+@media only screen and (max-width: 1595px) {
+    .welcome-msg {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:1457px) {
+    .micon {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .welcome-msg-pnl {
+        width: 100% !important;
+        padding-left: 100px !important;
+    }
+}
+
+@media only screen and (max-width: 1237px) {
+    .welcome-msg-pnl {
+        width: 100% !important;
+        padding-left: 0px !important;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .micon {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 1026px) {
+
+    .card-search {
+        min-width: 400px !important;
+    }
+
+}
+
+@media only screen and (max-width: 991px) {
+
+    .home-section,
+    .content-section {
+        height: 1100px;
+    }
+
+    .carousel-inner .carousel-item,
+    .carousel {
+        height: 1100px;
+        overflow: hidden;
+    }
+
+    .carousel-item img {
+        height: 1100px;
+    }
+
+    .content-section {
+        padding-top: 5px;
+    }
+
+    .card-search {
+        display: flex;
+    }
+
+    .welcome-msg-pnl {
+        margin-top: 100px;
+    }
+
+    .btn-popular {
+        justify-content: center;
+    }
+
+    .btn-login-container {
+        display: none !important;
+    }
+
+    .btn-login-container1 {
+        display: flex !important;
+        margin-right: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 930px) {
+
+    .micon {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 640px) {
+
+    .contact-container {
+        display: none !important;
+    }
+
+    .btn-login-container {
+        display: flex !important;
+    }
+
+    .btn-login-container1 {
+        display: none !important;
+        margin-right: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+
+    .content-section div {
+        margin: 0;
+        padding: 0;
+    }
+    .card-search .card .card-body .col-6{
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 555px) {
+
+    .card-search{
+        display: none !important;
+    }
+    .home-section,
+    .content-section {
+        height: 600px;
+    }
+
+    .carousel-inner .carousel-item,
+    .carousel {
+        height: 600px;
+        overflow: hidden;
+    }
+
+    .carousel-item img {
+        height: 600px;
+    }
+
+    .content-section {
+        padding-top: 5px;
+    }
+    .popular-btn{
+        display: none;
+    }
+    .book-now-btn{
+        display: block !important;
+    }
+
+}
+
+@media only screen and (max-width: 455px) {
+
+    .card-search{
+        display: none !important;
+    }
+    .neon-button {
+        font-size: 20px;
+    }
+
 }

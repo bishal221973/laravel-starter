@@ -40,8 +40,8 @@ inputBox.onkeyup = (e) => {
         emptyArray = emptyArray.map(airport => {
             return `<li>
             <div class="d-flex justify-content-between align-items-center">
-                <div class="border p-3 iataCode">${airport.code}</div> &nbsp;&nbsp;&nbsp;
-                <div class="d-block iataAddress">${airport.city}, ${airport.country}</div>
+                <div class="border p-2 iataCode" style="font-size:14px">${airport.code}</div> &nbsp;&nbsp;&nbsp;
+                <div class="d-block iataAddress" style="font-size:14px">${airport.city}, ${airport.country}</div>
             </div>
             </li>`;
         });
@@ -74,8 +74,8 @@ destinationInput.onkeyup = (e) => {
         emptyArray = emptyArray.map(airport => {
             return `<li>
             <div class="d-flex justify-content-between align-items-center">
-                <div class="border p-3 iataCode">${airport.code}</div> &nbsp;&nbsp;&nbsp;
-                <div class="d-block iataAddress">${airport.city}, ${airport.country}</div>
+                <div class="border p-2 iataCode" style="font-size:14px">${airport.code}</div> &nbsp;&nbsp;&nbsp;
+                <div class="d-block iataAddress" style="font-size:14px">${airport.city}, ${airport.country}</div>
             </div>
             </li>`;
         });

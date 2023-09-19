@@ -212,61 +212,94 @@
 
 
         </section>
-            <div class="row bg-info mb-4">
-                <div class="col-xl-2"></div>
-                <div class="col-xl-8">
-                    <div class="row px-5 pt-2">
-                        <div class="col-xl-3 px-2 py-2">
-                            <img src="{{asset('arc_icon.png')}}" alt="" style="width: 100%" srcset="">
-                        </div>
-                        <div class="col-xl-3 px-2 py-2">
-                            <img src="{{asset('asta_icon.png')}}" alt="" style="width: 100%" srcset="">
-                        </div>
-                        <div class="col-xl-3 px-2 py-2">
-                            <img src="{{asset('safty_icon.png')}}" alt="" style="width: 100%" srcset="">
-                        </div>
-                        <div class="col-xl-3 px-2 py-2">
-                            <img src="{{asset('trust_icon.png')}}" alt="" style="width: 100%" srcset="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2"></div>
-            </div>
+        @if (session()->has('error'))
+            @php
+                $errors = session()->get('error');
+            @endphp
+            @foreach ($errors as $error)
 
-            <div class="row mb-4">
-                <div class="col-xl-2"></div>
-                <div class="col-xl-8">
-                    <div class="row my-row">
-                        <div class="col-xl-6 my-col">
-                            <div class="card  front-card1 bg-white h-100">
-                                <div class="card-body h-100">
-                                    <h5 class="text-center mb-3">Fly Now Pay Later</h5>
-                                    <div class="col-12 d-flex justify-content-center mb-3">
-                                        <div class="img-div" style="background-image: url('fnpl_icon2.png')">
-                                            {{-- <img src="{{asset('fnpl_icon2.png')}}" alt=""> --}}
-                                        </div>
+
+                @push('script')
+                    <script>
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: '{{$error['detail']}}'
+                        })
+                    </script>
+                @endpush
+            @endforeach
+        @endif
+
+        <div class="row bg-info mb-4">
+            <div class="col-xl-2"></div>
+            <div class="col-xl-8">
+                <div class="row px-5 pt-2">
+                    <div class="col-xl-3 px-2 py-2">
+                        <img src="{{ asset('arc_icon.png') }}" alt="" style="width: 100%" srcset="">
+                    </div>
+                    <div class="col-xl-3 px-2 py-2">
+                        <img src="{{ asset('asta_icon.png') }}" alt="" style="width: 100%" srcset="">
+                    </div>
+                    <div class="col-xl-3 px-2 py-2">
+                        <img src="{{ asset('safty_icon.png') }}" alt="" style="width: 100%" srcset="">
+                    </div>
+                    <div class="col-xl-3 px-2 py-2">
+                        <img src="{{ asset('trust_icon.png') }}" alt="" style="width: 100%" srcset="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2"></div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-xl-2"></div>
+            <div class="col-xl-8">
+                <div class="row my-row">
+                    <div class="col-xl-6 my-col">
+                        <div class="card  front-card1 bg-white h-100">
+                            <div class="card-body h-100">
+                                <h5 class="text-center mb-3">Fly Now Pay Later</h5>
+                                <div class="col-12 d-flex justify-content-center mb-3">
+                                    <div class="img-div" style="background-image: url('fnpl_icon2.png')">
+                                        {{-- <img src="{{asset('fnpl_icon2.png')}}" alt=""> --}}
                                     </div>
-                                    <label class="col-12 text-center text-muted">Spread the cost of your trip! FNPL makes it simpler than ever to book a vacation now and pay it off later. </label>
                                 </div>
+                                <label class="col-12 text-center text-muted">Spread the cost of your trip! FNPL makes it
+                                    simpler than ever to book a vacation now and pay it off later. </label>
                             </div>
                         </div>
-                        <div class="col-xl-6 my-col">
-                            <div class="card bg-white front-card1">
-                                <div class="card-body">
-                                    <h5 class="text-center mb-3">Refundable Bookings</h5>
-                                    <div class="col-12 d-flex justify-content-center mb-3">
-                                        <div class="img-div" style="background-image: url('refund_p2.png')">
-                                            {{-- <img src="{{asset('fnpl_icon2.png')}}" alt=""> --}}
-                                        </div>
+                    </div>
+                    <div class="col-xl-6 my-col">
+                        <div class="card bg-white front-card1">
+                            <div class="card-body">
+                                <h5 class="text-center mb-3">Refundable Bookings</h5>
+                                <div class="col-12 d-flex justify-content-center mb-3">
+                                    <div class="img-div" style="background-image: url('refund_p2.png')">
+                                        {{-- <img src="{{asset('fnpl_icon2.png')}}" alt=""> --}}
                                     </div>
-                                    <label class="col-12 text-center text-muted">Get an enhanced set of terms of conditions which in unforeseen circumstances outside of your control, enables you to apply for refund on non-refundable bookings. </label>
                                 </div>
+                                <label class="col-12 text-center text-muted">Get an enhanced set of terms of conditions
+                                    which in unforeseen circumstances outside of your control, enables you to apply for
+                                    refund on non-refundable bookings. </label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2"></div>
             </div>
+            <div class="col-xl-2"></div>
+        </div>
 
     </section>
 @endsection

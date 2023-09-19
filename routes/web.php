@@ -65,6 +65,7 @@ Route::resource('country',CountryController::class)->middleware('role');
 
 Route::get('/flight-lists',[FrontController::class,'list'])->name('front.list');
 Route::post('/flight-detail/{amadeus}',[FrontController::class,'detail'])->name('front.detail');
+Route::get('/flight-details',[FrontController::class,'showDetails'])->name('front.showDetails');
 Route::post('/flight-booking',[FrontController::class,'book'])->name('front.book');
 
 Route::post('/user-registration',[RegisterController::class,'register'])->name('user.register');

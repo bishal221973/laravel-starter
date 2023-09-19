@@ -57,6 +57,74 @@
 
         </div>
     </section>
+    {{-- @if (session()->has('error'))
+        @php
+            $errors = session()->get('error');
+        @endphp
+        @foreach ($errors as $error)
+            @php
+                print_r($error);
+
+            @endphp
+            @push('script')
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: '{{ $error['detail'] }}'
+                    })
+                </script>
+            @endpush
+        @endforeach
+    @endif --}}
+    @if (session()->has('error'))
+        @php
+            $errors = session()->get('error');
+            $errorMessages = [];
+
+            foreach ($errors as $error) {
+                $errorMessages[] = $error['detail'];
+            }
+        @endphp
+
+        @if (!empty($errorMessages))
+            @push('script')
+                @foreach ($errorMessages as $errorMessage)
+                    <script>
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+
+                        // Display each error message in a Toast notification
+                        Toast.fire({
+                            icon: 'error',
+                            title: '{{ $errorMessage }}'
+                        });
+                    </script>
+                @endforeach
+            @endpush
+        @endif
+    @endif
+
 
     <div class="row mt-5">
         <div class="col-xl-2">
@@ -65,7 +133,7 @@
         <div class="col-xl-8">
             <div class="row">
                 <div class="col-xl-9">
-                    <form action="{{route('front.book')}}" method="POST">
+                    <form action="{{ route('front.book') }}" method="POST">
                         @csrf
                         {{-- ====================Flight details=======================  --}}
                         <div class="card mb-2 listCard">
@@ -231,7 +299,7 @@
                                                             <div class="search-input search-input1">
                                                                 <a href="" target="_blank" hidden></a>
                                                                 <input type="text" name="first_name[]" value=""
-                                                                    placeholder="First Name">
+                                                                    placeholder="First Name" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -252,7 +320,7 @@
                                                                 :</label>
                                                             <div class="search-input search-input1">
                                                                 <a href="" target="_blank" hidden></a>
-                                                                <input type="text" name="last_name[]" value=""
+                                                                <input type="text" name="last_name[]" required value=""
                                                                     placeholder="Last Name">
                                                             </div>
                                                         </div>
@@ -264,7 +332,7 @@
                                                     <label class="text-secondary text-uppercase">Gender :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <select id="" name="gender[]" class="form-control">
+                                                        <select id="" name="gender[]" required class="form-control">
                                                             <option value="MALE">Male</option>
                                                             <option value="FEMALE">Female</option>
                                                         </select>
@@ -276,7 +344,7 @@
                                                     <label class="text-secondary text-uppercase">DOB :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <input type="date" name="dob[]" value=""
+                                                        <input type="date" name="dob[]" required value=""
                                                             placeholder="Last Name">
                                                     </div>
                                                 </div>
@@ -547,7 +615,7 @@
                                                     <label class="text-secondary text-uppercase">Nationality :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <select name="nationality[]" class="form-control" id="">
+                                                        <select name="nationality[]" required class="form-control" id="">
                                                             <option value="GB" Selected>UK (GB)</option>
                                                             <option value="US">USA (US)</option>
                                                             <optgroup label="Other countries">
@@ -798,7 +866,8 @@
                                                     <label class="text-secondary text-uppercase">First Name :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <input type="text" name="first_name[]" value="" placeholder="First Name">
+                                                        <input type="text" name="first_name[]" required value=""
+                                                            placeholder="First Name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -807,7 +876,8 @@
                                                     <label class="text-secondary text-uppercase">Last Name :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <input type="text" name="last_name[]" value="" placeholder="Last Name">
+                                                        <input type="text" name="last_name[]" required value=""
+                                                            placeholder="Last Name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -816,7 +886,7 @@
                                                     <label class="text-secondary text-uppercase">Gender :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <select name="gender[]" id="" class="form-control">
+                                                        <select name="gender[]" id="" required class="form-control">
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
                                                             <option value="Other">Other</option>
@@ -829,7 +899,8 @@
                                                     <label class="text-secondary text-uppercase">DOB :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <input type="date" name="dob[]" value="" placeholder="DOB">
+                                                        <input type="date" required name="dob[]" value=""
+                                                            placeholder="DOB">
                                                     </div>
                                                 </div>
                                             </div>
@@ -854,7 +925,8 @@
                                                     <label class="text-secondary text-uppercase">First Name :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <input type="text" name="first_name[]" value="" placeholder="First Name">
+                                                        <input type="text" required name="first_name[]" value=""
+                                                            placeholder="First Name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -863,7 +935,8 @@
                                                     <label class="text-secondary text-uppercase">Last Name :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <input type="text" value="" name="last_name[]" placeholder="Last Name">
+                                                        <input type="text" required value="" name="last_name[]"
+                                                            placeholder="Last Name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -872,7 +945,7 @@
                                                     <label class="text-secondary text-uppercase">Gender :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <select name="gender[]" id="" class="form-control">
+                                                        <select name="gender[]" required id="" class="form-control">
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
                                                             <option value="Other">Other</option>
@@ -885,7 +958,8 @@
                                                     <label class="text-secondary text-uppercase">DOB :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <input type="date" name="dob[]" value="" placeholder="Last Name">
+                                                        <input type="date" required name="dob[]" value=""
+                                                            placeholder="Last Name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -910,7 +984,7 @@
                                             <label class="text-secondary text-uppercase">Country :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
-                                                <select name="country" class="form-control" id="">
+                                                <select name="country" required class="form-control" id="">
                                                     <option value="GB" Selected>UK (GB)</option>
                                                     <option value="US">USA (US)</option>
                                                     <optgroup label="Other countries">
@@ -1138,7 +1212,7 @@
                                             <label class="text-secondary text-uppercase">City :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
-                                                <input type="text" name="city" value="" placeholder="City">
+                                                <input type="text" required name="city" value="" placeholder="City">
                                             </div>
                                         </div>
                                     </div>
@@ -1147,7 +1221,7 @@
                                             <label class="text-secondary text-uppercase">Postal Code :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
-                                                <input type="text" name="postalCode" value=""
+                                                <input type="text" required name="postalCode" value=""
                                                     placeholder="Postal Code">
                                             </div>
                                         </div>
@@ -1157,7 +1231,7 @@
                                             <label class="text-secondary text-uppercase">Address :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
-                                                <input type="text" value="" name="address"
+                                                <input type="text" required value="" name="address"
                                                     placeholder="Address">
                                             </div>
                                         </div>
@@ -1275,14 +1349,17 @@
                         </div>
 
                         <div class="d-flex justify-content-center mb-5">
-                            <button class="btn btn-info pt-2 pb-2 {{Auth()->user() ? '' : 'disable'}}" type="submit">
+                            <button class="btn btn-info pt-2 pb-2 {{ Auth()->user() ? '' : 'disable' }}"
+                                type="submit">
                                 <h3 class="px-5 m-0 text-white text-uppercase fw-bold">Book Now</h3>
                                 <span class="text-uppercase"><i class="fa-solid fa-lock"></i>&nbsp;secure
                                     payment</span>
                             </button>
                         </div>
 
-                        <label class="col-12 text-center py-2"><span class="text-warning text-uppercase">Warning : </span><span class="text-muted"><i>You are not loged in. Please login to book.</i></span></label>
+                        <label class="col-12 text-center py-2"><span class="text-warning text-uppercase">Warning :
+                            </span><span class="text-muted"><i>You are not loged in. Please login to
+                                    book.</i></span></label>
                     </form>
                 </div>
                 <div class="col-xl-3">

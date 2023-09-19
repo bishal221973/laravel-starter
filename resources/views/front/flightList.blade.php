@@ -26,6 +26,7 @@
 
         </div>
 
+
         <div class="content-section" style="height: 300px">
             <div class="col-xl-2"></div>
             <div class="col-xl-8">
@@ -120,6 +121,35 @@
             <div class="col-xl-2"></div>
         </div>
     </section>
+
+
+    @if (session()->has('error'))
+        @php
+            $errors = session()->get('error');
+        @endphp
+        @foreach ($errors as $error)
+            @push('script')
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: '{{ $error['detail'] }}'
+                    })
+                </script>
+            @endpush
+        @endforeach
+    @endif
 
     {{-- ============List========= --}}
     <div class="row mt-5">
@@ -322,10 +352,9 @@
                                                 @endphp
 
                                                 <div class="col-12 mt-4 d-flex justify-content-center">
-                                                    <form action="{{route('front.detail',$amadeus)}}" method="POST">
-                                                    @csrf
-                                                    <button
-                                                        class="btn-select">Select</button>
+                                                    <form action="{{ route('front.detail', $amadeus) }}" method="POST">
+                                                        @csrf
+                                                        <button class="btn-select">Select</button>
                                                     </form>
                                                     {{-- <a href="{{ route('front.detail', ['amadeus' => $amadeus]) }}"
                                                         class="btn-select">Select</a> --}}
@@ -357,10 +386,14 @@
                                                             ({{ $key == 0 ? request('destination') : request('depart') }})
                                                             |
                                                             <i class="fa-solid fa-chair px-2 mt-1"></i>
-                                                            {{ $flightList->numberOfBookableSeats }} | <i
-                                                                class="fa-solid fa-suitcase-rolling px-2 mt-1"></i>
-                                                            {{ $flightList->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weight }}
-                                                            {{ $flightList->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weightUnit }}
+                                                            {{ $flightList->numberOfBookableSeats }} |
+                                                            {{-- @if ($flightList->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weight==null)
+                                                                <i class="fa-solid fa-suitcase-rolling px-2 mt-1"></i>
+                                                                @php
+                                                                    print_r($flightList->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags);
+                                                                @endphp
+                                                                {{ $flightList->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weightUnit }}
+                                                            @endif --}}
                                                         </div>
                                                     </div>
                                                 </div>

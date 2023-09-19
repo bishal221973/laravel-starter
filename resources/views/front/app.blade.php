@@ -159,6 +159,7 @@
     <script src="{{ asset('fontawesome/all.min.js') }}"></script>
     <script src="{{ asset('imgCrop/croppie.js') }}"></script>
     <script src="{{asset('front.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 @yield('datatable')

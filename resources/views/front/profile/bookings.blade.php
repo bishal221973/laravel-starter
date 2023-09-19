@@ -233,23 +233,25 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="col-12 mb-4 d-flex justify-content-center">
-                                <img src="{{asset('flight1.jpg')}}" alt="" srcset="" style="height: 80px;width:80px;border-radius:50%">
+                                <img src="{{ asset('flight1.jpg') }}" alt="" srcset=""
+                                    style="height: 80px;width:80px;border-radius:50%">
                             </div>
-                            <h5 class="text-info text-center text-uppercase">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</h5>
+                            <h5 class="text-info text-center text-uppercase">{{ Auth()->user()->first_name }}
+                                {{ Auth()->user()->last_name }}</h5>
                             <label class="col-12 text-center">Welcome Back</label>
                         </div>
                     </div>
 
                     <div class="card">
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{ route('user.dashboard') }}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>Dashboard</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{ route('user.myBooking') }}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>My Bookings</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{ route('user.myProfile') }}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>My Profile</label>
                         </a>
@@ -261,7 +263,52 @@
                     </div>
                 </div>
                 <div class="col-xl-9">
-                    @yield('content')
+                    <div class="card-box mb-30">
+                        <div class="pd-20">
+                            <h4 class="text-blue h4">My Bookings</h4>
+                        </div>
+                        <div class="pb-20">
+                            <table class="data-table table hover multiple-select-row nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="table-plus datatable-nosort">SN</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Price</th>
+                                        {{-- <th>Booking Id</th> --}}
+                                        <th>Payment Ststus</th>
+                                        <th>Invoice</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (App\Models\Booking::where('user_id', Auth()->user()->id)->get() as $booking)
+                                        <tr>
+                                            <td class="table-plus">{{ $loop->iteration }}</td>
+                                            <td>
+                                                {{ getCity($booking->fromIataCode) }} ({{ $booking->fromIataCode }}) <br>
+                                                <span class="text-muted"><i class="fa-solid fa-calendar-days"></i>
+                                                    {{ getDates($booking->fromTime) }} <i class="fa-solid fa-clock"></i>
+                                                    {{ getTime($booking->fromTime) }}</span>
+                                            </td>
+                                            <td>
+                                                {{ getCity($booking->toIataCode) }} ({{ $booking->toIataCode }}) <br>
+                                                <span class="text-muted"><i class="fa-solid fa-calendar-days"></i>
+                                                    {{ getDates($booking->toTime) }} <i class="fa-solid fa-clock"></i>
+                                                    {{ getTime($booking->toTime) }}</span>
+                                            </td>
+                                            <td>{{$booking->price}}</td>
+                                            {{-- <td>{{$booking->booking_id}}</td> --}}
+                                            <td>{{$booking->status}}</td>
+                                            <td>
+                                                <a href="#"><i class="fa-solid fa-download fa-2x"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

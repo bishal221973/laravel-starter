@@ -22,11 +22,17 @@ class RegisterController extends Controller
 
     }
 
-    public function profile(){
-        return view('front.profile');
+    public function dashboard(){
+        return view('front.profile.dashboard');
     }
 
     public function myBookings(){
         return view('front.myBookings');
+    }
+    public function myBooking(){
+        return view('front.profile.bookings');
+    }
+    public function myProfile(){
+        return view('front.profile.profile');
     }
 }

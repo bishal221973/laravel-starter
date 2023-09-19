@@ -241,15 +241,15 @@
                     </div>
 
                     <div class="card">
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.dashboard')}}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>Dashboard</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.myBooking')}}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>My Bookings</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.myProfile')}}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>My Profile</label>
                         </a>
@@ -261,7 +261,37 @@
                     </div>
                 </div>
                 <div class="col-xl-9">
-                    @yield('content')
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="card bg-success p-3">
+                                        <h5 class="text-white">Total Booking</h5>
+                                        <label class="fa-2x text-white">
+                                            {{App\Models\Booking::where('user_id',Auth()->user()->id)->count()}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="card bg-danger p-3">
+                                        <h5 class="text-white">Total Cancellation</h5>
+                                        <label class="fa-2x text-white">
+                                            {{App\Models\Booking::where('user_id',Auth()->user()->id)->where('status',"cancelled")->count()}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+                                    <div class="card bg-warning p-3">
+                                        <h5 class="text-white">Pending Invoice</h5>
+                                        <label class="fa-2x text-white">
+                                            {{App\Models\Booking::where('user_id',Auth()->user()->id)->where('status',"Pending")->count()}}
+
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

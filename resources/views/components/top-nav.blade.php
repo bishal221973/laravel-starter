@@ -41,7 +41,7 @@
                                     @endphp
                                 </h3>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{route('user.profile')}}"> <i class="fa-solid fa-user"></i> &nbsp;
+                                    <a class="dropdown-item" href="{{route('user.dashboard')}}"> <i class="fa-solid fa-user"></i> &nbsp;
                                         Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

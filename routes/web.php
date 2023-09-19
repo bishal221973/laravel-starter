@@ -70,5 +70,8 @@ Route::post('/flight-booking',[FrontController::class,'book'])->name('front.book
 
 Route::post('/user-registration',[RegisterController::class,'register'])->name('user.register');
 Route::get('/user-profile',[RegisterController::class,'profile'])->name('user.profile');
+Route::get('/user-dashboard',[RegisterController::class,'dashboard'])->name('user.dashboard');
+Route::get('/my-booking-lists',[RegisterController::class,'myBooking'])->name('user.myBooking');
+Route::get('/my-profile',[RegisterController::class,'myProfile'])->name('user.myProfile');
 
 Route::get('/my-bookings',[RegisterController::class,'myBookings'])->name('user.myBookings');

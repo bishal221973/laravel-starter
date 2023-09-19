@@ -233,23 +233,25 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="col-12 mb-4 d-flex justify-content-center">
-                                <img src="{{asset('flight1.jpg')}}" alt="" srcset="" style="height: 80px;width:80px;border-radius:50%">
+                                <img src="{{ asset('flight1.jpg') }}" alt="" srcset=""
+                                    style="height: 80px;width:80px;border-radius:50%">
                             </div>
-                            <h5 class="text-info text-center text-uppercase">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</h5>
+                            <h5 class="text-info text-center text-uppercase">{{ Auth()->user()->first_name }}
+                                {{ Auth()->user()->last_name }}</h5>
                             <label class="col-12 text-center">Welcome Back</label>
                         </div>
                     </div>
 
                     <div class="card">
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{ route('user.dashboard') }}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>Dashboard</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{ route('user.myBooking') }}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>My Bookings</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="{{ route('user.myProfile') }}" class="d-flex align-items-center front-menu border">
                             <i class="fa-solid fa-home mr-3"></i>
                             <label>My Profile</label>
                         </a>
@@ -261,7 +263,153 @@
                     </div>
                 </div>
                 <div class="col-xl-9">
-                    @yield('content')
+                    <div class="card mb-30">
+                        <div class="card-body">
+                            <h4 class="text-info h4">My Profile</h4>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <label for="" class="text-muted text-uppercase">General Information</label>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">First Name :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="text" name="first_name" value="{{Auth()->user()->first_name}}" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">Last Name :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="text" name="last_name" value="{{Auth()->user()->last_name}}" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-xl-4">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">Email :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="text" name="email" value="{{Auth()->user()->email}}" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-xl-4">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">Dob :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="date" name="dob" value="{{Auth()->user()->dob}}" placeholder="DOB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">Gender :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <select name="gender" id="" class="form-control">
+                                                    <option value="Male" {{Auth()->user()->gender=="Male" ? 'selected' : ''}}>Male</option>
+                                                    <option value="Female" {{Auth()->user()->gender=="Female" ? 'selected' : ''}}>Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">Contact :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="number" name="contact_number" value="{{Auth()->user()->contact_number}}" placeholder="Contact">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hr"></div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <input type="submit" value="Update" class="col-12 btn btn-info">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <label for="" class="text-muted text-uppercase">Email Information</label>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">Email :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="text" name="first_name" value="{{Auth()->user()->email}}" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="hr"></div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <input type="submit" value="Update" class="col-12 btn btn-info">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <label for="" class="text-muted text-uppercase">Password Information</label>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-xl-12 mb-4">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">Current Password :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="text" name="current_password" placeholder="............................">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 mb-4">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">New Password :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="text" name="password" placeholder="............................">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12">
+                                        <div class="wrapper">
+                                            <label class="text-secondary text-uppercase">Confirm Password :</label>
+                                            <div class="search-input search-input1">
+                                                <a href="" target="_blank" hidden></a>
+                                                <input type="text" name="password" placeholder="............................">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="hr"></div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <input type="submit" value="Update" class="col-12 btn btn-info">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -910,4 +910,27 @@ ul {
     color: #fff;
     font-weight: bold;
     border-radius: 50%;
+
+}
+.front-menu{
+    padding-left: 10px;
+    transition: .8s;
+}
+.front-menu.border{
+    border-bottom: 1px solid #000;
+
+}
+.front-menu label{
+    font-size: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .8s;
+}
+.front-menu i{
+    transition: .8s;
+
+}
+.front-menu:hover{
+    background-color: #31B0D5;
+    color: #fff;
 }

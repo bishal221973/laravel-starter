@@ -8,7 +8,7 @@
                         <img src="{{ asset('logo.png') }}" class="logo">
                     </div>
                     <div class="d-flex align-items-center contact-container">
-                        <div class="d-flex align-items-center mx-3 border-right">
+                        <div class="d-flex align-items-center mx-3 ">
                             <span class="micon bg-primary"><i class="fa-solid fa-phone-volume "></i></span>
                             <div class="d-block">
                                 <small class="text-uppercase nav-text1"><i class="fa-solid fa-phone-volume d-none icon1"></i>Offline Call</small> <br>

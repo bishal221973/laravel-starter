@@ -22,7 +22,6 @@ body {
 }
 
 * {
-    overflow-x: hidden;
 
     scroll-behavior: smooth;
     /* overflow-x: hidden; */

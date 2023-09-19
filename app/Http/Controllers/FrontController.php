@@ -32,12 +32,12 @@ class FrontController extends Controller
         }
 
         try {
-            $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
-            $flightList = $response->getBody();
+            // $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
+            // $flightList = $response->getBody();
 
             // session()->put('lists', $flightList);
 
-            // $flightList = session()->get('lists');
+            $flightList = session()->get('lists');
             $flightList = json_decode($flightList);
             $flightLists = $flightList->data;
             return view('front.flightList', compact('flightLists'));

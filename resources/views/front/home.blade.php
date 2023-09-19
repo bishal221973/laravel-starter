@@ -25,6 +25,7 @@
                             <div class="card-body text-dark">
                                 <form action="{{ route('front.list') }}" method="GET">
 
+                                   <div class="row ml-3">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="way" checked
                                             id="inlineRadio1" value="rounde trip">
@@ -39,6 +40,7 @@
                                             for="inlineRadio2">One
                                             way</label>
                                     </div>
+                                   </div>
                                     <div class="row px-3 mt-1">
                                         <div class="col-md-6 col-6 mb-4">
 
@@ -175,7 +177,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <input type="submit" value="SEARCH FLIGHTS"
-                                                    class="btn btn-info col-12 py-4 fw-bold">
+                                                    class="btn btn-info col-12 py-3 fw-bold">
                                             </div>
                                         </div>
                                     </div>
@@ -184,7 +186,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ml-5 welcome-msg-pnl  col-xl-6 col-lg-5 col-md-12">
+                    <div class="welcome-msg-pnl  col-xl-6 col-lg-5 col-md-12">
                         <span class="d-flex fw-bold" style="    font-family: 'Ubuntu', sans-serif;">
                             <h1 class="text-uppercase fw-bold ">Welcome in <span class="text-danger">FlightsMojo</span>
                             </h1>
@@ -200,8 +202,8 @@
                         <div class="d-flex mt-5 pt-5   col-xl-12 btn-popular">
                             <a href="#" class="neon-button text-decoration-none popular-btn">Popular
                                 Routes</a>
-                            <a href="#" class="neon-button text-decoration-none book-now-btn d-none" data-toggle="modal"
-                                data-target="#exampleModalLong">Book Now</a>
+                            <a href="#" class="neon-button text-decoration-none book-now-btn d-none"
+                                data-toggle="modal" data-target="#exampleModalLong">Book Now</a>
 
 
                             <!-- Modal -->
@@ -210,7 +212,8 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header p-3">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Search your destination</h5>
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Search your destination
+                                            </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -312,13 +315,11 @@
                                                             value="0">
                                                         <div class="col-12 mb-2">
                                                             <div class="wrapper">
-                                                                <label
-                                                                    class="text-secondary text-uppercase">Passenger(s)
+                                                                <label class="text-secondary text-uppercase">Passenger(s)
                                                                     :</label>
                                                                 <div class="search-input">
                                                                     <a href="" target="_blank" hidden></a>
-                                                                    <input type="text" readonly
-                                                                        value="1 passenger(s)"
+                                                                    <input type="text" readonly value="1 passenger(s)"
                                                                         placeholder="Type to search.."
                                                                         id="dropdownMenuButton" data-toggle="dropdown"
                                                                         aria-haspopup="true" aria-expanded="false">
@@ -329,13 +330,11 @@
                                                                                 class="col-12 d-flex justify-content-between">
                                                                                 <label>Adults 11+ Years</label>
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <button type="button"
-                                                                                        class="btn1"
+                                                                                    <button type="button" class="btn1"
                                                                                         id="adultSub">-</button>
                                                                                     <span id="adultNums"
                                                                                         class="px-2">1</span>
-                                                                                    <button type="button"
-                                                                                        class="btn1"
+                                                                                    <button type="button" class="btn1"
                                                                                         id="adultAdd">+</button>
                                                                                 </div>
                                                                             </div>
@@ -345,13 +344,11 @@
                                                                                 class="col-12 d-flex justify-content-between">
                                                                                 <label>Children 2 - 11 Years</label>
                                                                                 <div class="d-flex align-items-center">
-                                                                                    <button type="button"
-                                                                                        class="btn1"
+                                                                                    <button type="button" class="btn1"
                                                                                         id="childSub">-</button>
                                                                                     <span id="childNums"
                                                                                         class="px-2">0</span>
-                                                                                    <button type="button"
-                                                                                        class="btn1"
+                                                                                    <button type="button" class="btn1"
                                                                                         id="childAdd">+</button>
                                                                                 </div>
                                                                             </div>
@@ -374,8 +371,8 @@
                                                                             </div>
                                                                         </a>
                                                                     </div>
-                                                                    <div class="icon"><i
-                                                                            class="fa-solid fa-users"></i></div>
+                                                                    <div class="icon"><i class="fa-solid fa-users"></i>
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
@@ -396,8 +393,8 @@
                                                                         <option value="Business">Business</option>
                                                                         <option value="First">First</option>
                                                                     </select>
-                                                                    <div class="icon"><i
-                                                                            class="fa-solid fa-chair"></i></div>
+                                                                    <div class="icon"><i class="fa-solid fa-chair"></i>
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
@@ -454,61 +451,71 @@
             @endforeach
         @endif
 
-        <div class="row bg-info mb-4">
-            <div class="col-xl-2 col-lg-1 col-md-12"></div>
-            <div class="col-xl-8 col-lg-10 col-md-12">
-                <div class="row px-5 pt-2">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-2 py-2">
-                        <img src="{{ asset('arc_icon.png') }}" alt="" style="width: 100%" srcset="">
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-2 py-2">
-                        <img src="{{ asset('asta_icon.png') }}" alt="" style="width: 100%" srcset="">
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-2 py-2">
-                        <img src="{{ asset('safty_icon.png') }}" alt="" style="width: 100%" srcset="">
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-2 py-2">
-                        <img src="{{ asset('trust_icon.png') }}" alt="" style="width: 100%" srcset="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-1 col-md-12"></div>
-        </div>
 
-        <div class="row mb-4">
-            <div class="col-xl-2 col-lg-1"></div>
-            <div class="col-xl-8 col-lg-10">
-                <div class="row px-3">
-                    <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
-                        <div class="card  front-card1 bg-white h-100">
-                            <div class="card-body h-100">
-                                <h5 class="text-center mb-3">Fly Now Pay Later</h5>
-                                <div class="col-12 d-flex justify-content-center mb-3">
-                                    <div class="img-div" style="background-image: url('fnpl_icon2.png')">
-                                    </div>
-                                </div>
-                                <label class="col-12 text-center text-muted">Spread the cost of your trip! FNPL makes it
-                                    simpler than ever to book a vacation now and pay it off later. </label>
-                            </div>
+        <div class="col-12  m-0 p-0" style="overflow: hidden">
+            <div class="row bg-success bg-info mb-4">
+                <div class="col-xl-2 col-lg-1 col-md-12"></div>
+                <div class="col-xl-8 col-lg-10 col-md-12">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
+                            <img src="{{ asset('arc_icon.png') }}" alt="" width="100%" srcset="">
                         </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="card bg-white front-card1">
-                            <div class="card-body">
-                                <h5 class="text-center mb-3">Refundable Bookings</h5>
-                                <div class="col-12 d-flex justify-content-center mb-3">
-                                    <div class="img-div" style="background-image: url('refund_p2.png')">
-                                    </div>
-                                </div>
-                                <label class="col-12 text-center text-muted">Get an enhanced set of terms of conditions
-                                    which in unforeseen circumstances outside of your control, enables you to apply for
-                                    refund on non-refundable bookings. </label>
-                            </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
+                            <img src="{{ asset('asta_icon.png') }}" alt="" width="100%" srcset="">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
+                            <img src="{{ asset('safty_icon.png') }}" alt="" width="100%" srcset="">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
+                            <img src="{{ asset('trust_icon.png') }}" alt="" width="100%" srcset="">
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-2 col-lg-1 col-md-12"></div>
             </div>
-            <div class="col-xl-2 col-lg-1"></div>
+
+        </div>
+        <div class="col-12 m-0 p-0" style="overflow: hidden">
+            <div class="row mb-4">
+                <div class="col-xl-2 col-lg-1"></div>
+                <div class="col-xl-8 col-lg-10">
+                    <div class="row px-3">
+                        <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
+                            <div class="card  front-card1 bg-white h-100">
+                                <div class="card-body h-100">
+                                    <h5 class="text-center mb-3">Fly Now Pay Later</h5>
+                                    <div class="col-12 d-flex justify-content-center mb-3">
+                                        <div class="img-div" style="background-image: url('fnpl_icon2.png')">
+                                        </div>
+                                    </div>
+                                    <label class="col-12 text-center text-muted">Spread the cost of your trip! FNPL makes
+                                        it
+                                        simpler than ever to book a vacation now and pay it off later. </label>
+
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
+                            <div class="card  front-card1 bg-white h-100">
+                                <div class="card-body h-100">
+                                    <h5 class="text-center mb-3">Fly Now Pay Later</h5>
+                                    <div class="col-12 d-flex justify-content-center mb-3">
+                                        <div class="img-div" style="background-image: url('fnpl_icon2.png')">
+                                        </div>
+                                    </div>
+                                    <label class="col-12 text-center text-muted">Get an enhanced set of terms of conditions
+                                        which in unforeseen circumstances outside of your control, enables you to apply for
+                                        refund on non-refundable bookings. </label>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-1"></div>
+            </div>
         </div>
 
     </section>

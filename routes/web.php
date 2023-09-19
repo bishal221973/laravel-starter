@@ -70,3 +70,5 @@ Route::post('/flight-booking',[FrontController::class,'book'])->name('front.book
 
 Route::post('/user-registration',[RegisterController::class,'register'])->name('user.register');
 Route::get('/user-profile',[RegisterController::class,'profile'])->name('user.profile');
+
+Route::get('/my-bookings',[RegisterController::class,'myBookings'])->name('user.myBookings');

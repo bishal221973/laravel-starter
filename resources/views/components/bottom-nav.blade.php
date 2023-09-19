@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="d-flex align-items-center">
-                        <a href="#" class="text-secondary" data-toggle="tooltip" data-placement="bottom"
+                        <a href="{{route('user.myBookings')}}" class="text-secondary" data-toggle="tooltip" data-placement="bottom"
                             title="My Bookings"><i class="fa-solid fa-cart-shopping"></i></a>
                         {{-- <a href="#" class="text-secondary" data-toggle="tooltip" data-placement="bottom" title="My Bookings"><i class="fa-solid fa-cart-shopping"></i></a> --}}
                     </div>

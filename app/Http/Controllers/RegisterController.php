@@ -25,4 +25,8 @@ class RegisterController extends Controller
     public function profile(){
         return view('front.profile');
     }
+
+    public function myBookings(){
+        return view('front.myBookings');
+    }
 }

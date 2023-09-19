@@ -143,7 +143,7 @@
     <x-top-nav/>
     <x-bottom-nav/>
     @yield('content')
-    {{-- <x-footer-component/> --}}
+    <x-footer-component/>
     <!-- welcome modal end -->
     <!-- js -->
     <script src="{{ asset('vendors/scripts/core.js') }}"></script>

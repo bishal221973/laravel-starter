@@ -16,9 +16,9 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-center border-lr">
-                            <span class="micon bg-success"><i class="fa-solid fa-phone-volume "></i></span>
+                            <span class="micon bg-success"><i class="fa-solid fa-envelope "></i></span>
                             <div class="d-block">
-                                <small class="text-uppercase nav-text1"><i class="fa-solid fa-phone-volume d-none icon1"></i>Online support</small> <br>
+                                <small class="text-uppercase nav-text1"><i class="fa-solid fa-envelope d-none icon1"></i>Online support</small> <br>
                                 <label class="nav-text1">{{settings()->get('org_email', $default = null)}}</label>
                             </div>
                         </div>

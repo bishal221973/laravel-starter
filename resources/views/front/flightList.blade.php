@@ -27,9 +27,9 @@
         </div>
 
 
-        <div class="content-section" style="height: 300px">
+        <div class="content-section " style="height: 300px">
             <div class="col-xl-2 col-lg-1 col-md-12"></div>
-            <div class="col-xl-8 col-lg-10 col-md-12">
+            <div class="col-xl-8 col-lg-10 col-md-12 search-content-section">
                 <div class="card">
                     <div class="card-body text-dark">
                         <div class="d-flex justify-content-between align-items-center">
@@ -118,7 +118,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-lg-1 col-md-12"></div>
+            <div class="col-xl-2 col-lg-1 col-md-12">
+
+            </div>
+
+            <div class="position-absolute col-12 menu-toggle d-none" style="top: 250px">
+                <div class="col-12  d-flex justify-content-between">
+                    <button class="btn2" id="btnFilter">Filter</button>
+                    <button class="btn2">Search</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -157,9 +166,12 @@
             <div class="col-xl-2 col-lg-1"></div>
             <div class="col-xl-8 col-lg-10">
                 <div class="row">
-                    <div class="col-xl-3 col-lg-3">
+                    <div class="col-xl-3 col-lg-3 filter-list" id="filterList">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body position-relative">
+                                <span class="btn-close-filter bg-danger d-none" id="closeFilter">
+                                    <i class="fa-solid fa-xmark text-white"></i>
+                                </span>
                                 <h5 class="text-uppercase mb-3">Flights Stop</h5>
                                 <div class="form-check mb-2">
                                     <input class="form-check-input" type="checkbox" value="" id="nonStop"
@@ -185,7 +197,7 @@
 
                                 <h5 class="text-uppercase mb-3">Depature time</h5>
                                 <div class="row">
-                                    <div class="col-xl-6 card card1 py-2 mb-2" id="">
+                                    <div class="col-xl-6 col-6 card card1 py-2 mb-2" id="">
                                         <input type="checkbox" name="1" id="earlyMorning">
                                         <div class="m-0 p-0 col-12">
                                             <div class=" d-flex mb-2 justify-content-center">
@@ -198,7 +210,7 @@
                                                 style="font-size: 12px">12::00am-4:59am</small>
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 card card1 py-2 mb-2">
+                                    <div class="col-xl-6 col-6 card card1 py-2 mb-2">
                                         <input type="checkbox" name="1" id="morning">
 
                                         <div class="m-0 p-0 col-12">
@@ -212,7 +224,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-6 card card1 py-2 mb-2">
+                                    <div class="col-xl-6 col-6 card card1 py-2 mb-2">
                                         <input type="checkbox" name="1" id="afternoon">
                                         <div class="m-0 p-0 col-12">
                                             <div class=" d-flex mb-2 justify-content-center">
@@ -224,7 +236,7 @@
                                                 style="font-size: 12px">12::00pm-5:59pm</small>
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 card card1 py-2 mb-2">
+                                    <div class="col-xl-6 col-6 card card1 py-2 mb-2">
                                         <input type="checkbox" name="1" id="evening">
                                         <div class="m-0 p-0 col-12">
                                             <div class=" d-flex mb-2 justify-content-center">
@@ -246,7 +258,7 @@
                             <div class="card-body text-white m-0 p-0 py-2">
                                 <div class="d-flex justify-content-between">
                                     <div class="row col-6 d-flex align-items-center">
-                                        <div class="col-2">
+                                        <div class="col-2 header-flight-icon">
                                             <i class="fa-solid fa-plane-departure fa-2x"></i>
                                         </div>
                                         <div class="col">
@@ -264,7 +276,7 @@
                                                     {{ getCountry(request('destination')) }}</label>
                                             </div>
                                         </div>
-                                        <div class="col-2 d-flex justify-content-end ">
+                                        <div class="col-2 mr-3 justify-content-end header-flight-icon">
                                             <i class="fa-solid fa-plane-arrival fa-2x"
                                                 style="transform: rotate(180deg);transform: scaleX(-1);"></i>
                                         </div>
@@ -432,7 +444,7 @@
                                                             <div class="row d-flex align-items-center">
                                                                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-2">
                                                                     <label class="mt-3 detail-airline">Buddha Air</label> <br>
-                                                                    {{ $segment->carrierCode }}-{{ $segment->number }}
+                                                                    <span class="carrireCode">{{ $segment->carrierCode }}-{{ $segment->number }}</span>
                                                                 </div>
                                                                 <div class="p-2 border border-iata">
                                                                     {{ $segment->departure->iataCode }}
@@ -441,17 +453,17 @@
                                                                     <label
                                                                         class="time m-0 p-0"><b>{{ getTime($segment->departure->at) }}</b></label>
                                                                     <label
-                                                                        class="m-0 p-0 font-weight-normal">{{ getDates($segment->departure->at) }}</label>
+                                                                        class="m-0 p-0 getDatesDetail font-weight-normal">{{ getDates($segment->departure->at) }}</label>
                                                                     <br>
-                                                                    {{ getCity($segment->departure->iataCode) }}
+                                                                    <span class="getCityDetail">{{ getCity($segment->departure->iataCode) }}</span>
                                                                 </div>
                                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-4">
                                                                     <span class="d-flex justify-content-end hidable-getDate"><label
                                                                             class="time m-0 p-0"><b>{{ getTime($segment->arrival->at) }}</b></label>
                                                                         <label
-                                                                            class="m-0 p-0 font-weight-normal ">{{ getDates($segment->arrival->at) }}</label></span>
+                                                                            class="m-0 p-0 getDatesDetail font-weight-normal ">{{ getDates($segment->arrival->at) }}</label></span>
                                                                     <span
-                                                                        class="d-flex justify-content-end">{{ getCity($segment->arrival->iataCode) }}</span>
+                                                                        class="d-flex justify-content-end getCityDetail">{{ getCity($segment->arrival->iataCode) }}</span>
                                                                 </div>
 
 
@@ -461,7 +473,7 @@
 
                                                                 </div>
                                                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-2 col-1 p-0 m-0 ml-2">
-                                                                    <label>{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
+                                                                    <label class="computeTime">{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -641,5 +653,14 @@
             // alert(id);
             $("#" + id).toggleClass("d-none");
         })
+        $("#btnFilter").on("click",function(){
+            $("#filterList").toggleClass("active");
+            $("#closeFilter").toggleClass("active");
+        });
+
+        $("#closeFilter").on("click",function(){
+            $("#filterList").toggleClass("active");
+            $("#closeFilter").toggleClass("active");
+        });
     </script>
 @endpush

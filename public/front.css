@@ -1012,6 +1012,12 @@ ul {
     .micon {
         display: flex;
     }
+    .right-price{
+        display: none;
+    }
+    .top-price{
+        display: block !important;
+    }
 }
 
 @media only screen and (max-width: 1026px) {
@@ -1066,16 +1072,33 @@ ul {
 
 }
 
-@media only screen and (max-width: 767px) {
 
-
-}
 
 @media only screen and (max-width: 930px) {
 
     .micon {
         display: none;
     }
+
+}
+
+
+
+@media only screen and (max-width: 767px) {
+
+    .border-iata {
+        display: none !important;
+    }
+
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .departHead,.arrivedHead {
+        display: none !important;
+    }
+
 
 }
 
@@ -1095,7 +1118,35 @@ ul {
     }
 
 }
+@media only screen and(max-width:601px){
+    .hidable-getDate{
+        display:block !important;
+    }
+}
+@media only screen and (max-width: 600px) {
 
+    .airline-name {
+        display: none;
+    }
+    .iataCode{
+        font-size: 14px;
+    }
+    .time,.getDate{
+        font-size: 14px;
+    }
+    .center-div label{
+        font-weight:100;
+        font-size: 15px;
+    }
+
+}
+@media only screen and (max-width: 575px) {
+
+    .detail-airline {
+        display: none;
+    }
+
+}
 @media only screen and (max-width: 550px) {
 
     .content-section div {

@@ -525,7 +525,7 @@ ul {
 
 .search-input input,
 .search-input select {
-    height: 55px;
+    height: 45px;
     width: 100%;
     outline: none;
     border: none;
@@ -578,7 +578,7 @@ ul {
 .search-input .icon {
     position: absolute;
     left: 0px;
-    top: 0px;
+    top: -5px;
     height: 55px;
     width: 55px;
     text-align: center;
@@ -955,7 +955,8 @@ ul {
     height: 65vh;
     overflow: hidden;
 }
-.btn2{
+
+.btn2 {
     border: 1px solid #31B0D5;
     background-color: transparent;
     color: #fff;
@@ -966,10 +967,12 @@ ul {
     border-radius: 5px;
     transition: .8s;
 }
-.btn2:hover{
+
+.btn2:hover {
     background-color: #31B0D5;
 }
-.filter-list.active{
+
+.filter-list.active {
     display: flex !important;
     position: fixed !important;
     top: 0 !important;
@@ -978,7 +981,8 @@ ul {
     height: 100vh;
     width: 330px;
 }
-.btn-close-filter{
+
+.btn-close-filter {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -990,7 +994,8 @@ ul {
     align-items: center;
     border-radius: 50%;
 }
-.btn-close-filter.active{
+
+.btn-close-filter.active {
     display: flex !important;
 }
 
@@ -1048,10 +1053,12 @@ ul {
     .micon {
         display: flex;
     }
-    .right-price{
+
+    .right-price {
         display: none;
     }
-    .top-price{
+
+    .top-price {
         display: block !important;
     }
 }
@@ -1105,13 +1112,16 @@ ul {
         display: flex !important;
         margin-right: 20px;
     }
-    .filter-list{
+
+    .filter-list {
         display: none !important;
     }
+
     .search-content-section {
         display: none !important;
     }
-    .menu-toggle{
+
+    .menu-toggle {
         display: block !important;
     }
 }
@@ -1140,7 +1150,8 @@ ul {
 
 @media only screen and (max-width: 700px) {
 
-    .departHead,.arrivedHead {
+    .departHead,
+    .arrivedHead {
         display: none !important;
     }
 
@@ -1163,44 +1174,55 @@ ul {
     }
 
 }
-@media only screen and(max-width:601px){
-    .hidable-getDate{
-        display:block !important;
+
+@media only screen and(max-width:601px) {
+    .hidable-getDate {
+        display: block !important;
     }
 }
+
 @media only screen and (max-width: 600px) {
 
     .airline-name {
         display: none;
     }
-    .iataCode{
+
+    .iataCode {
         font-size: 14px;
     }
-    .time,.getDate{
+
+    .time,
+    .getDate {
         font-size: 14px;
     }
-    .center-div label{
-        font-weight:100;
+
+    .center-div label {
+        font-weight: 100;
         font-size: 15px;
     }
-    .header-flight-icon{
+
+    .header-flight-icon {
         display: none;
     }
 }
+
 @media only screen and (max-width: 575px) {
 
-    .detail-airline,.flightIatacode {
+    .detail-airline,
+    .flightIatacode {
         display: none;
     }
 
 }
+
 @media only screen and (max-width: 550px) {
 
     .content-section div {
         margin: 0;
         padding: 0;
     }
-    .card-search .card .card-body .col-6{
+
+    .card-search .card .card-body .col-6 {
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
@@ -1208,9 +1230,10 @@ ul {
 
 @media only screen and (max-width: 555px) {
 
-    .card-search{
+    .card-search {
         display: none !important;
     }
+
     .home-section,
     .content-section {
         height: 600px;
@@ -1229,37 +1252,143 @@ ul {
     .content-section {
         padding-top: 5px;
     }
-    .popular-btn{
+
+    .popular-btn {
         display: none;
     }
-    .book-now-btn{
+
+    .book-now-btn {
         display: block !important;
     }
 
 }
 
-@media only screen and (max-width: 470px){
-    .carrireCode{
+@media only screen and (max-width: 470px) {
+    .carrireCode {
         font-size: 14px !important;
     }
-    .time,.getDatesDetail{
+
+    .time,
+    .getDatesDetail {
         font-size: 13px;
     }
-    .getCityDetail{
+
+    .getCityDetail {
         font-size: 13.5px;
     }
-    .computeTime{
+
+    .computeTime {
         font-size: 13px;
     }
 }
 
 @media only screen and (max-width: 455px) {
 
-    .card-search{
+    .card-search {
         display: none !important;
     }
+
     .neon-button {
         font-size: 20px;
     }
 
+}
+
+
+/* ======================== */
+@media only screen and (max-height: 768px) {
+
+    .label-12 {
+        font-size: 12px !important;
+    }
+    .label-13{
+        font-size: 13px !important;
+    }
+    .label-14{
+        font-size: 14px !important;
+    }
+    .label-15{
+        font-size: 15px !important;
+    }
+    .label-16{
+        font-size: 16px !important;
+    }
+    .label-20{
+        font-size: 20px !important;
+    }
+    .label-29{
+        font-size: 29px !important;
+    }
+    .wrapper label{
+        margin: 0 !important;
+    }
+    .card-search{
+        display: flex !important;
+        align-items: center;
+    }
+    .icon{
+        top: -10px !important;
+        font-size: 16px !important;
+    }
+    .search-input input,
+    .search-input select {
+        height: 37px !important;
+        width: 100%;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 0 10px 0 40px !important;
+        font-size: 18px;
+    }
+
+    .search-input input,
+    .search-input select {
+        height: 45px;
+        width: 100%;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 0 20px 0 60px;
+        font-size: 13px;
+    }
+
+    .mb-4 {
+        margin-bottom: 6px !important;
+    }
+    .btn-search1 input{
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+    }
+    .popular-btn{
+        padding-top: 1px !important;
+        padding-bottom: 1px !important;
+        font-size: 25px !important;
+    }
+    .label-menu{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+    .padding1{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .btn670{
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+    .nav .logo{
+        padding-top: 1px !important;
+        padding-bottom: 1px !important;
+        height: 40px;
+    }
+    .align-center-nam{
+        align-items: center !important;
+    }
+    .img-div{
+        height: 80px;
+        width: 80px;
+    }
+    .footer-icon{
+        font-size: 25px !important;
+    }
 }

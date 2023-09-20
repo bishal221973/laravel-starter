@@ -79,3 +79,24 @@ Route::get('/my-booking-lists',[RegisterController::class,'myBooking'])->name('u
 Route::get('/my-profile',[RegisterController::class,'myProfile'])->name('user.myProfile');
 
 Route::get('/my-bookings',[RegisterController::class,'myBookings'])->name('user.myBookings');
+
+
+
+
+Route::get('/migrate',function(){
+    $exitCode=Artisan::call('migrate');
+});
+
+Route::get('/migrate-refresh',function(){
+    $exitCode=Artisan::call('migrate:refresh');
+});
+
+Route::get('/seed',function(){
+    $exitCode=Artisan::call('db:seed');
+    return $exitCode;
+});
+
+Route::get('/schedule',function(){
+    $exitCode=Artisan::call('schedule:run');
+    return $exitCode;
+});

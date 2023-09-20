@@ -107,6 +107,7 @@ class FrontController extends Controller
                 }
             }
         }
+
     }
     public function book(Request $request)
     {

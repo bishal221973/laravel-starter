@@ -40,8 +40,8 @@ inputBox.onkeyup = (e) => {
         emptyArray = emptyArray.map(airport => {
             return `<li>
             <div class="d-flex justify-content-between align-items-center">
-                <div class="border p-2 iataCode" style="font-size:14px">${airport.code}</div> &nbsp;&nbsp;&nbsp;
-                <div class="d-block iataAddress" style="font-size:14px">${airport.city}, ${airport.country}</div>
+                <div class="border p-2 iataCode label-10">${airport.code}</div> &nbsp;&nbsp;&nbsp;
+                <div class="d-block iataAddress label-10" style="font-size:14px">${airport.city}, ${airport.country}</div>
             </div>
             </li>`;
         });
@@ -74,8 +74,8 @@ destinationInput.onkeyup = (e) => {
         emptyArray = emptyArray.map(airport => {
             return `<li>
             <div class="d-flex justify-content-between align-items-center">
-                <div class="border p-2 iataCode" style="font-size:14px">${airport.code}</div> &nbsp;&nbsp;&nbsp;
-                <div class="d-block iataAddress" style="font-size:14px">${airport.city}, ${airport.country}</div>
+                <div class="border p-2 iataCode iataCode1 label-10" style="font-size:14px">${airport.code}</div> &nbsp;&nbsp;&nbsp;
+                <div class="d-block iataAddress iataAddress1 label-10" style="font-size:14px">${airport.city}, ${airport.country}</div>
             </div>
             </li>`;
         });
@@ -87,7 +87,7 @@ destinationInput.onkeyup = (e) => {
             allList[i].setAttribute("onclick", "select1(this)");
         }
     } else {
-        searchWrapper.classList.remove("active"); // Hide autocomplete box
+        searchWrappers.classList.remove("active"); // Hide autocomplete box
     }
 }
 
@@ -117,9 +117,9 @@ function showSuggestions(list) {
 
 
 function select1(element) {
-    let selectData = element.querySelector(".iataAddress").textContent; // Get the airport code
+    let selectData = element.querySelector(".iataAddress1").textContent; // Get the airport code
     destinationInput.value = selectData;
-    let code = element.querySelector(".iataCode").textContent; // Get the airport code
+    let code = element.querySelector(".iataCode1").textContent; // Get the airport code
     destination.value = code;
 
     searchWrappers.classList.remove("active");

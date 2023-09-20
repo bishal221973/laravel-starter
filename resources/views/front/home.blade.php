@@ -49,7 +49,7 @@
 
                                                 <div class="search-input">
                                                     <a href="" target="_blank" hidden></a>
-                                                    <input type="text" class="depart font" placeholder="Type to search..">
+                                                    <input type="text" class="depart font" placeholder="City">
                                                     <div class="autocom-box">
                                                     </div>
                                                     <div class="icon"><i class="fa-solid fa-plane-departure"></i></div>
@@ -247,7 +247,7 @@
                                                                 <div class="search-input">
                                                                     <a href="" target="_blank" hidden></a>
                                                                     <input type="text" class="depart"
-                                                                        placeholder="Type to search..">
+                                                                        placeholder="">
                                                                     <div class="autocom-box">
                                                                     </div>
                                                                     <div class="icon"><i

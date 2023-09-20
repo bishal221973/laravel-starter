@@ -66,7 +66,7 @@
                                                 <div class="search-input search-inputs">
                                                     <a href="" target="_blank" hidden></a>
                                                     <input type="text" class="destination font"
-                                                        placeholder="Type to search..">
+                                                        placeholder="City">
                                                     <div class="autocom-box1">
                                                     </div>
                                                     <div class="icon"><i class="fa-solid fa-plane-departure"></i></div>

@@ -26,16 +26,16 @@ class FrontController extends Controller
     public function list(Request $request)
     {
         if ($request->returnTime == "") {
-            $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&adults=' . $request->adult . '&nonStop=false&max=100'; // Replace with your API URL
+            $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&adults=' . $request->adult . '&children=' . $request->child . '&infants=' . $request->infants . '&nonStop=false&max=100'; // Replace with your API URL
         } else {
             $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&returnDate=' . $request->returnTime . '&adults=' . $request->adult . '&children=' . $request->child . '&infants=' . $request->infants . '&nonStop=false&max=100'; // Replace with your API URL
         }
 
         try {
-            // $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
-            // $flightList = $response->getBody();
+            $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
+            $flightList = $response->getBody();
 
-            // session()->put('lists', $flightList);
+            session()->put('lists', $flightList);
 
             $flightList = session()->get('lists');
             $flightList = json_decode($flightList);
@@ -110,34 +110,49 @@ class FrontController extends Controller
     }
     public function book(Request $request)
     {
+
         $travelers = [];
 
 
         foreach ($request->first_name as $key => $item) {
-            $traveler = [
-                "id" => $key + 1,
-                "dateOfBirth" => $request->dob[$key],
-                "name" => [
-                    "firstName" => $request->first_name[$key],
-                    "middleName" => $request->first_name[$key],
-                    "lastName" => $request->last_name[$key],
-                ],
-                "gender" => $request->gender[$key],
-                "documents" => [
-                    [
-                        "documentType" => "PASSPORT",
-                        "number" => $request->password_number[$key],
-                        "expiryDate" => $request->expiry_date[$key],
-                        "issuanceCountry" => $request->issueCountry[$key],
-                        "holder" => true,
-                        "nationality" => $request->nationality[$key],
+
+            if ($request->travelerType == "Adult") {
+                $traveler = [
+                    "id" => $key + 1,
+                    "dateOfBirth" => $request->dob[$key],
+                    "name" => [
+                        "firstName" => $request->first_name[$key],
+                        "middleName" => $request->first_name[$key],
+                        "lastName" => $request->last_name[$key],
+                    ],
+                    "gender" => $request->gender[$key],
+                    "documents" => [
+                        [
+                            "documentType" => "PASSPORT",
+                            "number" => $request->password_number[$key],
+                            "expiryDate" => $request->expiry_date[$key],
+                            "issuanceCountry" => $request->issueCountry[$key],
+                            "holder" => true,
+                            "nationality" => $request->nationality[$key],
+                        ]
                     ]
-                ]
-            ];
+                ];
+            } else {
+                $traveler = [
+                    "id" => $key + 1,
+                    "dateOfBirth" => $request->dob[$key],
+                    "name" => [
+                        "firstName" => $request->first_name[$key],
+                        "middleName" => $request->first_name[$key],
+                        "lastName" => $request->last_name[$key],
+                    ],
+                    "gender" => $request->gender[$key],
+                ];
+            }
+
 
             $travelers[] = $traveler;
         }
-
         $flightDetail = session()->get('filghtData');
 
         $flightData = json_decode($flightDetail);
@@ -145,6 +160,7 @@ class FrontController extends Controller
         $departure = "";
         $destination = "";
         $firstIteration = true; // Initialize a variable to track the first iteration
+
 
         foreach ($flightData->itineraries[0]->segments as $segment) {
             if ($firstIteration) {
@@ -156,7 +172,7 @@ class FrontController extends Controller
             }
         }
 
-
+        // return $departure;
 
 
         $requestData = [
@@ -198,44 +214,71 @@ class FrontController extends Controller
 
 
         $jsonData = json_encode($requestData);
-
         try {
 
-            // $response = $this->amadeus->getClient()->postWithStringBody("/v1/booking/flight-orders", $jsonData);
+            $response = $this->amadeus->getClient()->postWithStringBody("/v1/booking/flight-orders", $jsonData);
 
-            // $flightDetail = $response->getBody();
-            // $flightDetail = json_decode($flightDetail);
+            $flightDetail = $response->getBody();
+            $flightDetail = json_decode($flightDetail);
             // session()->put('detail', $flightDetail);
-
             // return $flightData->itineraries[0]->segments;
-            $flightDetail = session()->get('detail');
+            // $flightDetail = session()->get('detail');
+
             $booking = Booking::create([
                 'user_id' => Auth()->user()->id,
                 'price' => $flightData->price->total,
-                'fromTime' => $departure->at,
-                'fromIataCode' => $departure->iataCode,
-                'toTime' => $destination->at,
-                'toIataCode' => $destination->iataCode,
+                'fromTime' => $flightData->itineraries[0]->segments[0]->departure->at,
+                'fromIataCode' => $flightData->itineraries[0]->segments[0]->departure->iataCode,
+                'toTime' => $request->departureTime,
+                'toIataCode' => $request->departure,
                 'booking_refrence' => $flightDetail->data->associatedRecords[0]->reference,
                 'booking_id' => $flightDetail->data->id,
                 'booking_date' => $flightDetail->data->associatedRecords[0]->creationDate,
                 'airline' => $flightDetail->data->flightOffers[0]->validatingAirlineCodes[0],
-                'status'=>'Pending',
+                'status' => 'Pending',
             ]);
 
-            foreach ($request->first_name as $key => $item){
-                Traveller::create([
-                    'user_id'=>Auth()->user()->id,
-                    'booking_id'=>$booking->id,
-                    'first_name'=>$request->first_name[$key],
-                    'last_name'=>$request->last_name[$key],
-                    "gender" => $request->gender[$key],
-                    'dob'=>$request->dob[$key],
-                    'password_number'=>$request->password_number[$key],
-                    'expiry_date'=> $request->expiry_date[$key],
-                    'issue_country'=>$request->issueCountry[$key],
-                    'nationality'=>$request->nationality[$key],
-                ]);
+            foreach ($request->first_name as $key => $item) {
+                // Traveller::create([
+                //     'user_id' => Auth()->user()->id,
+                //     'booking_id' => $booking->id,
+                //     'first_name' => $request->first_name[$key],
+                //     'last_name' => $request->last_name[$key],
+                //     "gender" => $request->gender[$key],
+                //     'dob' => $request->dob[$key],
+                //     'password_number' => $request->password_number[$key],
+                //     'expiry_date' => $request->expiry_date[$key],
+                //     'issue_country' => $request->issueCountry[$key],
+                //     'nationality' => $request->nationality[$key],
+                // ]);
+                if ($request->travelerType[$key] == "Adult") {
+
+                    $data = [
+                        'user_id' => Auth()->user()->id,
+                        'booking_id' => $booking->id,
+                        'first_name' => $request->first_name[$key],
+                        'last_name' => $request->last_name[$key],
+                        "gender" => $request->gender[$key],
+                        'dob' => $request->dob[$key],
+                        'password_number' => $request->password_number[$key],
+                        'expiry_date' => $request->expiry_date[$key],
+                        'issue_country' => $request->issueCountry[$key],
+                        'nationality' => $request->nationality[$key],
+                    ];
+                } else {
+
+                    $data = [
+                        'user_id' => Auth()->user()->id,
+                        'booking_id' => $booking->id,
+                        'first_name' => $request->first_name[$key],
+                        'last_name' => $request->last_name[$key],
+                        "gender" => $request->gender[$key],
+                        'dob' => $request->dob[$key],
+                    ];
+                }
+
+                Traveller::create($data);
+
             }
             return view('front.invoice', compact('flightDetail'));
         } catch (Exception $e) {

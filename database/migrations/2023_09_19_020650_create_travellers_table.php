@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('password_number')->nullable();
             $table->string('expiry_date')->nullable();
             $table->string('issue_country')->nullable();
-            $table->string('nationality');
+            $table->string('nationality')->nullable();
             $table->timestamps();
         });
     }

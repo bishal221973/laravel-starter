@@ -139,6 +139,8 @@
                                 <h5 class="text-uppercase text-muted py-2">Flight Itinerary</h5>
                             </div>
                             @foreach ($flightDetail->data->flightOffers[0]->itineraries as $key => $itinerary)
+                                <input type="hidden" value="{{ $itinerary->segments[0]->departure->iataCode }}" name="departure">
+                                <input type="hidden" value="{{ $itinerary->segments[0]->departure->at }}" name="departureTime">
                                 @foreach ($itinerary->segments as $segment)
                                     @if ($loop->first)
                                         @php
@@ -151,6 +153,7 @@
                                         @endphp
                                     @endif
                                 @endforeach
+
                                 <div class="card-body m-0 ">
                                     <div class="header-dr">
                                         <div class="row d-flex align-items-center">
@@ -161,9 +164,11 @@
                                                     {{ $key == 1 ? 'return' : 'Depart' }}</h5>
                                             </div>
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 d-flex justify-content-end">
-                                                <span class="departHead">{{ $key == 0 ? getCity($from) : getCity($to) }}</span>
+                                                <span
+                                                    class="departHead">{{ $key == 0 ? getCity($from) : getCity($to) }}</span>
                                                 ({{ $key == 0 ? $from : $to }})
-                                                - <span class="arrivedHead">{{ $key == 0 ? getCity($to) : getCity($from) }}</span>
+                                                - <span
+                                                    class="arrivedHead">{{ $key == 0 ? getCity($to) : getCity($from) }}</span>
                                                 ({{ $key == 0 ? $to : $from }})
                                                 |
                                                 <i class="fa-solid fa-suitcase-rolling px-2 mt-1"></i>
@@ -176,7 +181,7 @@
                                         <div class="col-12 pt-2">
                                             <div class="row d-flex align-items-center">
                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-2">
-                                                    <label class="mt-3 arrivedHead" >Buddha Air</label> <br>
+                                                    <label class="mt-3 arrivedHead">Buddha Air</label> <br>
                                                     {{ $segment->carrierCode }}-{{ $segment->number }}
                                                 </div>
                                                 <div class="p-2 border flightIatacode arrivedHead">
@@ -194,7 +199,8 @@
                                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 arrivedHead"></div>
                                                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
                                                     <span class="d-flex justify-content-end"><label
-                                                            class="time m-0 p-0 font-15"><b>{{ getTime($segment->arrival->at) }}</b></label> &nbsp;
+                                                            class="time m-0 p-0 font-15"><b>{{ getTime($segment->arrival->at) }}</b></label>
+                                                        &nbsp;
                                                         <label
                                                             class="m-0 p-0 font-weight-normal font-14">{{ getDates($segment->arrival->at) }}</label></span>
                                                     <span
@@ -211,10 +217,14 @@
                                                     <label
                                                         class="col-12 d-flex p-0 m-0 justify-content-end">{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
                                                 </div>
+
                                             </div>
                                         </div>
                                         @if (!$loop->last)
-                                            <div class="hr1"></div>
+                                            <div class="hr1">
+                                                <input type="hidden" value="{{ $segment->arrival->iataCode }}"
+                                                    name="departure">
+                                            </div>
                                         @endif
                                     @endforeach
                                 </div>
@@ -287,11 +297,12 @@
                                         ({{ $adultNum }})
                                     </label>
                                     @for ($i = 0; $i < $adultNum; $i++)
+                                        <input type="hidden" name="travelerType[]" value="Adult">
                                         <div class="row px-4 mb-3">
                                             <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">First Name
-                                                        </label>
+                                                    </label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="text" name="first_name[]" value=""
@@ -316,7 +327,7 @@
 
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Last Name
-                                                        </label>
+                                                    </label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="text" name="last_name[]" required value=""
@@ -860,6 +871,8 @@
                                     <label class="text-uppercase text-info pb-2">Child Passengers
                                         ({{ $childNum }})</label>
                                     @for ($i = 0; $i < $childNum; $i++)
+                                        <input type="hidden" name="travelerType[]" value="Child">
+
                                         <div class="row px-4 mb-3 border-bottom">
                                             <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
@@ -888,9 +901,8 @@
                                                         <a href="" target="_blank" hidden></a>
                                                         <select name="gender[]" id="" required
                                                             class="form-control">
-                                                            <option value="Male">Male</option>
-                                                            <option value="Female">Female</option>
-                                                            <option value="Other">Other</option>
+                                                            <option value="MALE">Male</option>
+                                                            <option value="FEMALE">Female</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -920,6 +932,8 @@
                                     <label class="text-uppercase text-info pb-2">Infant Passengers
                                         ({{ $infantNum }})</label>
                                     @for ($i = 0; $i < $infantNum; $i++)
+                                        <input type="hidden" name="travelerType[]" value="Infant">
+
                                         <div class="row px-4">
                                             <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
@@ -948,9 +962,8 @@
                                                         <a href="" target="_blank" hidden></a>
                                                         <select name="gender[]" required id=""
                                                             class="form-control">
-                                                            <option value="Male">Male</option>
-                                                            <option value="Female">Female</option>
-                                                            <option value="Other">Other</option>
+                                                            <option value="MALE">Male</option>
+                                                            <option value="FEMALE">Female</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1352,7 +1365,8 @@
                         </div>
 
                         <div class="d-flex justify-content-center mb-5">
-                            <button class="btn btn-info pt-2 pb-2 {{ Auth()->user() ? '' : 'disable' }}" type="submit">
+                            <button class="btn btn-info pt-2 pb-2 {{ Auth()->user() ? '' : 'disable' }}"
+                                type="submit">
                                 <h3 class="px-5 m-0 text-white text-uppercase fw-bold">Book Now</h3>
                                 <span class="text-uppercase"><i class="fa-solid fa-lock"></i>&nbsp;secure
                                     payment</span>

@@ -29,7 +29,6 @@ class RoleSeeder extends Seeder
             'first_name' => 'Bishal',
             'last_name' => 'Chaudhary',
             'dob' => '2057-05-08',
-            'age' => '23',
             'gender' => 'Male',
             'email' => $superAdminEmail,
             // 'username' => $superAdminUsername,

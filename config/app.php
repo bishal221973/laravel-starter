@@ -172,6 +172,7 @@ return [
         QCod\Settings\SettingsServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         \Yajra\DataTables\DataTablesServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -189,6 +190,7 @@ return [
         // 'Example' => App\Facades\Example::class,
         "Settings" => QCod\Settings\Facade::class,
         "Datatables"=>\Yajra\DataTables\Facades\DataTables::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

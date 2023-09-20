@@ -61,6 +61,7 @@ Route::post('store-role',[RoleController::class,'store'])->name('role.store')->m
 Route::resource('country',CountryController::class)->middleware('role');
 Route::get('report',[ReportController::class,'report'])->name('report')->middleware('role');
 Route::get('report-filter',[ReportController::class,'reportFilter'])->name('reportFilter')->middleware('role');
+Route::get('export-excel',[ReportController::class,'exportExcel'])->name('exportExcel')->middleware('role');
 
 
 

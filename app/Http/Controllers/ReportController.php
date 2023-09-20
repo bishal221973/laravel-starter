@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BookingExport;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
@@ -62,5 +64,9 @@ class ReportController extends Controller
 
         $reports = $bookings;
         return view('layouts.report', compact('reports'));
+    }
+
+    public function exportExcel(Request $request){
+        return Excel::download(new BookingExport($request), 'booking.xlsx');
     }
 }

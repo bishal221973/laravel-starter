@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OTPController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,7 @@ Route::get('create-role',[RoleController::class,'create'])->name('role.create')-
 Route::post('store-role',[RoleController::class,'store'])->name('role.store')->middleware('role');
 
 Route::resource('country',CountryController::class)->middleware('role');
+Route::get('report',[ReportController::class,'report'])->name('report')->middleware('role');
 
 
 

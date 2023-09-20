@@ -127,12 +127,10 @@
 
 
     <div class="row mt-5">
-        <div class="col-xl-2">
-
-        </div>
-        <div class="col-xl-8">
+        <div class="col-xl-2 col-lg-1"></div>
+        <div class="col-xl-8 col-lg-10">
             <div class="row">
-                <div class="col-xl-9">
+                <div class="col-xl-9 col-lg-9">
                     <form action="{{ route('front.book') }}" method="POST">
                         @csrf
                         {{-- ====================Flight details=======================  --}}
@@ -156,16 +154,16 @@
                                 <div class="card-body m-0 ">
                                     <div class="header-dr">
                                         <div class="row d-flex align-items-center">
-                                            <div class="col-xl-3 d-flex align-items-center">
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 d-flex align-items-center">
                                                 <i
                                                     class="fa-solid fa-plane fa-2x text-info {{ $key == 1 ? 'left' : '' }}"></i>
                                                 <h5 class="ml-2 text-upercase text-info">
                                                     {{ $key == 1 ? 'return' : 'Depart' }}</h5>
                                             </div>
-                                            <div class="col-xl-9 d-flex justify-content-end">
-                                                {{ $key == 0 ? getCity($from) : getCity($to) }}
+                                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 d-flex justify-content-end">
+                                                <span class="departHead">{{ $key == 0 ? getCity($from) : getCity($to) }}</span>
                                                 ({{ $key == 0 ? $from : $to }})
-                                                -{{ $key == 0 ? getCity($to) : getCity($from) }}
+                                                - <span class="arrivedHead">{{ $key == 0 ? getCity($to) : getCity($from) }}</span>
                                                 ({{ $key == 0 ? $to : $from }})
                                                 |
                                                 <i class="fa-solid fa-suitcase-rolling px-2 mt-1"></i>
@@ -177,14 +175,14 @@
                                     @foreach ($itinerary->segments as $segment)
                                         <div class="col-12 pt-2">
                                             <div class="row d-flex align-items-center">
-                                                <div class="col-xl-3">
-                                                    <label class="mt-3">Buddha Air</label> <br>
+                                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-2">
+                                                    <label class="mt-3 arrivedHead" >Buddha Air</label> <br>
                                                     {{ $segment->carrierCode }}-{{ $segment->number }}
                                                 </div>
-                                                <div class="p-2 border">
+                                                <div class="p-2 border flightIatacode arrivedHead">
                                                     {{ $segment->departure->iataCode }}
                                                 </div>
-                                                <div class="col-xl-2">
+                                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
                                                     <label
                                                         class="time m-0 p-0 font-15"><b>{{ getTime($segment->departure->at) }}</b></label>
                                                     <label
@@ -193,10 +191,10 @@
                                                     <span
                                                         class="font-15">{{ getCity($segment->departure->iataCode) }}</span>
                                                 </div>
-                                                <div class="col-xl-1"></div>
-                                                <div class="col-xl-2">
+                                                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 arrivedHead"></div>
+                                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
                                                     <span class="d-flex justify-content-end"><label
-                                                            class="time m-0 p-0 font-15"><b>{{ getTime($segment->arrival->at) }}</b></label>
+                                                            class="time m-0 p-0 font-15"><b>{{ getTime($segment->arrival->at) }}</b></label> &nbsp;
                                                         <label
                                                             class="m-0 p-0 font-weight-normal font-14">{{ getDates($segment->arrival->at) }}</label></span>
                                                     <span
@@ -205,11 +203,11 @@
 
 
 
-                                                <div class="p-2 border">
+                                                <div class="p-2 border flightIatacode arrivedHead">
                                                     {{ $segment->arrival->iataCode }}
 
                                                 </div>
-                                                <div class="col-xl-2 p-0 m-0">
+                                                <div class="col-xl-2 col-lg-1 col-md-1 col-sm-1 col-1 p-0 m-0">
                                                     <label
                                                         class="col-12 d-flex p-0 m-0 justify-content-end">{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
                                                 </div>
@@ -290,20 +288,17 @@
                                     </label>
                                     @for ($i = 0; $i < $adultNum; $i++)
                                         <div class="row px-4 mb-3">
-                                            <div class="col-xl-8">
-                                                <div class="row">
-                                                    <div class="col-xl-4 mb-4">
-                                                        <div class="wrapper">
-                                                            <label class="text-secondary text-uppercase">First Name
-                                                                :</label>
-                                                            <div class="search-input search-input1">
-                                                                <a href="" target="_blank" hidden></a>
-                                                                <input type="text" name="first_name[]" value=""
-                                                                    placeholder="First Name" required>
-                                                            </div>
-                                                        </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
+                                                <div class="wrapper">
+                                                    <label class="text-secondary text-uppercase">First Name
+                                                        </label>
+                                                    <div class="search-input search-input1">
+                                                        <a href="" target="_blank" hidden></a>
+                                                        <input type="text" name="first_name[]" value=""
+                                                            placeholder="First Name" required>
                                                     </div>
-                                                    <div class="col-xl-4 mb-4">
+
+                                                    {{-- <div class="col-xl-4 mb-4">
                                                         <div class="wrapper">
                                                             <label class="text-secondary text-uppercase">Middle Name
                                                                 :</label>
@@ -313,35 +308,39 @@
                                                                     placeholder="Middle Name">
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-xl-4 mb-4">
-                                                        <div class="wrapper">
-                                                            <label class="text-secondary text-uppercase">Last Name
-                                                                :</label>
-                                                            <div class="search-input search-input1">
-                                                                <a href="" target="_blank" hidden></a>
-                                                                <input type="text" name="last_name[]" required value=""
-                                                                    placeholder="Last Name">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    </div> --}}
+
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 mb-4">
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
+
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Gender :</label>
+                                                    <label class="text-secondary text-uppercase">Last Name
+                                                        </label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <select id="" name="gender[]" required class="form-control">
+                                                        <input type="text" name="last_name[]" required value=""
+                                                            placeholder="Last Name">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
+                                                <div class="wrapper">
+                                                    <label class="text-secondary text-uppercase">Gender</label>
+                                                    <div class="search-input search-input1">
+                                                        <a href="" target="_blank" hidden></a>
+                                                        <select id="" name="gender[]" required
+                                                            class="form-control">
                                                             <option value="MALE">Male</option>
                                                             <option value="FEMALE">Female</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 mb-4">
+                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">DOB :</label>
+                                                    <label class="text-secondary text-uppercase">DOB</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="date" name="dob[]" required value=""
@@ -349,7 +348,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-3 mb-4">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Password Number
                                                         :</label>
@@ -360,7 +359,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-3 mb-4">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Expiry Date :</label>
                                                     <div class="search-input search-input1">
@@ -370,7 +369,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-3 mb-4">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Issue Country
                                                         :</label>
@@ -610,12 +609,13 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-xl-3 mb-4">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Nationality :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <select name="nationality[]" required class="form-control" id="">
+                                                        <select name="nationality[]" required class="form-control"
+                                                            id="">
                                                             <option value="GB" Selected>UK (GB)</option>
                                                             <option value="US">USA (US)</option>
                                                             <optgroup label="Other countries">
@@ -861,7 +861,7 @@
                                         ({{ $childNum }})</label>
                                     @for ($i = 0; $i < $childNum; $i++)
                                         <div class="row px-4 mb-3 border-bottom">
-                                            <div class="col-xl-4 mb-4">
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">First Name :</label>
                                                     <div class="search-input search-input1">
@@ -871,7 +871,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-4 mb-4">
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Last Name :</label>
                                                     <div class="search-input search-input1">
@@ -881,12 +881,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 mb-4">
+                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Gender :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <select name="gender[]" id="" required class="form-control">
+                                                        <select name="gender[]" id="" required
+                                                            class="form-control">
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
                                                             <option value="Other">Other</option>
@@ -894,7 +895,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 mb-4">
+                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">DOB :</label>
                                                     <div class="search-input search-input1">
@@ -920,7 +921,7 @@
                                         ({{ $infantNum }})</label>
                                     @for ($i = 0; $i < $infantNum; $i++)
                                         <div class="row px-4">
-                                            <div class="col-xl-4 mb-4">
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">First Name :</label>
                                                     <div class="search-input search-input1">
@@ -930,7 +931,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-4 mb-4">
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Last Name :</label>
                                                     <div class="search-input search-input1">
@@ -940,12 +941,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 mb-4">
+                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">Gender :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <select name="gender[]" required id="" class="form-control">
+                                                        <select name="gender[]" required id=""
+                                                            class="form-control">
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
                                                             <option value="Other">Other</option>
@@ -953,7 +955,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 mb-4">
+                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
                                                     <label class="text-secondary text-uppercase">DOB :</label>
                                                     <div class="search-input search-input1">
@@ -979,7 +981,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row px-4">
-                                    <div class="col-xl-4 mb-4">
+                                    <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                         <div class="wrapper">
                                             <label class="text-secondary text-uppercase">Country :</label>
                                             <div class="search-input search-input1">
@@ -1207,16 +1209,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 mb-4">
+                                    <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                         <div class="wrapper">
                                             <label class="text-secondary text-uppercase">City :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
-                                                <input type="text" required name="city" value="" placeholder="City">
+                                                <input type="text" required name="city" value=""
+                                                    placeholder="City">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 mb-4">
+                                    <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                         <div class="wrapper">
                                             <label class="text-secondary text-uppercase">Postal Code :</label>
                                             <div class="search-input search-input1">
@@ -1226,7 +1229,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-12 mb-4">
+                                    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6 mb-4">
                                         <div class="wrapper">
                                             <label class="text-secondary text-uppercase">Address :</label>
                                             <div class="search-input search-input1">
@@ -1349,8 +1352,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center mb-5">
-                            <button class="btn btn-info pt-2 pb-2 {{ Auth()->user() ? '' : 'disable' }}"
-                                type="submit">
+                            <button class="btn btn-info pt-2 pb-2 {{ Auth()->user() ? '' : 'disable' }}" type="submit">
                                 <h3 class="px-5 m-0 text-white text-uppercase fw-bold">Book Now</h3>
                                 <span class="text-uppercase"><i class="fa-solid fa-lock"></i>&nbsp;secure
                                     payment</span>
@@ -1362,7 +1364,7 @@
                                     book.</i></span></label>
                     </form>
                 </div>
-                <div class="col-xl-3">
+                <div class="col-xl-3 col-lg-3">
                     <div class="card bg-info text-white">
                         @php
                             $totalBase = 0;
@@ -1402,7 +1404,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-2"></div>
+        <div class="col-xl-2 col-lg-1"></div>
     </div>
 
 @endsection

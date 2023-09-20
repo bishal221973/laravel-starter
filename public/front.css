@@ -1189,7 +1189,7 @@ ul {
 }
 @media only screen and (max-width: 575px) {
 
-    .detail-airline {
+    .detail-airline,.flightIatacode {
         display: none;
     }
 

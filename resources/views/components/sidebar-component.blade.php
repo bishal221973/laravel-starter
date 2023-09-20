@@ -18,7 +18,7 @@
 
                 </li>
 
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="myicon fa-solid fa-shield-halved"></span><span class="mtext">Role Management</span>
                     </a>
@@ -26,9 +26,9 @@
                         <li><a href="#">Role List</a></li>
                         <li><a href="{{route('role.create')}}">New Role</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="myicon fa-solid fa-map"></span><span class="mtext">Address</span>
                     </a>
@@ -38,6 +38,12 @@
                         <li><a href="{{route('role.create')}}">District</a></li>
                         <li><a href="{{route('role.create')}}">Municipality</a></li>
                     </ul>
+                </li> --}}
+                <li class="dropdown">
+                    <a href="{{ route('report') }}" class="dropdown-toggle">
+                        <span class="myicon bi bi-house"></span><span class="mtext">Report</span>
+                    </a>
+
                 </li>
 
             </ul>

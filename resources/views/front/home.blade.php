@@ -23,21 +23,21 @@
 
                         <div class="card">
                             <div class="card-body text-dark">
-                                <form action="{{ route('front.list') }}" method="GET">
+                                <form action="{{ route('front.list') }}" method="GET" id="myForm">
 
                                     <div class="row ml-3">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="way" checked
-                                                id="inlineRadio1" value="rounde trip">
+                                                id="roundUp" value="rounde trip">
                                             <label class="form-check-label mt-1 text-secondary  text-uppercase label-12"
-                                                for="inlineRadio1">Round
+                                                for="roundUp">Round
                                                 trip</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="way" required
-                                                id="inlineRadio2" value="One Way">
+                                                id="oneWay" value="One Way">
                                             <label class="form-check-label mt-1 text-secondary text-uppercase label-12"
-                                                for="inlineRadio2">One
+                                                for="oneWay">One
                                                 way</label>
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@
                                                         :</label>
                                                     <div class="search-input">
                                                         <a href="" target="_blank" hidden></a>
-                                                        <input type="date" name="returnTime"
+                                                        <input type="date" id="returnDates" required name="returnTime"
                                                             placeholder="Type to search..">
                                                         <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
                                                     </div>
@@ -588,6 +588,24 @@
                 infantNumber = infantNumber - 1;
                 $("#infantNums").text(infantNumber);
                 $('#txtInfantNum').val(infantNumber);
+            }
+        });
+    </script>
+    <script>
+        var roundUp = document.getElementById("roundUp");
+        var oneWay = document.getElementById("oneWay");
+        var returnDate = document.getElementById("returnDates");
+
+        // Add event listeners to each radio button
+        roundUp.addEventListener("change", function() {
+            if (roundUp.checked) {
+                returnDate.disabled = false; // Enable the input
+            }
+        });
+
+        oneWay.addEventListener("change", function() {
+            if (oneWay.checked) {
+                returnDate.disabled = true; // Disable the input
             }
         });
     </script>

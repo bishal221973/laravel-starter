@@ -181,7 +181,7 @@
                                         <div class="col-12 pt-2">
                                             <div class="row d-flex align-items-center">
                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-2">
-                                                    <label class="mt-3 arrivedHead label-13">Buddha Air</label> <br>
+                                                    <label class="mt-3 arrivedHead label-13">{{getAirport($segment->departure->iataCode)}}</label> <br>
                                                     <span class="label-13">{{ $segment->carrierCode }}-{{ $segment->number }}</span>
                                                 </div>
                                                 <div class="p-2 label-13 border flightIatacode arrivedHead">

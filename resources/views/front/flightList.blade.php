@@ -31,91 +31,158 @@
             <div class="col-xl-2 col-lg-1 col-md-12"></div>
             <div class="col-xl-8 col-lg-10 col-md-12 search-content-section">
                 <div class="card">
-                    <div class="card-body text-dark top-search">
-                        <div class="d-flex justify-content-between align-items-center " >
-                            <div class="d-flex">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1">
-                                    <label class="form-check-label label-12" for="flexRadioDefault1">
-                                        Round Trip
-                                    </label>
+                    <form action="{{ route('front.list') }}" method="GET">
+                        <div class="card-body text-dark top-search">
+                            <div class="d-flex justify-content-between align-items-center ">
+                                <div class="d-flex">
+                                    <div class="form-check">
+                                        <input class="form-check-input" {{ $_GET['way'] == 'rounde trip' ? 'checked' : '' }}
+                                            type="radio" name="way" id="roundUp" value="rounde trip">
+                                        <label class="form-check-label label-12" for="roundUp">
+                                            Round Trip
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-3">
+                                        <input class="form-check-input " type="radio" name="way" id="oneWay"
+                                            {{ $_GET['way'] == 'One Way' ? 'checked' : '' }} value="One Way">
+                                        <label class="form-check-label label-12" for="oneWay">
+                                            One way
+                                        </label>
+                                    </div>
                                 </div>
-                                <div class="form-check ml-3">
-                                    <input class="form-check-input "  type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2" checked>
-                                    <label class="form-check-label label-12" for="flexRadioDefault2">
-                                        One way
-                                    </label>
-                                </div>
+                                <select name="#" id="" class="form-control col-2 label-12 cabin-top">
+                                    <option value="#" selected>Economy</option>
+                                    <option value="#">Permium Economy</option>
+                                    <option value="#">Business</option>
+                                    <option value="#">First</option>
+                                </select>
                             </div>
-                            <select name="#" id="" class="form-control col-2 label-12 cabin-top">
-                                <option value="#" selected>Economy</option>
-                                <option value="#">Permium Economy</option>
-                                <option value="#">Business</option>
-                                <option value="#">First</option>
-                            </select>
-                        </div>
-                        <hr class="top-search">
+                            <hr class="top-search">
 
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-md-3">
-                                <div class="wrapper">
-                                    <div class="search-input">
-                                        <a href="" target="_blank" hidden></a>
-                                        <input type="text" class="depart" placeholder="Type to search..">
-                                        <div class="autocom-box">
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-3 col-md-3">
+                                    <div class="wrapper">
+                                        <div class="search-input">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text"
+                                                value="{{ getCity($_GET['depart']) . ',' . getCountry($_GET['depart']) }}"
+                                                class="depart" placeholder="Ciity">
+                                            <div class="autocom-box">
+                                            </div>
+                                            <div class="icon"><i class="fa-solid fa-plane-departure"></i></div>
                                         </div>
-                                        <div class="icon"><i class="fa-solid fa-plane-departure"></i></div>
-                                    </div>
-                                    <input type="hidden" name="depart" id="depart">
+                                        <input type="hidden" value="{{ $_GET['depart'] }}" name="depart" id="depart">
+                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-3">
 
-                                <div class="wrapper ">
-                                    <div class="search-input search-inputs">
-                                        <a href="" target="_blank" hidden></a>
-                                        <input type="text" class="destination" placeholder="Type to search..">
-                                        <div class="autocom-box1">
+                                <div class="col-xl-2 col-lg-3 col-md-3">
+                                    <div class="wrapper ">
+                                        <div class="search-input search-inputs">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" autocomplete="off"
+                                                value="{{ getCity($_GET['destination']) . ',' . getCountry($_GET['destination']) }}"
+                                                class="destination" placeholder="City">
+                                            <div class="autocom-box1">
+                                            </div>
+                                            <div class="icon"><i class="fa-solid fa-plane-departure"></i></div>
                                         </div>
-                                        <div class="icon"><i class="fa-solid fa-plane-departure"></i></div>
+                                        <input type="hidden" value="{{ $_GET['destination'] }}" name="destination"
+                                            id="destination">
                                     </div>
-                                    <input type="hidden" name="destination" id="destination">
+
                                 </div>
 
+                                <div class="col-xl-3 col-lg-4 col-md-4">
+
+                                    <div class="wrapper ">
+                                        <div class="search-input search-inputs">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="date" value="{{ $_GET['departTime'] }}"
+                                                placeholder="Type to search.." name="departTime">
+                                            <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-4">
+
+                                    <div class="wrapper ">
+                                        <div class="search-input search-inputs">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="date" id="returnDates"
+                                                value="{{ $_GET['way'] == 'One Way' ? '' : $_GET['returnTime'] }}"
+                                                {{ $_GET['way'] == 'One Way' ? 'disabled' : '' }}
+                                                placeholder="Type to search.." name="returnTime">
+                                            <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <input type="hidden" name="adult" id="txtAdultNum" value="1">
+                                <input type="hidden" name="child" id="txtChildNum" value="0">
+                                <input type="hidden" name="infants" id="txtInfantNum" value="0">
+                                <div class="col-xl-2 col-lg-2 col-md-2 zerolr">
+
+                                    {{-- <div class="wrapper ">
+                                        <div class="search-input search-inputs">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" placeholder="Passenger" id="passenger">
+                                            <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+                                        </div>
+                                        <input type="hidden" name="destination" id="destination">
+                                    </div> --}}
+                                    <div class="wrapper">
+                                        <div class="search-input">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" readonly id="passenger" value="1 passenger(s)"
+                                                placeholder="Type to search.." id="dropdownMenuButton" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">
+                                                    <div class="col-12 d-flex justify-content-between">
+                                                        <label>Adults 11+ Years</label>
+                                                        <div class="d-flex align-items-center">
+                                                            <button type="button" class="btn1" id="adultSub">-</button>
+                                                            <span id="adultNums" class="px-2">1</span>
+                                                            <button type="button" class="btn1" id="adultAdd">+</button>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <div class="col-12 d-flex justify-content-between">
+                                                        <label>Children 2 - 11 Years</label>
+                                                        <div class="d-flex align-items-center">
+                                                            <button type="button" class="btn1" id="childSub">-</button>
+                                                            <span id="childNums" class="px-2">0</span>
+                                                            <button type="button" class="btn1" id="childAdd">+</button>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <div class="col-12 d-flex justify-content-between">
+                                                        <label>Infants < 2 Years</label>
+                                                                <div class="d-flex align-items-center">
+                                                                    <button type="button" class="btn1"
+                                                                        id="infantSub">-</button>
+                                                                    <span class="px-2" id="infantNums">0</span>
+                                                                    <button type="button" class="btn1"
+                                                                        id="infantAdd">+</button>
+                                                                </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="icon"><i class="fa-solid fa-users"></i></div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-
-                            <div class="col-xl-4 col-lg-4 col-md-4">
-
-                                <div class="wrapper ">
-                                    <div class="search-input search-inputs">
-                                        <a href="" target="_blank" hidden></a>
-                                        <input type="text" placeholder="Type to search..">
-                                        <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
-                                    </div>
-                                    <input type="hidden" name="destination" id="destination">
-                                </div>
-
-                            </div>
-                            <div class="col-xl-2 col-lg-2 col-md-2">
-
-                                <div class="wrapper ">
-                                    <div class="search-input search-inputs">
-                                        <a href="" target="_blank" hidden></a>
-                                        <input type="text" placeholder="Passenger">
-                                        <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
-                                    </div>
-                                    <input type="hidden" name="destination" id="destination">
-                                </div>
-
+                            <hr class="top-search">
+                            <div class="col-12 d-flex justify-content-end padding-1">
+                                <button class="btn btn-info" type="submit"><i class="fa-solid fa-magnifying-glass mr-2"></i>Search</button>
                             </div>
                         </div>
-                        <hr class="top-search">
-                        <div class="col-12 d-flex justify-content-end padding-1">
-                            <button class="btn btn-info"><i class="fa-solid fa-magnifying-glass mr-2"></i>Search</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="col-xl-2 col-lg-1 col-md-12">
@@ -190,8 +257,10 @@
                                 <hr>
                                 <h5 class="text-uppercase mb-3 label-15">Price Range</h5>
 
-                                <input type="number" id="minPrice" class="form-control mb-2 input768" placeholder="Min Price">
-                                <input type="number" id="maxPrice" class="form-control input768" placeholder="Max Price">
+                                <input type="number" id="minPrice" class="form-control mb-2 input768"
+                                    placeholder="Min Price">
+                                <input type="number" id="maxPrice" class="form-control input768"
+                                    placeholder="Max Price">
 
                                 <hr>
 
@@ -321,7 +390,8 @@
                                                                             fees)</label>
                                                                     </div>
                                                                     <div>
-                                                                        <form action="{{ route('front.detail', $amadeus) }}"
+                                                                        <form
+                                                                            action="{{ route('front.detail', $amadeus) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             <button class="btn-select">Select</button>
@@ -336,10 +406,16 @@
                                                                     <img src="{{ asset('flight4.png') }}" class="rounded"
                                                                         alt="" style="height: 45px;width: 45px">
                                                                     <br>
-                                                                    <label class="mt-3 airline-name label-12 zero">Buddha Air</label>
+                                                                    <label class="mt-3 airline-name label-12 zero">
+                                                                        {{-- {{}} --}}
+                                                                        @php
+                                                                            print_r(getAirLine($dictionaries,$flightList->validatingAirlineCodes[0]));
+                                                                        @endphp
+                                                                    </label>
                                                                 </div>
                                                                 <div class="p-2">
-                                                                    <div class="border iataCode d-flex justify-content-center py-2 label-12">
+                                                                    <div
+                                                                        class="border iataCode d-flex justify-content-center py-2 label-12">
 
                                                                         {{ $itinerary->segments[0]->departure->iataCode }}
                                                                     </div>
@@ -355,7 +431,8 @@
                                                                 <label
                                                                     class="m-0 p-0 font-weight-normal">{{ getDates($firstDate) }}</label>
                                                             </div> --}}
-                                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-4 center-div">
+                                                                <div
+                                                                    class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-4 center-div">
                                                                     <label
                                                                         class="col-12 label-12 text-center ">{{ computeTime($firstDate, $lastDate) }}</label>
                                                                     <hr class="m-0 p-0">
@@ -369,11 +446,14 @@
                                                             </div> --}}
 
                                                                 <div class="p-2">
-                                                                    <div class="border label-12 iataCode d-flex justify-content-center py-2">
+                                                                    <div
+                                                                        class="border label-12 iataCode d-flex justify-content-center py-2">
 
                                                                         {{ $segment->arrival->iataCode }}
                                                                     </div>
-                                                                    <label class="time label-12"><b>{{ getTime($lastDate) }}</b></label> <br>
+                                                                    <label
+                                                                        class="time label-12"><b>{{ getTime($lastDate) }}</b></label>
+                                                                    <br>
                                                                     <label
                                                                         class="m-0 p-0 label-12 getDate font-weight-normal">{{ getDates($lastDate) }}</label>
 
@@ -388,7 +468,9 @@
                                                     <h5 class="text-info text-center mt-5 priceNum label-15">
                                                         {{ $flightList->price->total }} {{ $flightList->price->currency }}
                                                     </h5>
-                                                    <label class="col-12 text-center m-0 p-0 text-secondary label-12">(incl. taxes &
+                                                    <label
+                                                        class="col-12 text-center m-0 p-0 text-secondary label-12">(incl.
+                                                        taxes &
                                                         fees)</label>
 
 
@@ -414,20 +496,27 @@
                                                 <div class="card-body m-0 ">
                                                     <div class="header-dr">
                                                         <div class="row d-flex align-items-center">
-                                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 d-flex align-items-center">
+                                                            <div
+                                                                class="col-xl-3 col-lg-3 col-md-3 col-sm-3 d-flex align-items-center">
                                                                 <i
                                                                     class="fa-solid fa-plane fa-2x icon2 text-info {{ $key == 1 ? 'left' : '' }}"></i>
                                                                 <h5 class="ml-2 text-upercase text-info label-15">
                                                                     {{ $key == 1 ? 'return' : 'Depart' }}</h5>
                                                             </div>
-                                                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 d-flex justify-content-end align-items-center">
-                                                                <span class="departHead label-13">{{ $key == 0 ? getCity(request('depart')) : getCity(request('destination')) }}</span>
-                                                                <span class="label-13">({{ $key == 0 ? request('depart') : request('destination') }})</span>
-                                                                - <span class="arrivedHead label-13">{{ $key == 0 ? getCity(request('destination')) : getCity(request('depart')) }}</span>
-                                                                <span class="label-13">({{ $key == 0 ? request('destination') : request('depart') }})</span>
+                                                            <div
+                                                                class="col-xl-9 col-lg-9 col-md-9 col-sm-9 d-flex justify-content-end align-items-center">
+                                                                <span
+                                                                    class="departHead label-13">{{ $key == 0 ? getCity(request('depart')) : getCity(request('destination')) }}</span>
+                                                                <span
+                                                                    class="label-13">({{ $key == 0 ? request('depart') : request('destination') }})</span>
+                                                                - <span
+                                                                    class="arrivedHead label-13">{{ $key == 0 ? getCity(request('destination')) : getCity(request('depart')) }}</span>
+                                                                <span
+                                                                    class="label-13">({{ $key == 0 ? request('destination') : request('depart') }})</span>
                                                                 |
                                                                 <i class="fa-solid fa-chair px-2 mt-1 label-15"></i>
-                                                                <span class="label-13">{{ $flightList->numberOfBookableSeats }}</span>
+                                                                <span
+                                                                    class="label-13">{{ $flightList->numberOfBookableSeats }}</span>
 
                                                             </div>
                                                         </div>
@@ -436,8 +525,10 @@
                                                         <div class="col-12 p-0 m-0">
                                                             <div class="row d-flex align-items-center m-0 p-0">
                                                                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-2">
-                                                                    <label class="mt-3 detail-airline label-12">Buddha Air</label> <br>
-                                                                    <span class="carrireCode label-12">{{ $segment->carrierCode }}-{{ $segment->number }}</span>
+                                                                    <label class="mt-3 detail-airline label-12">Buddha
+                                                                        Air</label> <br>
+                                                                    <span
+                                                                        class="carrireCode label-12">{{ $segment->carrierCode }}-{{ $segment->number }}</span>
                                                                 </div>
                                                                 <div class="p-2 border border-iata label-14">
                                                                     {{ $segment->departure->iataCode }}
@@ -448,10 +539,12 @@
                                                                     <label
                                                                         class="m-0 p-0 getDatesDetail label-12 font-weight-normal">{{ getDates($segment->departure->at) }}</label>
                                                                     <br>
-                                                                    <span class="getCityDetail label-12">{{ getCity($segment->departure->iataCode) }}</span>
+                                                                    <span
+                                                                        class="getCityDetail label-12">{{ getCity($segment->departure->iataCode) }}</span>
                                                                 </div>
                                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-4">
-                                                                    <span class="d-flex justify-content-end label-12 hidable-getDate"><label
+                                                                    <span
+                                                                        class="d-flex justify-content-end label-12 hidable-getDate"><label
                                                                             class="time m-0 p-0"><b>{{ getTime($segment->arrival->at) }}</b></label>
                                                                         <label
                                                                             class="m-0 p-0 getDatesDetail font-weight-normal ">{{ getDates($segment->arrival->at) }}</label></span>
@@ -465,8 +558,10 @@
                                                                     {{ $segment->arrival->iataCode }}
 
                                                                 </div>
-                                                                <div class="col-xl-1 label-12 col-lg-1 col-md-1 col-sm-2 col-1 p-0 m-0 ml-2">
-                                                                    <label class="computeTime">{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
+                                                                <div
+                                                                    class="col-xl-1 label-12 col-lg-1 col-md-1 col-sm-2 col-1 p-0 m-0 ml-2">
+                                                                    <label
+                                                                        class="computeTime">{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
                                                                 </div>
 
                                                             </div>
@@ -648,14 +743,124 @@
             // alert(id);
             $("#" + id).toggleClass("d-none");
         })
-        $("#btnFilter").on("click",function(){
+        $("#btnFilter").on("click", function() {
             $("#filterList").toggleClass("active");
             $("#closeFilter").toggleClass("active");
         });
 
-        $("#closeFilter").on("click",function(){
+        $("#closeFilter").on("click", function() {
             $("#filterList").toggleClass("active");
             $("#closeFilter").toggleClass("active");
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-toggle').dropdown();
+
+            // Disable auto-close behavior
+            $('.dropdown-menu').on('click', function(e) {
+                e.stopPropagation();
+            });
+
+
+        });
+    </script>
+    <script>
+        var roundUp = document.getElementById("roundUp");
+        var oneWay = document.getElementById("oneWay");
+        var returnDate = document.getElementById("returnDates");
+
+        // Add event listeners to each radio button
+        roundUp.addEventListener("change", function() {
+            if (roundUp.checked) {
+                returnDate.disabled = false; // Enable the input
+            }
+        });
+
+        oneWay.addEventListener("change", function() {
+            if (oneWay.checked) {
+                returnDate.disabled = true; // Disable the input
+            }
+        });
+        var adult = "{{ $_GET['adult'] }}";
+        var child = "{{ $_GET['child'] }}";
+        var infants = "{{ $_GET['infants'] }}";
+
+        var passenger = parseInt(adult) + parseInt(child) + parseInt(infants);
+
+        var val = passenger + " Passengers";
+        $("#passenger").val(val);
+        $("#adultNums").text(adult);
+        $("#childNums").text(child);
+        $("#infantNums").text(infants);
+
+
+
+        $('#adultAdd').on('click', function() {
+            if (parseInt(adult) <= '11') {
+                adult = parseInt(adult) + 1;
+                $("#adultNums").text(adult);
+                $('#txtAdultNum').val(adult);
+                var passenger = parseInt(adult) + parseInt(child) + parseInt(infants);
+                var val = passenger + " Passengers";
+                $("#passenger").val(val);
+
+            }
+        });
+        $('#adultSub').on('click', function() {
+            // alert(adult);
+            if (parseInt(adult) >= '2') {
+                adult = parseInt(adult) - 1;
+                $("#adultNums").text(adult);
+                $('#txtAdultNum').val(adult);
+                var passenger = parseInt(adult) + parseInt(child) + parseInt(infants);
+                var val = passenger + " Passengers";
+                $("#passenger").val(val);
+            }
+        });
+        $('#childAdd').on('click', function() {
+            // alert(adultNumber);
+            if (parseInt(child) <= '11') {
+                child = parseInt(child) + 1;
+                $("#childNums").text(child);
+                $('#txtChildNum').val(child);
+                var passenger = parseInt(adult) + parseInt(child) + parseInt(infants);
+                var val = passenger + " Passengers";
+                $("#passenger").val(val);
+            }
+        });
+        $('#childSub').on('click', function() {
+            // alert(adultNumber);
+            if (parseInt(child) >= '1') {
+                child = parseInt(child) - 1;
+                $("#childNums").text(child);
+                $('#txtChildNum').val(child);
+                var passenger = parseInt(adult) + parseInt(child) + parseInt(infants);
+                var val = passenger + " Passengers";
+                $("#passenger").val(val);
+            }
+        });
+        $('#infantAdd').on('click', function() {
+            // alert(adultNumber);
+            if (parseInt(infants) <= '11') {
+                infants = parseInt(infants) + 1;
+                $("#infantNums").text(infants);
+                $('#txtInfantNum').val(infants);
+                var passenger = parseInt(adult) + parseInt(child) + parseInt(infants);
+                var val = passenger + " Passengers";
+                $("#passenger").val(val);
+            }
+        });
+        $('#infantSub').on('click', function() {
+            // alert(adultNumber);
+            if (parseInt(infants) >= '1') {
+                infants = parseInt(infants) - 1;
+                $("#infantNums").text(infants);
+                $('#txtInfantNum').val(infants);
+                var passenger = parseInt(adult) + parseInt(child) + parseInt(infants);
+                var val = passenger + " Passengers";
+                $("#passenger").val(val);
+            }
         });
     </script>
 @endpush

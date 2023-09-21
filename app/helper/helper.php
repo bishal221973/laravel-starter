@@ -83,3 +83,30 @@ function getCountry($codes)
 function segment($segmentId){
     return $segmentId;
 }
+function getAirLine($array,$code){
+    return $array->carriers->$code;
+}
+function getAirport($codes){
+    $jsonFilePath = public_path('airport.json');
+    $jsonData = file_get_contents($jsonFilePath);
+
+    $dataArray = json_decode($jsonData, true);
+
+    if ($dataArray === null) {
+        return "Error decoding JSON data.";
+    } else {
+        $countryName = []; // Create an array to store matching city names
+
+        foreach ($dataArray as $item) {
+            if ($item['code'] == $codes) {
+                $countryName[] = $item['name'];
+            }
+        }
+
+        if (empty($countryName)) {
+            return "No data found matching the filter condition.";
+        } else {
+            return $countryName[0];
+        }
+    }
+}

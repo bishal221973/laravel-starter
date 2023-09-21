@@ -136,14 +136,25 @@
         })(window, document, "script", "dataLayer", "GTM-NXZMQSS");
     </script>
     <!-- End Google Tag Manager -->
-    <link rel="stylesheet" href="{{asset('front.css')}}">
+    <link rel="stylesheet" href="{{ asset('front.css') }}">
 </head>
 
 <body>
-    <x-top-nav/>
-    <x-bottom-nav/>
+    <div id="preloader" class="preloader">
+        <!-- Your preloader content goes here -->
+    </div>
+
+    <x-top-nav />
+    <x-bottom-nav />
     @yield('content')
-    <x-footer-component/>
+    <x-footer-component />
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function () {
+            // Show the preloader when the form is submitted
+            // document.getElementById('preloader').style.display = 'block';
+        });
+    </script>
     <!-- welcome modal end -->
     <!-- js -->
     <script src="{{ asset('vendors/scripts/core.js') }}"></script>
@@ -158,11 +169,12 @@
     <script src="{{ asset('vendors/scripts/dashboard3.js') }}"></script>
     <script src="{{ asset('fontawesome/all.min.js') }}"></script>
     <script src="{{ asset('imgCrop/croppie.js') }}"></script>
-    <script src="{{asset('front.js')}}"></script>
+    <script src="{{ asset('front.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 @yield('datatable')
 
 @stack('script')
+
 </html>

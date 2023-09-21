@@ -31,7 +31,7 @@
 @endphp
 @extends('front.app')
 @section('content')
-    <section class="home-section" style="height: 300px">
+    <section class="home-section home-section1">
         <div id="myCarousel" class="carousel slide h-100" data-ride="carousel">
 
 
@@ -53,7 +53,7 @@
 
         </div>
 
-        <div class="content-section" style="height: 300px">
+        <div class="content-section content-section1" >
 
         </div>
     </section>

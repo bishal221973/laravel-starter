@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-    <section class="home-section" style="height: 300px">
+    <section class="home-section home-section1">
         <div id="myCarousel" class="carousel slide h-100" data-ride="carousel">
 
 
@@ -21,7 +21,7 @@
 
         </div>
 
-        <div class="content-section" style="height: 300px">
+        <div class="content-section content-section1">
 
         </div>
     </section>
@@ -233,31 +233,29 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="col-12 mb-4 d-flex justify-content-center">
-                                <img src="{{ asset('flight1.jpg') }}" alt="" srcset=""
-                                    style="height: 80px;width:80px;border-radius:50%">
+                                <img src="{{asset('flight1.jpg')}}" alt="" srcset="" style="height: 80px;width:80px;border-radius:50%">
                             </div>
-                            <h5 class="text-info text-center text-uppercase">{{ Auth()->user()->first_name }}
-                                {{ Auth()->user()->last_name }}</h5>
-                            <label class="col-12 text-center">Welcome Back</label>
+                            <h5 class="text-info text-center text-uppercase label-15">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</h5>
+                            <label class="col-12 text-center label-13">Welcome Back</label>
                         </div>
                     </div>
 
                     <div class="card">
-                        <a href="{{ route('user.dashboard') }}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.dashboard')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>Dashboard</label>
+                            <label class="label-13">Dashboard</label>
                         </a>
-                        <a href="{{ route('user.myBooking') }}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.myBooking')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>My Bookings</label>
+                            <label class="label-13">My Bookings</label>
                         </a>
-                        <a href="{{ route('user.myProfile') }}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.myProfile')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>My Profile</label>
+                            <label class="label-13">My Profile</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="#" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>Logout</label>
+                            <label class="label-13">Logout</label>
                         </a>
 
                     </div>
@@ -265,28 +263,28 @@
                 <div class="col-xl-9">
                     <div class="card-box mb-30">
                         <div class="pd-20">
-                            <h4 class="text-blue h4">My Bookings</h4>
+                            <h4 class="text-blue label-15">My Bookings</h4>
                         </div>
                         <div class="pb-20">
                             <table class="data-table table hover multiple-select-row nowrap">
                                 <thead>
                                     <tr>
-                                        <th class="table-plus datatable-nosort">SN</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Price</th>
+                                        <th class="label-13 table-plus datatable-nosort">SN</th>
+                                        <th class="label-13">From</th>
+                                        <th class="label-13">To</th>
+                                        <th class="label-13">Price</th>
                                         {{-- <th>Booking Id</th> --}}
-                                        <th>Payment Ststus</th>
-                                        <th>Invoice</th>
+                                        <th class="label-13">Payment Ststus</th>
+                                        <th class="label-13">Invoice</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (App\Models\Booking::where('user_id', Auth()->user()->id)->get() as $booking)
                                         <tr>
-                                            <td class="table-plus">{{ $loop->iteration }}</td>
-                                            <td>
+                                            <td class="table-plus label-13">{{ $loop->iteration }}</td>
+                                            <td class="label-13">
                                                 {{ getCity($booking->fromIataCode) }} ({{ $booking->fromIataCode }}) <br>
-                                                <span class="text-muted"><i class="fa-solid fa-calendar-days"></i>
+                                                <span class="text-muted label-13"><i class="fa-solid fa-calendar-days"></i>
                                                     {{ getDates($booking->fromTime) }} <i class="fa-solid fa-clock"></i>
                                                     {{ getTime($booking->fromTime) }}</span>
                                             </td>

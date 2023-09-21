@@ -1,7 +1,7 @@
 
 @extends('front.app')
 @section('content')
-    <section class="home-section" style="height: 300px">
+    <section class="home-section home-section1">
         <div id="myCarousel" class="carousel slide h-100" data-ride="carousel">
 
 
@@ -23,7 +23,7 @@
 
         </div>
 
-        <div class="content-section" style="height: 300px">
+        <div class="content-section content-section1">
 
         </div>
     </section>
@@ -112,8 +112,8 @@
 
 <section>
     <div class="row mt-5">
-        <div class="col-xl-3"></div>
-        <div class="col-xl-6">
+        <div class="col-xl-2 col-lg-1"></div>
+        <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
                     <div class="card mb-4 px-4">
@@ -164,19 +164,21 @@
                         </div>
                     </div>
 
-                    <table class="col-12 border mb-4">
-                        <tr class="border" style="background-color: #F5F5F7">
-                            <th class="border px-5 py-3 label-12">Booking Refrence</th>
-                            <th class="border px-5 py-3 label-12">Booking Refrence</th>
-                            <th class="border px-5 py-3 label-12">Booking Date</th>
-                        </tr>
-                        <tr class="border">
-                            <td class="border px-5 py-3 label-12">{{ $flightDetail->data->associatedRecords[0]->reference }}</td>
-                            <td class="border px-5 py-3 label-12">{{ $flightDetail->data->id }}</td>
-                            <td class="border px-5 py-3 label-12">{{ $flightDetail->data->associatedRecords[0]->creationDate }}
-                            </td>
-                        </tr>
-                    </table>
+                    <div style="overflow-x: scroll">
+                        <table class="col-12 border mb-4" >
+                            <tr class="border" style="background-color: #F5F5F7">
+                                <th class="border px-5 py-3 label-12">Booking Refrence</th>
+                                <th class="border px-5 py-3 label-12">Booking Refrence</th>
+                                <th class="border px-5 py-3 label-12">Booking Date</th>
+                            </tr>
+                            <tr class="border">
+                                <td class="border px-5 py-3 label-12">{{ $flightDetail->data->associatedRecords[0]->reference }}</td>
+                                <td class="border px-5 py-3 label-12">{{ $flightDetail->data->id }}</td>
+                                <td class="border px-5 py-3 label-12">{{ $flightDetail->data->associatedRecords[0]->creationDate }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                     <div class="card px-5 py-3" style="border-bottom-left-radius: 0px;border-bottom-right-radius: 0px">
                         <h4 class="fw-bold text-uppercase label-14">Travellers</h4>
                     </div>
@@ -330,13 +332,13 @@
 
                     <div class="row">
                         <div class="col-xl-4 zero">
-                            <button class="btn btn-info col-12 fw-bold text-uppercase  zeor label-14">Download as PDF</button>
+                            <button class="btn btn-info col-12 fw-bold text-uppercase  zeor label-14 d-flex align-items-center"><i class="fa-solid fa-download fa-2x mr-3"></i> Download as PDF</button>
                         </div>
                         <div class="col-xl-4">
-                            <button class="btn btn-info col-12 fw-bold text-uppercase ">Send to whatsapp</button>
+                            <button class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i class="fa-brands fa-whatsapp fa-2x mr-3"></i>Send to whatsapp</button>
                         </div>
                         <div class="col-xl-4">
-                            <button class="btn btn-info col-12 fw-bold text-uppercase ">Cancellation</button>
+                            <button class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i class="fa-solid fa-xmark fa-2x mr-3 text-danger"></i>Cancellation</button>
                         </div>
                     </div>
                 </div>

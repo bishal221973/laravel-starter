@@ -102,6 +102,9 @@ body {
     height: 65vh;
     position: relative;
 }
+.home-section1,.content-section1{
+    height: 300px !important;
+}
 
 .content-section {
     height: 65vh;
@@ -1496,5 +1499,8 @@ ul {
     }
     .hobbies-icon h3{
         display: none !important;
+    }
+    .home-section1,.content-section1{
+        height: 250px !important;
     }
 }

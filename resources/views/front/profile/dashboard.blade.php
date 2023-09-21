@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-    <section class="home-section" style="height: 300px">
+    <section class="home-section home-section1">
         <div id="myCarousel" class="carousel slide h-100" data-ride="carousel">
 
 
@@ -21,7 +21,7 @@
 
         </div>
 
-        <div class="content-section" style="height: 300px">
+        <div class="content-section content-section1">
 
         </div>
     </section>
@@ -235,27 +235,27 @@
                             <div class="col-12 mb-4 d-flex justify-content-center">
                                 <img src="{{asset('flight1.jpg')}}" alt="" srcset="" style="height: 80px;width:80px;border-radius:50%">
                             </div>
-                            <h5 class="text-info text-center text-uppercase">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</h5>
-                            <label class="col-12 text-center">Welcome Back</label>
+                            <h5 class="text-info text-center text-uppercase label-15">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</h5>
+                            <label class="col-12 text-center label-13">Welcome Back</label>
                         </div>
                     </div>
 
                     <div class="card">
-                        <a href="{{route('user.dashboard')}}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.dashboard')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>Dashboard</label>
+                            <label class="label-13">Dashboard</label>
                         </a>
-                        <a href="{{route('user.myBooking')}}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.myBooking')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>My Bookings</label>
+                            <label class="label-13">My Bookings</label>
                         </a>
-                        <a href="{{route('user.myProfile')}}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.myProfile')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>My Profile</label>
+                            <label class="label-13">My Profile</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="#" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>Logout</label>
+                            <label class="label-13">Logout</label>
                         </a>
 
                     </div>
@@ -266,7 +266,7 @@
                             <div class="row">
                                 <div class="col-xl-4">
                                     <div class="card bg-success p-3">
-                                        <h5 class="text-white">Total Booking</h5>
+                                        <h5 class="text-white label-15">Total Booking</h5>
                                         <label class="fa-2x text-white">
                                             {{App\Models\Booking::where('user_id',Auth()->user()->id)->count()}}
                                         </label>
@@ -274,7 +274,7 @@
                                 </div>
                                 <div class="col-xl-4">
                                     <div class="card bg-danger p-3">
-                                        <h5 class="text-white">Total Cancellation</h5>
+                                        <h5 class="text-white label-15">Total Cancellation</h5>
                                         <label class="fa-2x text-white">
                                             {{App\Models\Booking::where('user_id',Auth()->user()->id)->where('status',"cancelled")->count()}}
                                         </label>
@@ -282,7 +282,7 @@
                                 </div>
                                 <div class="col-xl-4">
                                     <div class="card bg-warning p-3">
-                                        <h5 class="text-white">Pending Invoice</h5>
+                                        <h5 class="text-white label-15">Pending Invoice</h5>
                                         <label class="fa-2x text-white">
                                             {{App\Models\Booking::where('user_id',Auth()->user()->id)->where('status',"Pending")->count()}}
 

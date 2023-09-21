@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-    <section class="home-section" style="height: 300px">
+    <section class="home-section home-section1">
         <div id="myCarousel" class="carousel slide h-100" data-ride="carousel">
 
 
@@ -21,7 +21,7 @@
 
         </div>
 
-        <div class="content-section" style="height: 300px">
+        <div class="content-section content-section1">
 
         </div>
     </section>
@@ -233,31 +233,29 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="col-12 mb-4 d-flex justify-content-center">
-                                <img src="{{ asset('flight1.jpg') }}" alt="" srcset=""
-                                    style="height: 80px;width:80px;border-radius:50%">
+                                <img src="{{asset('flight1.jpg')}}" alt="" srcset="" style="height: 80px;width:80px;border-radius:50%">
                             </div>
-                            <h5 class="text-info text-center text-uppercase">{{ Auth()->user()->first_name }}
-                                {{ Auth()->user()->last_name }}</h5>
-                            <label class="col-12 text-center">Welcome Back</label>
+                            <h5 class="text-info text-center text-uppercase label-15">{{Auth()->user()->first_name}} {{Auth()->user()->last_name}}</h5>
+                            <label class="col-12 text-center label-13">Welcome Back</label>
                         </div>
                     </div>
 
                     <div class="card">
-                        <a href="{{ route('user.dashboard') }}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.dashboard')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>Dashboard</label>
+                            <label class="label-13">Dashboard</label>
                         </a>
-                        <a href="{{ route('user.myBooking') }}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.myBooking')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>My Bookings</label>
+                            <label class="label-13">My Bookings</label>
                         </a>
-                        <a href="{{ route('user.myProfile') }}" class="d-flex align-items-center front-menu border">
+                        <a href="{{route('user.myProfile')}}" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>My Profile</label>
+                            <label class="label-13">My Profile</label>
                         </a>
-                        <a href="#" class="d-flex align-items-center front-menu border">
+                        <a href="#" class="d-flex align-items-center front-menu border label-14 pr-3">
                             <i class="fa-solid fa-home mr-3"></i>
-                            <label>Logout</label>
+                            <label class="label-13">Logout</label>
                         </a>
 
                     </div>
@@ -265,18 +263,18 @@
                 <div class="col-xl-9">
                     <div class="card mb-30">
                         <div class="card-body">
-                            <h4 class="text-info h4">My Profile</h4>
+                            <h4 class="text-info label-15">My Profile</h4>
                         </div>
                     </div>
 
                     <div class="card mb-2">
                         <div class="card-body">
-                            <label for="" class="text-muted text-uppercase">General Information</label>
+                            <label for="" class="text-muted text-uppercase label-13">General Information</label>
                             <form action="#">
                                 <div class="row">
                                     <div class="col-xl-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">First Name :</label>
+                                            <label class="text-secondary text-uppercase label-13">First Name :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" name="first_name" value="{{Auth()->user()->first_name}}" placeholder="First Name">
@@ -286,7 +284,7 @@
 
                                     <div class="col-xl-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Last Name :</label>
+                                            <label class="text-secondary text-uppercase label-13">Last Name :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" name="last_name" value="{{Auth()->user()->last_name}}" placeholder="Last Name">
@@ -304,7 +302,7 @@
                                     </div> --}}
                                     <div class="col-xl-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Dob :</label>
+                                            <label class="text-secondary text-uppercase label-13">Dob :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="date" name="dob" value="{{Auth()->user()->dob}}" placeholder="DOB">
@@ -313,7 +311,7 @@
                                     </div>
                                     <div class="col-xl-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Gender :</label>
+                                            <label class="text-secondary text-uppercase label-13">Gender :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <select name="gender" id="" class="form-control">
@@ -325,7 +323,7 @@
                                     </div>
                                     <div class="col-xl-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Contact :</label>
+                                            <label class="text-secondary text-uppercase label-13">Contact :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="number" name="contact_number" value="{{Auth()->user()->contact_number}}" placeholder="Contact">
@@ -334,7 +332,7 @@
                                     </div>
                                     <div class="hr"></div>
                                     <div class="col-12 d-flex justify-content-end">
-                                        <input type="submit" value="Update" class="col-12 btn btn-info">
+                                        <input type="submit" value="Update" class="col-12 btn btn-info zero py1">
                                     </div>
                                 </div>
                             </form>
@@ -342,12 +340,12 @@
                     </div>
                     <div class="card mb-2">
                         <div class="card-body">
-                            <label for="" class="text-muted text-uppercase">Email Information</label>
+                            <label for="" class="text-muted text-uppercase label-13">Email Information</label>
                             <form action="#">
                                 <div class="row">
                                     <div class="col-xl-12">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Email :</label>
+                                            <label class="text-secondary text-uppercase label-13">Email :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" name="first_name" value="{{Auth()->user()->email}}" placeholder="First Name">
@@ -358,7 +356,7 @@
 
                                     <div class="hr"></div>
                                     <div class="col-12 d-flex justify-content-end">
-                                        <input type="submit" value="Update" class="col-12 btn btn-info">
+                                        <input type="submit" value="Update" class="col-12 btn btn-info zero py1">
                                     </div>
                                 </div>
                             </form>
@@ -367,12 +365,12 @@
 
                     <div class="card mb-2">
                         <div class="card-body">
-                            <label for="" class="text-muted text-uppercase">Password Information</label>
+                            <label for="" class="text-muted text-uppercase label-13">Password Information</label>
                             <form action="#">
                                 <div class="row">
                                     <div class="col-xl-12 mb-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Current Password :</label>
+                                            <label class="text-secondary text-uppercase label-13">Current Password :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" name="current_password" placeholder="............................">
@@ -382,7 +380,7 @@
 
                                     <div class="col-xl-12 mb-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">New Password :</label>
+                                            <label class="text-secondary text-uppercase label-13">New Password :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" name="password" placeholder="............................">
@@ -392,7 +390,7 @@
 
                                     <div class="col-xl-12">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Confirm Password :</label>
+                                            <label class="text-secondary text-uppercase label-13">Confirm Password :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" name="password" placeholder="............................">
@@ -403,7 +401,7 @@
 
                                     <div class="hr"></div>
                                     <div class="col-12 d-flex justify-content-end">
-                                        <input type="submit" value="Update" class="col-12 btn btn-info">
+                                        <input type="submit" value="Update" class="col-12 btn btn-info zero py1">
                                     </div>
                                 </div>
                             </form>

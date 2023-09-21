@@ -123,7 +123,7 @@
                                     </div>
 
                                     <div class="col-xl-6 d-flex justify-content-end">
-                                        <div class="d-block">
+                                        <div class="d-block mr-3">
                                             <span class="label-12"><label class="fw-bold text-uppercase">Payment Status :
                                                 </label>
                                                 Unpaid</span> <br>
@@ -139,6 +139,7 @@
                                                 {{ $flightDetail->data->contacts[0]->emailAddress }}
                                             </span> <br>
                                         </div>
+                                        {!! QrCode::size(100)->generate($flightDetail->data->id) !!}
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +173,7 @@
                             <table class="col-12 border mb-4">
                                 <tr class="border" style="background-color: #F5F5F7">
                                     <th class="border px-5 py-3 label-12">Booking Refrence</th>
-                                    <th class="border px-5 py-3 label-12">Booking Refrence</th>
+                                    <th class="border px-5 py-3 label-12">Booking ID</th>
                                     <th class="border px-5 py-3 label-12">Booking Date</th>
                                 </tr>
                                 <tr class="border">

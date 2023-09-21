@@ -127,8 +127,8 @@
 
 
     <div class="row mt-5">
-        <div class="col-xl-2 col-lg-1"></div>
-        <div class="col-xl-8 col-lg-10">
+        <div class="col-xl-1 col-lg-12"></div>
+        <div class="col-xl-10 col-lg-12">
             <div class="row">
                 <div class="col-xl-9 col-lg-9">
                     <form action="{{ route('front.book') }}" method="POST">
@@ -136,7 +136,7 @@
                         {{-- ====================Flight details=======================  --}}
                         <div class="card mb-2 listCard">
                             <div class="card-header bg-info text-white">
-                                <h5 class="text-uppercase text-muted py-2">Flight Itinerary</h5>
+                                <h5 class="text-uppercase text-muted py-2 label-15">Flight Itinerary</h5>
                             </div>
                             @foreach ($flightDetail->data->flightOffers[0]->itineraries as $key => $itinerary)
                                 <input type="hidden" value="{{ $itinerary->segments[0]->departure->iataCode }}" name="departure">
@@ -159,21 +159,21 @@
                                         <div class="row d-flex align-items-center">
                                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 d-flex align-items-center">
                                                 <i
-                                                    class="fa-solid fa-plane fa-2x text-info {{ $key == 1 ? 'left' : '' }}"></i>
-                                                <h5 class="ml-2 text-upercase text-info">
+                                                    class="fa-solid fa-plane fa-2x text-info  icon2 {{ $key == 1 ? 'left' : '' }}"></i>
+                                                <h5 class="ml-2 text-upercase text-info label-15">
                                                     {{ $key == 1 ? 'return' : 'Depart' }}</h5>
                                             </div>
                                             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 d-flex justify-content-end">
                                                 <span
-                                                    class="departHead">{{ $key == 0 ? getCity($from) : getCity($to) }}</span>
-                                                ({{ $key == 0 ? $from : $to }})
+                                                    class="departHead label-13">{{ $key == 0 ? getCity($from) : getCity($to) }}</span>
+                                                <span class="label-13">({{ $key == 0 ? $from : $to }})</span>
                                                 - <span
-                                                    class="arrivedHead">{{ $key == 0 ? getCity($to) : getCity($from) }}</span>
-                                                ({{ $key == 0 ? $to : $from }})
-                                                |
-                                                <i class="fa-solid fa-suitcase-rolling px-2 mt-1"></i>
-                                                {{ $flightDetail->data->flightOffers[0]->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weight }}
-                                                {{ $flightDetail->data->flightOffers[0]->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weightUnit }}
+                                                    class="arrivedHead label-13">{{ $key == 0 ? getCity($to) : getCity($from) }}</span>
+                                                <span class="label-13">({{ $key == 0 ? $to : $from }})</span>
+                                                <span class="label-13">|</span>
+                                                <i class="fa-solid label-13 fa-suitcase-rolling px-2 mt-1"></i>
+                                                <span class="label-13">{{ $flightDetail->data->flightOffers[0]->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weight }}
+                                                    {{ $flightDetail->data->flightOffers[0]->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weightUnit }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -181,41 +181,41 @@
                                         <div class="col-12 pt-2">
                                             <div class="row d-flex align-items-center">
                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-2">
-                                                    <label class="mt-3 arrivedHead">Buddha Air</label> <br>
-                                                    {{ $segment->carrierCode }}-{{ $segment->number }}
+                                                    <label class="mt-3 arrivedHead label-13">Buddha Air</label> <br>
+                                                    <span class="label-13">{{ $segment->carrierCode }}-{{ $segment->number }}</span>
                                                 </div>
-                                                <div class="p-2 border flightIatacode arrivedHead">
+                                                <div class="p-2 label-13 border flightIatacode arrivedHead">
                                                     {{ $segment->departure->iataCode }}
                                                 </div>
                                                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
                                                     <label
-                                                        class="time m-0 p-0 font-15"><b>{{ getTime($segment->departure->at) }}</b></label>
+                                                        class="time label-12 m-0 p-0 font-15"><b>{{ getTime($segment->departure->at) }}</b></label>
                                                     <label
-                                                        class="m-0 p-0 font-weight-normal font-14">{{ getDates($segment->departure->at) }}</label>
+                                                        class="m-0 label-12 p-0 font-weight-normal font-14">{{ getDates($segment->departure->at) }}</label>
                                                     <br>
                                                     <span
-                                                        class="font-15">{{ getCity($segment->departure->iataCode) }}</span>
+                                                        class="font-15 label-13">{{ getCity($segment->departure->iataCode) }}</span>
                                                 </div>
                                                 <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 arrivedHead"></div>
                                                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
                                                     <span class="d-flex justify-content-end"><label
-                                                            class="time m-0 p-0 font-15"><b>{{ getTime($segment->arrival->at) }}</b></label>
+                                                            class="time label-12 m-0 p-0 font-15"><b>{{ getTime($segment->arrival->at) }}</b></label>
                                                         &nbsp;
                                                         <label
-                                                            class="m-0 p-0 font-weight-normal font-14">{{ getDates($segment->arrival->at) }}</label></span>
+                                                            class="m-0 label-12 p-0 font-weight-normal font-14">{{ getDates($segment->arrival->at) }}</label></span>
                                                     <span
-                                                        class="d-flex justify-content-end font-15">{{ getCity($segment->arrival->iataCode) }}</span>
+                                                        class="d-flex label-13 justify-content-end font-15">{{ getCity($segment->arrival->iataCode) }}</span>
                                                 </div>
 
 
 
-                                                <div class="p-2 border flightIatacode arrivedHead">
+                                                <div class="p-2 label-13 border flightIatacode arrivedHead">
                                                     {{ $segment->arrival->iataCode }}
 
                                                 </div>
                                                 <div class="col-xl-2 col-lg-1 col-md-1 col-sm-1 col-1 p-0 m-0">
                                                     <label
-                                                        class="col-12 d-flex p-0 m-0 justify-content-end">{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
+                                                        class="col-12 label-13 d-flex p-0 m-0 justify-content-end">{{ computeTime($segment->departure->at, $segment->arrival->at) }}</label>
                                                 </div>
 
                                             </div>
@@ -234,7 +234,7 @@
                         {{-- ==========================Passenger detail================================ --}}
                         <div class="card mb-2 listCard">
                             <div class="card-header bg-info text-white">
-                                <h5 class="text-uppercase text-muted py-2">Passenger Details</h5>
+                                <h5 class="text-uppercase text-muted py-2 label-15">Passenger Details</h5>
                             </div>
 
                             @foreach ($flightDetail->data->flightOffers[0]->travelerPricings as $key => $traveler)
@@ -289,19 +289,19 @@
                                 @endif
                             @endforeach
                             {{-- @foreach ($flightDetail->data->flightOffers[0]->travelerPricings as $key => $traveler) --}}
-                            <div class="card-body m-0 ">
+                            <div class="card-body m-0 card-body-1 zero">
                                 {{-- =============================Adult===================== --}}
                                 @if ($adultNum > 0)
                                     {{-- Adult passenger --}} <br>
-                                    <label class="text-uppercase text-info pb-2">Adult Passengers
+                                    <label class="text-uppercase text-info pb-2 zero label-13">Adult Passengers
                                         ({{ $adultNum }})
                                     </label>
                                     @for ($i = 0; $i < $adultNum; $i++)
                                         <input type="hidden" name="travelerType[]" value="Adult">
-                                        <div class="row px-4 mb-3">
-                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
+                                        <div class="row mb-3">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">First Name
+                                                    <label class="text-secondary label-13 text-uppercase">First Name
                                                     </label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
@@ -323,10 +323,10 @@
 
                                                 </div>
                                             </div>
-                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
 
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Last Name
+                                                    <label class="text-secondary label-13 text-uppercase">Last Name
                                                     </label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
@@ -338,7 +338,7 @@
                                             </div>
                                             <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Gender</label>
+                                                    <label class="text-secondary label-13 text-uppercase">Gender</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <select id="" name="gender[]" required
@@ -349,9 +349,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">DOB</label>
+                                                    <label class="text-secondary label-13 text-uppercase">DOB</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="date" name="dob[]" required value=""
@@ -361,7 +361,7 @@
                                             </div>
                                             <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Password Number
+                                                    <label class="text-secondary label-13 text-uppercase">Password Number
                                                         :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
@@ -372,7 +372,7 @@
                                             </div>
                                             <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Expiry Date :</label>
+                                                    <label class="text-secondary label-13 text-uppercase">Expiry Date :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="date" name="expiry_date[]" value=""
@@ -382,7 +382,7 @@
                                             </div>
                                             <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Issue Country
+                                                    <label class="text-secondary label-13 text-uppercase">Issue Country
                                                         :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
@@ -622,7 +622,7 @@
 
                                             <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Nationality :</label>
+                                                    <label class="text-secondary label-13 text-uppercase">Nationality :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <select name="nationality[]" required class="form-control"
@@ -868,15 +868,15 @@
 
                                 {{-- ===============================Child passenger================ --}}
                                 @if ($childNum > 0)
-                                    <label class="text-uppercase text-info pb-2">Child Passengers
+                                    <label class="text-uppercase text-info pb-2 zero label-13">Child Passengers
                                         ({{ $childNum }})</label>
                                     @for ($i = 0; $i < $childNum; $i++)
                                         <input type="hidden" name="travelerType[]" value="Child">
 
-                                        <div class="row px-4 mb-3 border-bottom">
-                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
+                                        <div class="row mb-3 border-bottom p-0">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">First Name :</label>
+                                                    <label class="text-secondary label-13 text-uppercase">First Name :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="text" name="first_name[]" required value=""
@@ -884,9 +884,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Last Name :</label>
+                                                    <label class="text-secondary label-13 text-uppercase">Last Name :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="text" name="last_name[]" required value=""
@@ -896,7 +896,7 @@
                                             </div>
                                             <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Gender :</label>
+                                                    <label class="text-secondary label-13 text-uppercase">Gender :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <select name="gender[]" id="" required
@@ -907,9 +907,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">DOB :</label>
+                                                    <label class="text-secondary label-13 text-uppercase">DOB :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="date" required name="dob[]" value=""
@@ -929,15 +929,15 @@
 
                                 {{-- ===============================Infant passenger================ --}}
                                 @if ($infantNum > 0)
-                                    <label class="text-uppercase text-info pb-2">Infant Passengers
+                                    <label class="text-uppercase text-info label-13 zero pb-2">Infant Passengers
                                         ({{ $infantNum }})</label>
                                     @for ($i = 0; $i < $infantNum; $i++)
                                         <input type="hidden" name="travelerType[]" value="Infant">
 
-                                        <div class="row px-4">
-                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
+                                        <div class="row">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">First Name :</label>
+                                                    <label class="text-secondary text-uppercase label-13">First Name :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="text" required name="first_name[]" value=""
@@ -945,9 +945,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
+                                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Last Name :</label>
+                                                    <label class="text-secondary text-uppercase label-13">Last Name :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="text" required value="" name="last_name[]"
@@ -957,7 +957,7 @@
                                             </div>
                                             <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">Gender :</label>
+                                                    <label class="text-secondary text-uppercase label-13">Gender :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <select name="gender[]" required id=""
@@ -968,9 +968,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-2 col-lg-6 col-md-4 col-sm-6 mb-4">
+                                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase">DOB :</label>
+                                                    <label class="text-secondary text-uppercase label-13">DOB :</label>
                                                     <div class="search-input search-input1">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="date" required name="dob[]" value=""
@@ -990,13 +990,13 @@
                         {{-- ===========================Billing Address============================= --}}
                         <div class="card listCard mb-5">
                             <div class="card-header bg-info text-white">
-                                <h5 class="text-uppercase text-muted py-2">Billing Address</h5>
+                                <h5 class="text-uppercase text-muted py-2 label-15">Billing Address</h5>
                             </div>
                             <div class="card-body">
                                 <div class="row px-4">
                                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Country :</label>
+                                            <label class="text-secondary text-uppercase label-13">Country :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <select name="country" required class="form-control" id="">
@@ -1224,7 +1224,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">City :</label>
+                                            <label class="text-secondary text-uppercase label-13">City :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" required name="city" value=""
@@ -1234,17 +1234,17 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Postal Code :</label>
+                                            <label class="text-secondary text-uppercase label-13">Postal Code :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
-                                                <input type="text" required name="postalCode" value=""
+                                                <input type="number" required name="postalCode" value=""
                                                     placeholder="Postal Code">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-6 col-md-12 col-sm-6 mb-4">
                                         <div class="wrapper">
-                                            <label class="text-secondary text-uppercase">Address :</label>
+                                            <label class="text-secondary text-uppercase label-13">Address :</label>
                                             <div class="search-input search-input1">
                                                 <a href="" target="_blank" hidden></a>
                                                 <input type="text" required value="" name="address"
@@ -1259,11 +1259,11 @@
                         {{-- ===========Payments============ --}}
                         <div class="card listCard mb-5">
                             <div class="card-header bg-info text-white">
-                                <h5 class="text-uppercase text-muted py-2">Payment and billing</h5>
+                                <h5 class="text-uppercase text-muted py-2 label-15">Payment and billing</h5>
                             </div>
                             <div class="card-body">
                                 <div class="main-container m-0 p-0">
-                                    <div class="radio-buttons ">
+                                    <div class="radio-buttons">
                                         <label class="custom-radio ">
                                             <input type="radio" value="Paypal" name="radio" checked>
                                             <span class="radio-btn"><i class="las la-check"></i>
@@ -1311,28 +1311,28 @@
                         {{-- ===========Policy============ --}}
                         <div class="card listCard mb-5">
                             <div class="card-header bg-info text-white">
-                                <h5 class="text-uppercase text-muted py-2">Policies and review </h5>
+                                <h5 class="text-uppercase text-muted py-2 label-15">Policies and review </h5>
                             </div>
-                            <div class="card-body">
-                                <span class="py-3 text-normal"> Passenger names must match passport or government
+                            <div class="card-body zero">
+                                <span class="py-3  text-normal label-13"> Passenger names must match passport or government
                                     issued
                                     photo ID exactly. </span>
                                 <br>
-                                <span>
+                                <span class="label-13">
                                     Pasenger 1: N/A
                                 </span>
 
-                                <div class="hr"></div>
+                                <div class="hr zero mt-3"></div>
                                 @php
                                     $detailedFareRules = $flightDetail->included->{'detailed-fare-rules'}->{1}->fareNotes->descriptions;
                                     // print_r($detailedFareRules);
                                 @endphp
-                                <div class="tab">
+                                <div class="tab mt-3">
                                     <ul class="nav nav-pills" role="tablist">
                                         @foreach ($detailedFareRules as $key => $item)
                                             {{-- <label class="text-danger">  </label><br> --}}
                                             <li class="nav-item">
-                                                <a class="nav-link {{ $key == 0 ? 'active' : '' }} text-blue"
+                                                <a class="nav-link label-13 {{ $key == 0 ? 'active' : '' }} text-blue"
                                                     data-toggle="tab" href="#tab{{ $key }}" role="tab"
                                                     aria-selected="true">{{ $item->descriptionType }}</a>
                                             </li>
@@ -1343,8 +1343,8 @@
                                         @foreach ($detailedFareRules as $key => $item)
                                             <div class="tab-pane fade show policy-height {{ $key == 0 ? 'active' : '' }} mt-3"
                                                 id="tab{{ $key }}" role="tabpanel">
-                                                <div class="pd-20">
-                                                    <span>
+                                                <div>
+                                                    <span class="label-12">
                                                         {{ $item->text }}
                                                     </span>
                                                 </div>
@@ -1355,26 +1355,27 @@
                                 </div>
 
 
-                                <br><br><br>
-                                <span>By clicking on Book Now, you agree that you have accepted the
+                                <br><br>
+                                <span class="label-13 mb-3">By clicking on Book Now, you agree that you have accepted the
                                     above-mentioned policies and have gone through our <span class="text-danger">Terms
                                         of
                                         Booking</span>, <span class="text-danger">Cancellation &
                                         Change and Privacy Policy</span></span>
+                                        <br>
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center mb-5">
+                        <div class="d-flex justify-content-center mt-5 ">
                             <button class="btn btn-info pt-2 pb-2 {{ Auth()->user() ? '' : 'disable' }}"
                                 type="submit">
-                                <h3 class="px-5 m-0 text-white text-uppercase fw-bold">Book Now</h3>
-                                <span class="text-uppercase"><i class="fa-solid fa-lock"></i>&nbsp;secure
+                                <h3 class="px-5 m-0 text-white text-uppercase label-15 fw-bold">Book Now</h3>
+                                <span class="text-uppercase label-13"><i class="fa-solid fa-lock"></i>&nbsp;secure
                                     payment</span>
                             </button>
                         </div>
 
-                        <label class="col-12 text-center py-2"><span class="text-warning text-uppercase">Warning :
-                            </span><span class="text-muted"><i>You are not loged in. Please login to
+                        <label class="col-12 text-center py-2"><span class="text-warning label-12 text-uppercase">Warning :
+                            </span><span class="text-muted label-12"><i>You are not loged in. Please login to
                                     book.</i></span></label>
                     </form>
                 </div>
@@ -1401,16 +1402,16 @@
                         <div class="card-body m-0 p-0">
                             <table class="col-12">
                                 <tr>
-                                    <th class="pl-3 py-3">Base</th>
-                                    <th class="py-3">{{ $totalBase }} {{ $currency }}</th>
+                                    <th class="pl-3 py-3 label-13">Base</th>
+                                    <th class="py-3 label-13">{{ $totalBase }} {{ $currency }}</th>
                                 </tr>
                                 <tr>
-                                    <th class="pl-3 py-3">Tax</th>
-                                    <th class="py-3">{{ $totaltax }} {{ $currency }}</th>
+                                    <th class="pl-3 py-3 label-13">Tax</th>
+                                    <th class="py-3 label-13">{{ $totaltax }} {{ $currency }}</th>
                                 </tr>
                                 <tr style="background-color: #148c9f">
-                                    <th class="pl-3 py-4">Total</th>
-                                    <th class="py-4">{{ $total }} {{ $currency }}</th>
+                                    <th class="pl-3 py-4 label-13">Total</th>
+                                    <th class="py-4 label-13">{{ $total }} {{ $currency }}</th>
                                 </tr>
                             </table>
                         </div>
@@ -1418,7 +1419,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 col-lg-1"></div>
+        <div class="col-xl-1 col-lg-12"></div>
     </div>
 
 @endsection

@@ -1442,4 +1442,42 @@ ul {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
+    .card-body-1{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .search-input1 input,
+    .search-input1 select {
+        height: 34px !important;
+        width: 100%;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 0 10px 0 10px !important;
+        font-size: 18px;
+    }
+
+    .search-input1 input,
+    .search-input1 select {
+        height: 45px;
+        width: 100%;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 0 20px 0 60px;
+        font-size: 13px;
+    }
+    .radio-buttons, .custom-radio, .radio-btn{
+        width: 211px !important;
+        display: flex;
+    }
+    .hobbies-icon{
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .hobbies-icon h3{
+        display: none !important;
+    }
 }

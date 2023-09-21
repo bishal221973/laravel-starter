@@ -25,22 +25,22 @@
                             <div class="card-body text-dark">
                                 <form action="{{ route('front.list') }}" method="GET">
 
-                                   <div class="row ml-3">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="way" checked
-                                            id="inlineRadio1" value="rounde trip">
-                                        <label class="form-check-label mt-1 text-secondary  text-uppercase label-12"
-                                            for="inlineRadio1">Round
-                                            trip</label>
+                                    <div class="row ml-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="way" checked
+                                                id="inlineRadio1" value="rounde trip">
+                                            <label class="form-check-label mt-1 text-secondary  text-uppercase label-12"
+                                                for="inlineRadio1">Round
+                                                trip</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="way" required
+                                                id="inlineRadio2" value="One Way">
+                                            <label class="form-check-label mt-1 text-secondary text-uppercase label-12"
+                                                for="inlineRadio2">One
+                                                way</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="way" required
-                                            id="inlineRadio2" value="One Way">
-                                        <label class="form-check-label mt-1 text-secondary text-uppercase label-12"
-                                            for="inlineRadio2">One
-                                            way</label>
-                                    </div>
-                                   </div>
                                     <div class="row px-3 mt-1">
                                         <div class="col-md-6 col-6 mb-4">
 
@@ -65,8 +65,7 @@
                                                 <label class="text-secondary text-uppercase label-12">Destination :</label>
                                                 <div class="search-input search-inputs">
                                                     <a href="" target="_blank" hidden></a>
-                                                    <input type="text" class="destination font"
-                                                        placeholder="City">
+                                                    <input type="text" class="destination font" placeholder="City">
                                                     <div class="autocom-box1">
                                                     </div>
                                                     <div class="icon"><i class="fa-solid fa-plane-departure"></i></div>
@@ -80,7 +79,8 @@
                                         <div class="row px-3">
                                             <div class="col-md-6 col-6 mb-4" id="departureDate">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase label-12">Depart time :</label>
+                                                    <label class="text-secondary text-uppercase label-12">Depart time
+                                                        :</label>
                                                     <div class="search-input">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="date" required name="departTime"
@@ -91,7 +91,8 @@
                                             </div>
                                             <div class="col-md-6 col-6 mb-4" id="returnDate">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase label-12">Return time :</label>
+                                                    <label class="text-secondary text-uppercase label-12">Return time
+                                                        :</label>
                                                     <div class="search-input">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="date" name="returnTime"
@@ -106,7 +107,8 @@
                                             <input type="hidden" name="infants" id="txtInfantNum" value="0">
                                             <div class="col-md-6 col-6 mb-4">
                                                 <div class="wrapper">
-                                                    <label class="text-secondary text-uppercase label-12">Passenger(s) :</label>
+                                                    <label class="text-secondary text-uppercase label-12">Passenger(s)
+                                                        :</label>
                                                     <div class="search-input">
                                                         <a href="" target="_blank" hidden></a>
                                                         <input type="text" readonly value="1 passenger(s)"
@@ -188,13 +190,16 @@
                     </div>
                     <div class="welcome-msg-pnl  col-xl-6 col-lg-5 col-md-12">
                         <span class="d-flex fw-bold" style="    font-family: 'Ubuntu', sans-serif;">
-                            <h1 class="text-uppercase fw-bold label-29">Welcome in <span class="text-danger">FlightsMojo</span>
+                            <h1 class="text-uppercase fw-bold label-29">Welcome in <span
+                                    class="text-danger">FlightsMojo</span>
                             </h1>
                         </span>
-                        <span style="position: relative;top:-10px;letter-spacing: 1px;" class="signika label-13"><i>Your Dream
+                        <span style="position: relative;top:-10px;letter-spacing: 1px;" class="signika label-13"><i>Your
+                                Dream
                                 Destinations, One Click Away!</i></span> <br>
 
-                        <label style="letter-spacing: 1.5px;" class="mt-4 p-0 welcome-msg signika label-13">"Seamless flight
+                        <label style="letter-spacing: 1.5px;" class="mt-4 p-0 welcome-msg signika label-13">"Seamless
+                            flight
                             bookings, endless
                             destinations. Your journey begins here. Discover, compare, and reserve flights effortlessly with
                             our user-friendly platform. Elevate your travel experience today!"</label>
@@ -246,8 +251,7 @@
 
                                                                 <div class="search-input">
                                                                     <a href="" target="_blank" hidden></a>
-                                                                    <input type="text" class="depart"
-                                                                        placeholder="">
+                                                                    <input type="text" class="depart" placeholder="">
                                                                     <div class="autocom-box">
                                                                     </div>
                                                                     <div class="icon"><i

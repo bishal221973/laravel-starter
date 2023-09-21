@@ -1394,4 +1394,52 @@ ul {
     .footer-icon{
         font-size: 25px !important;
     }
+    .top-search{
+        margin: 0 !important;
+        padding-top: 0px !important;
+        padding-top: 5px !important;
+        padding-bottom: 10px !important;
+        margin-top: 10px !important;
+    }
+    .cabin-top{
+        height: 30px;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .padding-1 button{
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+    }
+    .input768{
+        height: 35px;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        font-size: 12px !important;
+    }
+    .margin-0{
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+    .icon2{
+        font-size: 25px !important;
+    }
+    .card2{
+        padding-top: 1px !important;
+        padding-bottom: 1px !important;
+    }
+    .height-30{
+        height: 10px !important;
+    }
+    .border{
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+    }
+    .zero{
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
 }

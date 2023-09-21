@@ -6,7 +6,7 @@
             <div class="col-xl-8">
                 <div class="col-12 align-items-center d-flex justify-content-between">
                     <div class="d-flex align-items-center">
-                        <a href="#" class="menu-item text-secondary label-13 label-menu">Home</a>
+                        <a href="{{route('front.index')}}" class="menu-item text-secondary label-13 label-menu">Home</a>
                         <a href="#" class="menu-item text-secondary label-13 label-menu">Flight</a>
                         <a href="#" class="menu-item text-secondary label-13 label-menu">Contact us</a>
                     </div>

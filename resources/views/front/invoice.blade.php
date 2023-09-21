@@ -125,13 +125,13 @@
 
                                 <div class="col-xl-6 d-flex justify-content-end">
                                     <div class="d-block">
-                                        <span><label class="fw-bold text-uppercase">Payment Status : </label>
+                                        <span class="label-12"><label class="fw-bold text-uppercase">Payment Status : </label>
                                             Unpaid</span> <br>
-                                        <span><label class="fw-bold text-uppercase">Booking Status : </label>
+                                        <span class="label-12"><label class="fw-bold text-uppercase">Booking Status : </label>
                                             Pending</span> <br>
-                                        <span><label class="fw-bold text-uppercase">Phone : </label> 981468499</span>
+                                        <span class="label-12"><label class="fw-bold text-uppercase">Phone : </label> 981468499</span>
                                         <br>
-                                        <span><label class="fw-bold text-uppercase">Email : </label>
+                                        <span class="label-12"><label class="fw-bold text-uppercase">Email : </label>
                                             {{ $flightDetail->data->contacts[0]->emailAddress }}
                                         </span> <br>
                                     </div>
@@ -146,16 +146,16 @@
                             <div class="row d-flex align-items-center">
                                 <div class="col-xl-6">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="fw-bold">Pay with</h4> &nbsp;&nbsp;&nbsp;
-                                        <div class="card px-5 py-3">
-                                            <div class="card-body">
+                                        <h4 class="fw-bold label-15">Pay with</h4> &nbsp;&nbsp;&nbsp;
+                                        <div class="card px-5 py-3 zero zerolr">
+                                            <div class="card-body zero py1">
                                                 Pay Later
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 d-flex justify-content-end">
-                                    <h4><span class="fw-bold">
+                                    <h4><span class="fw-bold label-20">
                                             {{ $flightDetail->data->flightOffers[0]->price->grandTotal }}
                                             {{ $flightDetail->data->flightOffers[0]->price->billingCurrency }}
                                         </span></h4>
@@ -166,34 +166,34 @@
 
                     <table class="col-12 border mb-4">
                         <tr class="border" style="background-color: #F5F5F7">
-                            <th class="border px-5 py-3">Booking Refrence</th>
-                            <th class="border px-5 py-3">Booking Refrence</th>
-                            <th class="border px-5 py-3">Booking Date</th>
+                            <th class="border px-5 py-3 label-12">Booking Refrence</th>
+                            <th class="border px-5 py-3 label-12">Booking Refrence</th>
+                            <th class="border px-5 py-3 label-12">Booking Date</th>
                         </tr>
                         <tr class="border">
-                            <td class="border px-5 py-3">{{ $flightDetail->data->associatedRecords[0]->reference }}</td>
-                            <td class="border px-5 py-3">{{ $flightDetail->data->id }}</td>
-                            <td class="border px-5 py-3">{{ $flightDetail->data->associatedRecords[0]->creationDate }}
+                            <td class="border px-5 py-3 label-12">{{ $flightDetail->data->associatedRecords[0]->reference }}</td>
+                            <td class="border px-5 py-3 label-12">{{ $flightDetail->data->id }}</td>
+                            <td class="border px-5 py-3 label-12">{{ $flightDetail->data->associatedRecords[0]->creationDate }}
                             </td>
                         </tr>
                     </table>
                     <div class="card px-5 py-3" style="border-bottom-left-radius: 0px;border-bottom-right-radius: 0px">
-                        <h4 class="fw-bold text-uppercase">Travellers</h4>
+                        <h4 class="fw-bold text-uppercase label-14">Travellers</h4>
                     </div>
                     <table class="col-12 border mb-4">
                         <tr class="border" style="background-color: #F5F5F7">
-                            <th class="border px-5 py-3">No</th>
-                            <th class="border px-5 py-3">Name</th>
-                            <th class="border px-5 py-3">Date of Birth</th>
-                            <th class="border px-5 py-3">Gender</th>
+                            <th class="border px-5 py-3 label-13">S.N.</th>
+                            <th class="border px-5 py-3 label-13">Name</th>
+                            <th class="border px-5 py-3 label-13">Date of Birth</th>
+                            <th class="border px-5 py-3 label-13">Gender</th>
                         </tr>
                         @foreach ($flightDetail->data->travelers as $traveler)
                             <tr class="border">
-                                <td class="border px-5 py-3">{{ $loop->iteration }}</td>
-                                <td class="border px-5 py-3">{{ $traveler->name->firstName }}
+                                <td class="border px-5 py-3 label-13">{{ $loop->iteration }}</td>
+                                <td class="border px-5 py-3 label-13">{{ $traveler->name->firstName }}
                                     {{ $traveler->name->lastName }}</td>
-                                <td class="border px-5 py-3">{{ $traveler->dateOfBirth }}</td>
-                                <td class="border px-5 py-3">{{ $traveler->gender }}</td>
+                                <td class="border px-5 py-3 label-13">{{ $traveler->dateOfBirth }}</td>
+                                <td class="border px-5 py-3 label-13">{{ $traveler->gender }}</td>
                             </tr>
                         @endforeach
 
@@ -201,15 +201,15 @@
 
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h4 class="fw-bold text-uppercase">Flights</h4>
+                            <h4 class="fw-bold text-uppercase label-14">Flights</h4>
                         </div>
                         <div class="card-body px-3">
                             <div class="row d-flex align-items-center px-4">
                                 <div class="col-xl-6 d-flex align-items-center">
-                                    <i class="fa-solid fa-plane fa-3x text-secondary"
+                                    <i class="fa-solid fa-plane fa-3x text-secondary label-20"
                                         style="transform: rotate(270deg);"></i>
-                                    <div class="card" style="margin-left: 30px;margin-right: 30px">
-                                        <div class="card-body fw-bold">
+                                    <div class="card round-card" style="margin-left: 30px;margin-right: 20px;">
+                                        <div class="card-body fw-bold label-12 zero zerolr py1 px1">
                                             @if (count($flightDetail->data->flightOffers[0]->itineraries) > 1)
                                                 Roundup
                                             @else
@@ -217,53 +217,51 @@
                                             @endif
                                         </div>
                                     </div>
-                                    Buddha Airlines
+                                    <span class="label-13">Buddha Airlines</span>
                                 </div>
                                 <div class="col-xl-6 d-flex align-items-center justify-content-end">
                                     <div class="d-block pt-2" style="margin-right: 60px">
                                         <div class="d-flex align-items-center">
-                                            <label class="fw-bold m-0">Including Chacked bags only :</label>
-                                            {{ $flightDetail->data->flightOffers[0]->pricingOptions->includedCheckedBagsOnly ? 'True' : 'False' }}
+                                            <label class="fw-bold m-0 label-13">Including Chacked bags only :</label>
+                                            <span class="label-13">{{ $flightDetail->data->flightOffers[0]->pricingOptions->includedCheckedBagsOnly ? 'True' : 'False' }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <label class="fw-bold">Bag :</label>
-                                            {{ $flightDetail->data->flightOffers[0]->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weight }}
-                                            {{ $flightDetail->data->flightOffers[0]->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weightUnit }}
+                                            <label class="fw-bold label-13">Bag :</label>
+                                            <span class="label-12">{{ $flightDetail->data->flightOffers[0]->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weight }}
+                                                {{ $flightDetail->data->flightOffers[0]->travelerPricings[0]->fareDetailsBySegment[0]->includedCheckedBags->weightUnit }}</span>
                                         </div>
                                     </div>
-                                    <i class="fa-solid fa-suitcase-rolling fa-2x"></i>
+                                    <i class="fa-solid fa-suitcase-rolling fa-2x icon2"></i>
                                 </div>
                             </div>
                         </div>
                         <div style="background-color: #F5F5F7" class="py-4">
                             <div class="d-flex align-items-center px-5 mb-4">
-                                <i class="fa-solid fa-calendar-days text-secondary"
+                                <i class="fa-solid fa-calendar-days text-secondary icon2"
                                     style="font-size: 25px;margin-right:20px"></i>
-                                <h5 class="fw-bold" style="margin-right:40px">
-                                    {{-- @foreach ($flightDetail->data->flightOffers[0]->itineraries[0]->segments[0]->departure->iataCode as $item)
+                                <h5 class="fw-bold label-13" style="margin-right:40px">
 
-                                @endforeach --}}
-                                    {{ substr($flightDetail->data->flightOffers[0]->itineraries[0]->segments[0]->departure->at, 0, -9) }}
+                                    <span class="label-13">{{ substr($flightDetail->data->flightOffers[0]->itineraries[0]->segments[0]->departure->at, 0, -9) }}</span>
                                 </h5>
-                                <i class="fa-solid fa-clock text-secondary"
+                                <i class="fa-solid fa-clock text-secondary icon2"
                                     style="font-size: 25px;margin-right:20px"></i>
-                                <h5> {{ getTime($flightDetail->data->flightOffers[0]->itineraries[0]->segments[0]->departure->at) }}
+                                <h5 class="label-13"> {{ getTime($flightDetail->data->flightOffers[0]->itineraries[0]->segments[0]->departure->at) }}
                                 </h5>
-                                <span style="margin-left:50px" class="d-flex"><h5>Depart from : &nbsp;</h5>
+                                <span style="margin-left:50px" class="d-flex label-13"><h5 class="label-13">Depart from : &nbsp;</h5>
                                     {{getCity($flightDetail->data->flightOffers[0]->itineraries[0]->segments[0]->departure->iataCode) }}
                                 </span>
                             </div>
                             @foreach ($flightDetail->data->flightOffers[0]->itineraries[0]->segments as $segment)
                                 @if ($loop->last)
                                     <div class="d-flex align-items-center px-5">
-                                        <i class="fa-solid fa-calendar-days text-secondary"
+                                        <i class="fa-solid fa-calendar-days text-secondary icon2"
                                             style="font-size: 25px;margin-right:20px"></i>
-                                        <h5 class="fw-bold" style="margin-right:40px">{{ substr($segment->arrival->at, 0, -9) }}
+                                        <h5 class="fw-bold label-13" style="margin-right:40px">{{ substr($segment->arrival->at, 0, -9) }}
                                         </h5>
-                                        <i class="fa-solid fa-clock text-secondary"
+                                        <i class="fa-solid fa-clock icon2 text-secondary"
                                             style="font-size: 25px;margin-right:20px"></i>
-                                        <h5>{{ getTime($segment->arrival->at) }}</h5>
-                                        <span style="margin-left:50px" class="d-flex align-items-end"><h5>Depart from : &nbsp;</h5> {{getCity($segment->arrival->iataCode)}}</span>
+                                        <h5 class="label-13">{{ getTime($segment->arrival->at) }}</h5>
+                                        <span style="margin-left:50px" class="d-flex align-items-end label-13"><h5 class="label-13">Depart from : &nbsp;</h5> {{getCity($segment->arrival->iataCode)}}</span>
                                     </div>
                                 @endif
                             @endforeach
@@ -273,16 +271,16 @@
 
                     <div class="card px-5 py-3"
                         style="border-bottom-left-radius: 0px;border-bottom-right-radius: 0px">
-                        <h4 class="fw-bold text-uppercase">Fare details</h4>
+                        <h4 class="fw-bold text-uppercase label-14">Fare details</h4>
                     </div>
                     <table class="col-12 border mb-4">
                         <tr class="border" style="background-color: #F5F5F7">
-                            <th class="border px-5 py-3">Particular</th>
-                            <th class="border px-5 py-3">Pice</th>
+                            <th class="border px-5 py-3 label-13">Particular</th>
+                            <th class="border px-5 py-3 label-13">Pice</th>
                         </tr>
                         <tr class="border">
-                            <td class="border px-5 py-3">Base</td>
-                            <td class="border px-5 py-3">{{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->base}} {{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->currency}}</td>
+                            <td class="border px-5 py-3 label-13">Base</td>
+                            <td class="border px-5 py-3 label-13">{{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->base}} {{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->currency}}</td>
                         </tr>
                         @php
                             $totalTax=0;
@@ -293,16 +291,16 @@
                             @endphp
                         @endforeach
                         <tr class="border">
-                            <td class="border px-5 py-3">Tax</td>
-                            <td class="border px-5 py-3">{{$totalTax}} {{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->currency}}</td>
+                            <td class="border px-5 py-3 label-13">Tax</td>
+                            <td class="border px-5 py-3 label-13">{{$totalTax}} {{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->currency}}</td>
                         </tr>
                         <tr class="border" style="background-color: #F5F5F7">
-                            <td class="border px-5 py-3 fw-bold">Total</td>
-                            <td class="border px-5 py-3 fw-bold">{{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->total}} {{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->currency}}</td>
+                            <td class="border px-5 py-3 label-13 fw-bold">Total</td>
+                            <td class="border px-5 py-3 label-13 fw-bold">{{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->total}} {{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->currency}}</td>
                         </tr>
                         <tr class="border" style="background-color: #F5F5F7">
-                            <td class="border px-5 py-3 fw-bold">Refundable Tax</td>
-                            <td class="border px-5 py-3 fw-bold">{{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->refundableTaxes}} {{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->currency}}</td>
+                            <td class="border px-5 py-3 label-13 fw-bold">Refundable Tax</td>
+                            <td class="border px-5 py-3 label-13 fw-bold">{{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->refundableTaxes}} {{$flightDetail->data->flightOffers[0]->travelerPricings[0]->price->currency}}</td>
                         </tr>
 
                     </table>
@@ -310,20 +308,20 @@
 
                     <div class="card px-5 py-3"
                         style="border-bottom-left-radius: 0px;border-bottom-right-radius: 0px">
-                        <h4 class="fw-bold text-uppercase">Customer details</h4>
+                        <h4 class="fw-bold text-uppercase label-14">Customer details</h4>
                     </div>
                     <table class="col-12 border mb-4">
                         <tr class="border">
-                            <th class="border px-5 py-3">Name</th>
-                            <td class="border px-5 py-3">{{$flightDetail->data->contacts[0]->addresseeName->firstName}}</td>
-                            <th class="border px-5 py-3">Email</th>
-                            <td class="border px-5 py-3">{{$flightDetail->data->contacts[0]->emailAddress}}</td>
+                            <th class="border px-5 py-3 label-13">Name</th>
+                            <td class="border px-5 py-3 label-13">{{$flightDetail->data->contacts[0]->addresseeName->firstName}}</td>
+                            <th class="border px-5 py-3 label-13">Email</th>
+                            <td class="border px-5 py-3 label-13">{{$flightDetail->data->contacts[0]->emailAddress}}</td>
                         </tr>
                         <tr class="border">
-                            <th class="border px-5 py-3">Contact</th>
-                            <td class="border px-5 py-3">9814668499</td>
-                            <th class="border px-5 py-3">Address</th>
-                            <td class="border px-5 py-3">{{$flightDetail->data->contacts[0]->address->lines[0]}}</td>
+                            <th class="border px-5 py-3 label-13">Contact</th>
+                            <td class="border px-5 py-3 label-13">9814668499</td>
+                            <th class="border px-5 py-3 label-13">Address</th>
+                            <td class="border px-5 py-3 label-13">{{$flightDetail->data->contacts[0]->address->lines[0]}}</td>
                         </tr>
 
 
@@ -331,14 +329,14 @@
                     </table>
 
                     <div class="row">
-                        <div class="col-xl-4">
-                            <button class="btn btn-info col-12 fw-bold text-uppercase py-4">Download as PDF</button>
+                        <div class="col-xl-4 zero">
+                            <button class="btn btn-info col-12 fw-bold text-uppercase  zeor label-14">Download as PDF</button>
                         </div>
                         <div class="col-xl-4">
-                            <button class="btn btn-info col-12 fw-bold text-uppercase py-4">Send to whatsapp</button>
+                            <button class="btn btn-info col-12 fw-bold text-uppercase ">Send to whatsapp</button>
                         </div>
                         <div class="col-xl-4">
-                            <button class="btn btn-info col-12 fw-bold text-uppercase py-4">Cancellation</button>
+                            <button class="btn btn-info col-12 fw-bold text-uppercase ">Cancellation</button>
                         </div>
                     </div>
                 </div>

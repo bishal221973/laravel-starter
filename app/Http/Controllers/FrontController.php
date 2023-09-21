@@ -217,13 +217,13 @@ class FrontController extends Controller
         $jsonData = json_encode($requestData);
         try {
 
-            $response = $this->amadeus->getClient()->postWithStringBody("/v1/booking/flight-orders", $jsonData);
+            // $response = $this->amadeus->getClient()->postWithStringBody("/v1/booking/flight-orders", $jsonData);
 
-            $flightDetail = $response->getBody();
-            $flightDetail = json_decode($flightDetail);
+            // $flightDetail = $response->getBody();
+            // $flightDetail = json_decode($flightDetail);
             // session()->put('detail', $flightDetail);
             // return $flightData->itineraries[0]->segments;
-            // $flightDetail = session()->get('detail');
+            $flightDetail = session()->get('detail');
 
             $booking = Booking::create([
                 'user_id' => Auth()->user()->id,

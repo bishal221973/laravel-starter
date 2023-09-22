@@ -32,10 +32,10 @@ class FrontController extends Controller
         }
 
         try {
-            // $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
-            // $flightList = $response->getBody();
+            $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
+            $flightList = $response->getBody();
 
-            // session()->put('lists', $flightList);
+            session()->put('lists', $flightList);
 
             $flightList = session()->get('lists');
             $flightList = json_decode($flightList);
@@ -114,6 +114,7 @@ class FrontController extends Controller
     {
 
         $travelers = [];
+
 
 
         foreach ($request->first_name as $key => $item) {
@@ -218,11 +219,11 @@ class FrontController extends Controller
         $jsonData = json_encode($requestData);
         try {
 
-            // $response = $this->amadeus->getClient()->postWithStringBody("/v1/booking/flight-orders?include=status", $jsonData);
+            $response = $this->amadeus->getClient()->postWithStringBody("/v1/booking/flight-orders?include=status", $jsonData);
 
-            // $flightDetail = $response->getBody();
-            // $flightDetail = json_decode($flightDetail);
-            // session()->put('detail', $flightDetail);
+            $flightDetail = $response->getBody();
+            $flightDetail = json_decode($flightDetail);
+            session()->put('detail', $flightDetail);
             // return $flightData->itineraries[0]->segments;
             $flightDetail = session()->get('detail');
 

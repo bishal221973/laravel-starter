@@ -358,9 +358,9 @@
 
                         <div class="row">
                             <div class="col-xl-4 zero">
-                                <button
+                                <a href="{{route('user.pdf',$flightDetail->data->id)}}"
                                     class="btn btn-info col-12 fw-bold text-uppercase  zeor label-14 d-flex align-items-center"><i
-                                        class="fa-solid fa-download fa-2x mr-3"></i> Download as PDF</button>
+                                        class="fa-solid fa-download fa-2x mr-3"></i> Download as PDF</a>
                             </div>
                             <div class="col-xl-4">
                                 <button class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i

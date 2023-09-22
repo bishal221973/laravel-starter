@@ -79,6 +79,7 @@ Route::get('/my-booking-lists',[RegisterController::class,'myBooking'])->name('u
 Route::get('/my-profile',[RegisterController::class,'myProfile'])->name('user.myProfile');
 
 Route::get('/my-bookings',[RegisterController::class,'myBookings'])->name('user.myBookings');
+Route::get('/download-pdf/{id}',[RegisterController::class,'pdf'])->name('user.pdf');
 
 
 

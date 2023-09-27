@@ -157,6 +157,7 @@
     </script>
     <!-- welcome modal end -->
     <!-- js -->
+
     <script src="{{ asset('vendors/scripts/core.js') }}"></script>
     <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
     <script src="{{ asset('vendors/scripts/process.js') }}"></script>
@@ -171,6 +172,7 @@
     <script src="{{ asset('imgCrop/croppie.js') }}"></script>
     <script src="{{ asset('front.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
 </body>
 
 @yield('datatable')

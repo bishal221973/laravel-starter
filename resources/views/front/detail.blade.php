@@ -1265,7 +1265,7 @@
                                 <div class="main-container m-0 p-0">
                                     <div class="radio-buttons">
                                         <label class="custom-radio ">
-                                            <input type="radio" value="Paypal" name="radio" checked>
+                                            <input type="radio" value="Paypal" name="payment_method"  checked>
                                             <span class="radio-btn"><i class="las la-check"></i>
                                                 <div class="hobbies-icon">
                                                     <img src="{{ asset('paypal.png') }}">
@@ -1274,7 +1274,7 @@
                                             </span>
                                         </label>
                                         <label class="custom-radio">
-                                            <input type="radio" value="Bank Transfer" name="radio">
+                                            <input type="radio" value="Bank Transfer" name="payment_method" >
                                             <span class="radio-btn"><i class="las la-check"></i>
                                                 <div class="hobbies-icon">
                                                     <img src="{{ asset('bank_transfer.png') }}">
@@ -1283,7 +1283,7 @@
                                             </span>
                                         </label>
                                         <label class="custom-radio">
-                                            <input type="radio" value="Pay Later" name="radio">
+                                            <input type="radio" value="Pay Later" name="payment_method" >
                                             <span class="radio-btn"><i class="las la-check"></i>
                                                 <div class="hobbies-icon">
                                                     <img src="{{ asset('pay_later.png') }}">
@@ -1292,7 +1292,7 @@
                                             </span>
                                         </label>
                                         <label class="custom-radio">
-                                            <input type="radio" value="Stripe" name="radio">
+                                            <input type="radio" value="Stripe" name="payment_method" >
                                             <span class="radio-btn"><i class="las la-check"></i>
                                                 <div class="hobbies-icon">
                                                     <img src="{{ asset('stripe.png') }}">
@@ -1300,6 +1300,17 @@
                                                 </div>
                                             </span>
                                         </label>
+
+                                        <label class="custom-radio">
+                                            <input type="radio" value="Cash Payment" id="cashPayment"  name="payment_method">
+                                            <span class="radio-btn"><i class="las la-check"></i>
+                                                <div class="hobbies-icon">
+                                                    <img src="{{ asset('cash.png') }}">
+                                                    <h3 class="">Cash Payment</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+                                        <input type="text">
 
                                     </div>
 

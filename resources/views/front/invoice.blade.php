@@ -121,23 +121,20 @@
                                     <div class="col-xl-6">
                                         <img src="{{ asset('logo.png') }}" alt="" style="height: 80px">
                                     </div>
-
                                     <div class="col-xl-6 d-flex justify-content-end">
                                         <div class="d-block mr-3">
                                             <span class="label-12"><label class="fw-bold text-uppercase">Payment Status :
                                                 </label>
-                                                Unpaid</span> <br>
-                                            {{-- <span class="label-12"><label class="fw-bold text-uppercase">Booking Status :
-                                                </label>
-                                                Pending</span> <br> --}}
-                                            @if (Auth()->user()->contact_number)
-                                                <span class="label-12"><label class="fw-bold text-uppercase">Phone :
-                                                    </label> {{Auth()->user()->contact_number}}</span>
-                                                <br>
-                                            @endif
-                                            <span class="label-12"><label class="fw-bold text-uppercase">Email : </label>
-                                                {{ $flightDetail->data->contacts[0]->emailAddress }}
-                                            </span> <br>
+                                                {{-- {{ $payment->payment_status }}</span> <br> --}}
+                                                @if (Auth()->user()->contact_number)
+                                                    <span class="label-12"><label class="fw-bold text-uppercase">Phone :
+                                                        </label> {{ Auth()->user()->contact_number }}</span>
+                                                    <br>
+                                                @endif
+                                                <span class="label-12"><label class="fw-bold text-uppercase">Email :
+                                                    </label>
+                                                    {{ $flightDetail->data->contacts[0]->emailAddress }}
+                                                </span> <br>
                                         </div>
                                         {!! QrCode::size(100)->generate($flightDetail->data->id) !!}
                                     </div>
@@ -154,7 +151,7 @@
                                             <h4 class="fw-bold label-15">Pay with</h4> &nbsp;&nbsp;&nbsp;
                                             <div class="card px-5 py-3 zero zerolr">
                                                 <div class="card-body zero py1">
-                                                    Pay Later
+                                                    {{-- {{ $payment->payment_method }} --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -277,7 +274,7 @@
                                                 style="font-size: 25px;margin-right:20px"></i>
                                             <h5 class="label-13">{{ getTime($segment->arrival->at) }}</h5>
                                             <span style="margin-left:50px" class="d-flex align-items-end label-13">
-                                                <h5 class="label-13">Depart from : &nbsp;</h5>
+                                                <h5 class="label-13">Arrived To : &nbsp;</h5>
                                                 {{ getCity($segment->arrival->iataCode) }}
                                             </span>
                                         </div>
@@ -351,23 +348,25 @@
                                 <td class="border px-5 py-3 label-13">
                                     {{ $flightDetail->data->contacts[0]->address->lines[0] }}</td>
                             </tr>
-
-
-
                         </table>
 
                         <div class="row">
-                            <div class="col-xl-4 zero">
-                                <a href="{{route('user.pdf',$flightDetail->data->id)}}"
-                                    class="btn btn-info col-12 fw-bold text-uppercase  zeor label-14 d-flex align-items-center"><i
-                                        class="fa-solid fa-download fa-2x mr-3"></i> Download as PDF</a>
+                            <div class="col-xl-3 zero">
+                                {{-- <a href="{{ route('user.pdf', $payment->id) }}"
+                                    class="btn btn-info col-12 fw-bold text-uppercase  zeor label-13 d-flex align-items-center"><i
+                                        class="fa-solid fa-download fa-2x mr-3"></i> Download as PDF</a> --}}
                             </div>
-                            <div class="col-xl-4">
+                            <div class="col-xl-3">
                                 <button class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i
                                         class="fa-brands fa-whatsapp fa-2x mr-3"></i>Send to whatsapp</button>
                             </div>
-                            <div class="col-xl-4">
+                            <div class="col-xl-3">
                                 <button class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i
+                                        class="fa-solid fa-money-bill-transfer fa-2x mr-3"></i>Payment</button>
+                            </div>
+                            <div class="col-xl-3">
+                                <button id="btnCancel"
+                                    class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i
                                         class="fa-solid fa-xmark fa-2x mr-3 text-danger"></i>Cancellation</button>
                             </div>
                         </div>
@@ -378,3 +377,23 @@
         </div>
     </section>
 @endsection
+
+@push('script')
+    <script>
+        $("#btnCancel").on('click',function(){
+            var token="{{$token}}";
+            var url = "https://test.api.amadeus.com/v1/booking/flight-orders/" + "{{$flightDetail->data->id}}";
+            axios.delete(url,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    }
+                }).then((response) => {
+                    console.log(response);
+                }).catch(error => {
+
+                    console.log(error);
+                });
+        });
+    </script>
+@endpush

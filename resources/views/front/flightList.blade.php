@@ -525,8 +525,11 @@
                                                         <div class="col-12 p-0 m-0">
                                                             <div class="row d-flex align-items-center m-0 p-0">
                                                                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-2">
-                                                                    <label class="mt-3 detail-airline label-12">Buddha
-                                                                        Air</label> <br>
+                                                                    <label class="mt-3 detail-airline label-12">
+                                                                        @php
+                                                                        print_r(getAirLine($dictionaries,$flightList->validatingAirlineCodes[0]));
+                                                                    @endphp
+                                                                    </label> <br>
                                                                     <span
                                                                         class="carrireCode label-12">{{ $segment->carrierCode }}-{{ $segment->number }}</span>
                                                                 </div>

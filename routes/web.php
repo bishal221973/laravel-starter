@@ -80,6 +80,7 @@ Route::get('/my-profile',[RegisterController::class,'myProfile'])->name('user.my
 
 Route::get('/my-bookings',[RegisterController::class,'myBookings'])->name('user.myBookings');
 Route::get('/download-pdf/{id}',[RegisterController::class,'pdf'])->name('user.pdf');
+Route::get('/cancel-booking/{id}',[FrontController::class,'cancelation'])->name('flight.cancelation');
 
 
 

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Amadeus\Amadeus;
+use App\Models\Payment;
 use Barryvdh\DomPDF\Facade\Pdf;
+use QrCode;
+
 class RegisterController extends Controller
 {
     private $amadeus;
@@ -49,17 +52,34 @@ class RegisterController extends Controller
 
     public function pdf($id)
     {
+        $payment=Payment::where('id',$id)->first();
         // $apiUrl = "/v1/booking/flight-orders/" . $id;
         // $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
         // $flightList = $response->getBody();
 
         // session()->put('lists', $flightList);
 
-        $flightDetail = session()->get('lists');
-        // $flightDetail = json_decode($flightDetail);
+        $flightDetail = session()->get('detail');
 
-        $pdf = Pdf::loadView('front.pdf.invoice', ['flightDetail' => $flightDetail]);
-        // return $pdf->download('invoice.pdf');
+
+
+
+
+        $pdf = app('dompdf.wrapper');
+
+        $contxt = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE,
+            ]
+        ]);
+
+        $pdf = PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        $pdf->getDomPDF()->setHttpContext($contxt);
+        $pdf = Pdf::loadView('front.pdf.invoice', compact('flightDetail','payment'));
+        $fecha = date('Y-m-d');
         return $pdf->stream();
+        return $pdf->download("Flight-booking-" . $fecha . ".pdf");
     }
 }

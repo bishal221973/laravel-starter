@@ -40,12 +40,17 @@
                     </ul>
                 </li> --}}
                 <li class="dropdown">
+                    <a href="{{ route('agency.index') }}" class="dropdown-toggle">
+                        <span class="myicon fa-solid fa-plane"></span><span class="mtext">Airline</span>
+                    </a>
+                </li>
+
+                <li class="dropdown">
                     <a href="{{ route('report') }}" class="dropdown-toggle">
                         <span class="myicon bi bi-house"></span><span class="mtext">Report</span>
                     </a>
 
                 </li>
-
             </ul>
         </div>
     </div>

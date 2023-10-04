@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
@@ -62,6 +63,7 @@ Route::resource('country',CountryController::class)->middleware('role');
 Route::get('report',[ReportController::class,'report'])->name('report')->middleware('role');
 Route::get('report-filter',[ReportController::class,'reportFilter'])->name('reportFilter')->middleware('role');
 Route::get('export-excel',[ReportController::class,'exportExcel'])->name('exportExcel')->middleware('role');
+Route::resource('agency',AgencyController::class)->middleware('role');
 
 
 

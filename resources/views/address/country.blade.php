@@ -85,16 +85,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '0b1078469c47845d501745fc044b3010',
-                                'format' : 'iframe',
-                                'height' : 600,
-                                'width' : 160,
-                                'params' : {}
-                            };
-                            document.write('<scr' + 'ipt type="text/javascript" src="//www.profitablecreativeformat.com/0b1078469c47845d501745fc044b3010/invoke.js"></scr' + 'ipt>');
-                        </script>
+
 
                     </div>
                 </div>

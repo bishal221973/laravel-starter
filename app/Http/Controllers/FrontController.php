@@ -38,6 +38,7 @@ class FrontController extends Controller
         try {
             $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
             $flightList = $response->getBody();
+            return "sdds";
 
             session()->put('lists', $flightList);
 
@@ -420,5 +421,9 @@ class FrontController extends Controller
         echo $result;
 
         return;
+    }
+
+    public function review(){
+        return view('front.review');
     }
 }

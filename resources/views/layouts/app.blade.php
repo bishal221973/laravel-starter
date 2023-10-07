@@ -231,9 +231,10 @@
             width: 80px;
             border-radius: 20px;
         }
-        .dropdown-toggle{
+
+        .dropdown-toggle {
             padding: 0 !important;
-            padding-left:10px !important;
+            padding-left: 10px !important;
             padding-top: 10px !important;
             padding-bottom: 10px !important;
         }
@@ -244,7 +245,8 @@
             font-size: 21px !important;
             padding-right: 10px;
         }
-        .register-panel{
+
+        .register-panel {
             height: 100vh !important;
             background-image: url('flight2.jpg') !important;
         }
@@ -283,6 +285,9 @@
     <script src="{{ asset('vendors/scripts/dashboard3.js') }}"></script>
     <script src="{{ asset('fontawesome/all.min.js') }}"></script>
     <script src="{{ asset('imgCrop/croppie.js') }}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0"
@@ -511,7 +516,18 @@
             });
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <script>
+        $(function() {
+            $(".rateYo").rateYo({
+                readOnly: true
+            });
+        });
+    </script>
+
 </body>
 
 @yield('datatable')
+
 </html>

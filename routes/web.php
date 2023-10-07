@@ -8,6 +8,7 @@ use App\Http\Controllers\OTPController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -83,7 +84,13 @@ Route::get('/my-profile',[RegisterController::class,'myProfile'])->name('user.my
 Route::get('/my-bookings',[RegisterController::class,'myBookings'])->name('user.myBookings');
 Route::get('/download-pdf/{id}',[RegisterController::class,'pdf'])->name('user.pdf');
 Route::get('/cancel-booking/{id}',[FrontController::class,'cancelation'])->name('flight.cancelation');
+Route::get('/review',[FrontController::class,'review'])->name('flight.review');
 
+Route::get('reviews',[ReviewController::class,'store'])->name('reviews.store');
+Route::get('review-lists',[ReviewController::class,'index'])->name('reviews.index');
+Route::get('review/{id}',[ReviewController::class,'edit'])->name('reviews.edit');
+Route::get('reviews-update/{id}',[ReviewController::class,'update'])->name('reviews.update');
+Route::get('reviews-delete/{id}',[ReviewController::class,'delete'])->name('reviews.delete');
 
 
 

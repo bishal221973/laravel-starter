@@ -1499,3 +1499,26 @@ ul {
         height: 250px !important;
     }
 }
+.testimonials::after{
+    content: '';
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    background-color: #272E30;
+    top: 0;
+    left: 0;
+}
+
+
+.testimonials::before{
+    content: '';
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    background-color: #ACA397;
+    bottom: 0;
+    left: 0;
+}
+.comment-icon{
+    font-size: 45px;
+}

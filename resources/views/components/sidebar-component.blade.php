@@ -44,6 +44,11 @@
                         <span class="myicon fa-solid fa-plane"></span><span class="mtext">Airline</span>
                     </a>
                 </li>
+                <li class="dropdown">
+                    <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
+                        <span class="myicon fa-solid fa-plane"></span><span class="mtext">Reviews</span>
+                    </a>
+                </li>
 
                 <li class="dropdown">
                     <a href="{{ route('report') }}" class="dropdown-toggle">

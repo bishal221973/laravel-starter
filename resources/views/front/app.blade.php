@@ -104,6 +104,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/all.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('imgCrop/croppie.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
@@ -150,7 +151,7 @@
     <x-footer-component />
 
     <script>
-        document.getElementById('myForm').addEventListener('submit', function () {
+        document.getElementById('myForm').addEventListener('submit', function() {
             // Show the preloader when the form is submitted
             // document.getElementById('preloader').style.display = 'block';
         });
@@ -173,6 +174,7 @@
     <script src="{{ asset('front.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 </body>
 
 @yield('datatable')

@@ -12,7 +12,7 @@ class ReportController extends Controller
 {
     public function report()
     {
-        // $reports = Booking::latest()->with('user')->get();
+       return $reports = Booking::latest()->with('user')->get();
         $bookings = DB::table('bookings')
             ->select('*')
             ->join('users', 'users.id', '=', 'bookings.user_id');

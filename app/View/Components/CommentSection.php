@@ -29,6 +29,11 @@ class CommentSection extends Component
         foreach ($reviews as $key => $review) {
             $totalRating = $totalRating + $review->rating;
         }
+
+        if($total==0){
+            $total=1;
+        }
+
         $rating = $totalRating / $total;
 
         if ($rating >= 4) {

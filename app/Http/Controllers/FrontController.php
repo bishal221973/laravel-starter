@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Http;
 
 use Amadeus\Client\Provider;
 use App\Models\Review;
+use App\Models\Search;
+use App\Models\Service;
 
 class FrontController extends Controller
 {
@@ -25,11 +27,26 @@ class FrontController extends Controller
     }
     public function index()
     {
-        return view('front.home');
+        $services=Service::latest()->limit(3)->get();
+        return view('front.home',compact('services'));
     }
 
     public function list(Request $request)
     {
+        $search = Search::where('from', $request->depart)->where('to', $request->destination)->first();
+
+        $count = $search;
+        if ($count == null) {
+            Search::create([
+                'from' => $request->depart,
+                'to' => $request->destination,
+                'count' => $count->count + 1
+            ]);
+        } else {
+            $search->update([
+                'count' => $count->count + 1,
+            ]);
+        }
         if ($request->returnTime == "") {
             $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&adults=' . $request->adult . '&children=' . $request->child . '&infants=' . $request->infants . '&nonStop=false&max=100'; // Replace with your API URL
         } else {
@@ -116,27 +133,27 @@ class FrontController extends Controller
         }
     }
 
-    private function api_call($url, $params, $oauth = true){
+    private function api_call($url, $params, $oauth = true)
+    {
 
         $getdata = http_build_query(
-          $params
+            $params
         );
 
         $ch = curl_init();
 
 
-        if($oauth !== true){
-          curl_setopt($ch, CURLOPT_URL, $url );
+        if ($oauth !== true) {
+            curl_setopt($ch, CURLOPT_URL, $url);
 
-          curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POST, true);
 
-          // curl_setopt($ch, CURLOPT_HEADER, true);
+            // curl_setopt($ch, CURLOPT_HEADER, true);
 
-          curl_setopt($ch, CURLOPT_POSTFIELDS, $getdata);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $getdata);
         } else {
 
-          curl_setopt($ch, CURLOPT_URL, $url . '?' . $getdata);
-
+            curl_setopt($ch, CURLOPT_URL, $url . '?' . $getdata);
         }
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -146,16 +163,15 @@ class FrontController extends Controller
         //curl_setopt($ch, CURLOPT_VERBOSE, true);
 
         $headers = [
-          'content-type: application/x-www-form-urlencoded',
+            'content-type: application/x-www-form-urlencoded',
         ];
 
-        if($oauth){
-          if(!$this->api_token){
-            return false;
-          }
+        if ($oauth) {
+            if (!$this->api_token) {
+                return false;
+            }
 
-          $headers[] = "Authorization: Bearer ". $this->api_token;
-
+            $headers[] = "Authorization: Bearer " . $this->api_token;
         }
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -168,13 +184,13 @@ class FrontController extends Controller
         curl_close($ch);
 
         $response = [
-          'http_code' => $http_code,
-          'body'    => $data
+            'http_code' => $http_code,
+            'body'    => $data
         ];
 
         // session()->put('token',$response);
         return $response;
-      }
+    }
     public function book(Request $request)
     {
 
@@ -182,19 +198,18 @@ class FrontController extends Controller
             'client_id'     => 'IyIEHFKtolObKGs3QtjtCA393VpKS2cN',
             'client_secret' => "G8Q4JKsjSjxSvYSX",
             'grant_type'    => 'client_credentials',
-          ], false)['body'];
+        ], false)['body'];
 
 
 
-          if($response_text){
+        if ($response_text) {
 
             $response = json_decode($response_text);
 
-            if(isset($response->state) && $response->state === 'approved'){
-              $token= $response->access_token;
+            if (isset($response->state) && $response->state === 'approved') {
+                $token = $response->access_token;
             }
-
-          }
+        }
         $travelers = [];
 
 
@@ -374,7 +389,7 @@ class FrontController extends Controller
             //     Traveller::create($data);
 
             // }
-            return view('front.invoice', compact('flightDetail','token'));
+            return view('front.invoice', compact('flightDetail', 'token'));
         } catch (Exception $e) {
             $fullResponse = $e->getMessage();
             $jsonStart = strpos($fullResponse, '{');
@@ -424,23 +439,28 @@ class FrontController extends Controller
         return;
     }
 
-    public function review(){
-        $num=Review::latest()->get()->count();
-        $reviews= Review::latest()->get();
-        $totalRating=0;
+    public function review()
+    {
+        $num = Review::latest()->get()->count();
+        $reviews = Review::latest()->get();
+        $totalRating = 0;
         foreach ($reviews as $key => $review) {
-            $totalRating=$totalRating + $review->rating;
+            $totalRating = $totalRating + $review->rating;
         }
 
-        $rating= $totalRating/$num;
-
-        if($rating>=4){
-            $ststus="Excellent";
-        }else if($rating <4 && $rating>=3){
-            $ststus="Good";
-        }else{
-            $ststus="Ok";
+        if ($num == 0) {
+            $num = 1;
         }
-        return view('front.review',compact('rating','num','reviews','ststus'));
+
+        $rating = $totalRating / $num;
+
+        if ($rating >= 4) {
+            $ststus = "Excellent";
+        } else if ($rating < 4 && $rating >= 3) {
+            $ststus = "Good";
+        } else {
+            $ststus = "Ok";
+        }
+        return view('front.review', compact('rating', 'num', 'reviews', 'ststus'));
     }
 }

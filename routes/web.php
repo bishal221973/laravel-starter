@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -92,6 +93,9 @@ Route::get('review/{id}',[ReviewController::class,'edit'])->name('reviews.edit')
 Route::get('reviews-update/{id}',[ReviewController::class,'update'])->name('reviews.update');
 Route::get('reviews-delete/{id}',[ReviewController::class,'delete'])->name('reviews.delete');
 
+
+Route::get('service/{id}/delete',[ServiceController::class,'deletes'])->name('service')->middleware('role');
+Route::resource('servece',ServiceController::class)->middleware('role');
 
 
 Route::get('/migrate',function(){

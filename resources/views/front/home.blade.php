@@ -279,44 +279,31 @@
                 <div class="col-xl-2 col-lg-1"></div>
                 <div class="col-xl-8 col-lg-10">
                     <div class="row px-3">
-                        <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
+
+                        @foreach ($services as $service)
+
+                        <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
                             <div class="card  front-card1 bg-white h-100">
                                 <div class="card-body h-100">
-                                    <h5 class="text-center mb-3 label-16">Fly Now Pay Later</h5>
+                                    <h5 class="text-center mb-3 label-16">{{$service->name}}</h5>
                                     <div class="col-12 d-flex justify-content-center mb-3">
-                                        <div class="img-div" style="background-image: url('fnpl_icon2.png')">
+                                        <div class="img-div" style="background-image: url({{asset('storage')}}{{'/'}}{{$service->image}})">
                                         </div>
                                     </div>
-                                    <label class="col-12 text-center text-muted">Spread the cost of your trip! FNPL makes
-                                        it
-                                        simpler than ever to book a vacation now and pay it off later. </label>
+                                    <label class="col-12 text-center text-muted">{{ Str::substr($service->description, 0, 200) }}</label>
 
                                     <br>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 mb-3">
-                            <div class="card  front-card1 bg-white h-100">
-                                <div class="card-body h-100">
-                                    <h5 class="text-center mb-3">Fly Now Pay Later</h5>
-                                    <div class="col-12 d-flex justify-content-center mb-3">
-                                        <div class="img-div" style="background-image: url('fnpl_icon2.png')">
-                                        </div>
-                                    </div>
-                                    <label class="col-12 text-center text-muted">Get an enhanced set of terms of conditions
-                                        which in unforeseen circumstances outside of your control, enables you to apply for
-                                        refund on non-refundable bookings. </label>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-1"></div>
             </div>
         </div>
-
+        <x-route-component/>
         <x-contact-component/>
         <x-comment-section/>
     </section>

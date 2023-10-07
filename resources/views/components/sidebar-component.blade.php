@@ -46,10 +46,29 @@
                 </li>
                 <li class="dropdown">
                     <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
-                        <span class="myicon fa-solid fa-plane"></span><span class="mtext">Reviews</span>
+                        <span class="myicon fa-solid fa-comments"></span><span class="mtext">Reviews</span>
                     </a>
                 </li>
-
+                <li class="dropdown">
+                    <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
+                        <span class="myicon fa-solid fa-sitemap"></span><span class="mtext">Agency</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ route('servece.index') }}" class="dropdown-toggle">
+                        <span class="myicon fa-solid fa-sliders"></span><span class="mtext">Services</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
+                        <span class="myicon fa-solid fa-users"></span><span class="mtext">Users</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
+                        <span class="myicon fa-solid fa-gear"></span><span class="mtext">Settings</span>
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="{{ route('report') }}" class="dropdown-toggle">
                         <span class="myicon bi bi-house"></span><span class="mtext">Report</span>

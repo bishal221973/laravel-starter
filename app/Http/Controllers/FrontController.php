@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Http;
 
 
 use Amadeus\Client\Provider;
+use App\Models\Review;
 
 class FrontController extends Controller
 {
@@ -424,6 +425,22 @@ class FrontController extends Controller
     }
 
     public function review(){
-        return view('front.review');
+        $num=Review::latest()->get()->count();
+        $reviews= Review::latest()->get();
+        $totalRating=0;
+        foreach ($reviews as $key => $review) {
+            $totalRating=$totalRating + $review->rating;
+        }
+
+        $rating= $totalRating/$num;
+
+        if($rating>=4){
+            $ststus="Excellent";
+        }else if($rating <4 && $rating>=3){
+            $ststus="Good";
+        }else{
+            $ststus="Ok";
+        }
+        return view('front.review',compact('rating','num','reviews','ststus'));
     }
 }

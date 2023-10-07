@@ -10,15 +10,10 @@
                     </div>
                     <div class="pl-3">
                         <h5>Flights Mojo</h5>
-                        <label>Reviews 1000 (Excellent)</label>
+                        <label>Reviews {{ $num }} ({{$ststus}})</label>
                         <div class="d-flex mt-2 align-items-center">
-                            <i class="fa-regular fa-star fa-2x"></i>
-                            <i class="fa-regular fa-star fa-2x"></i>
-                            <i class="fa-regular fa-star fa-2x"></i>
-                            <i class="fa-regular fa-star fa-2x"></i>
-                            <i class="fa-regular fa-star fa-2x"></i>
-
-                            <label class="pl-3">5.0</label>
+                            <div id="rateYo1" class="m-0 p-0" data-rateyo-rating="{{ $rating }}"></div>
+                            <label class="pl-3">{{ Str::substr($rating, 0, 3) }}</label>
                         </div>
                     </div>
                 </div>
@@ -30,10 +25,10 @@
 
         <div class="row">
             <div class="col-xl-2"></div>
-            <div class="col-xl-8">
+            <div class="col-xl-8 mb-5">
                 <div class="row">
                     <div class="col-xl-8">
-                        <form action="{{route('reviews.store')}}">
+                        <form action="{{ route('reviews.store') }}">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row d-flex align-items-center">
@@ -73,7 +68,8 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="card mt-3">
+
+                        {{-- <div class="card mt-3">
                             <div class="card-body">
                                 <h5>Reviews <i class="fa-regular fa-star"></i> 5.0</h5>
                                 <label>1000 Total</label>
@@ -129,13 +125,34 @@
                                     <div class="col">78%</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="card mt-3 mb-5">
-                            <div class="card-body">
+                        @foreach ($reviews as $review)
+                            <div class="card mt-3 mb-5">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex align-items-center justify-content-center bg-info text-white"
+                                            style="height: 50px;width: 50px;border-radius:50%">
+                                            {{ Str::substr($review->name, 0, 1) }}</div>
+                                        <label class="pl-3">{{ $review->name }}</label>
+                                    </div>
+                                    <hr>
+                                    <label>{{ $review->comment }}</label>
 
+                                    <hr>
+
+                                    @php
+                                        $dateTime = new DateTime($review->created_at);
+                                        $date = $dateTime->format('Y-m-d');
+                                        $timeWithAMPM = $dateTime->format('h:i A');
+                                    @endphp
+                                    <label class="text-muted"><i class="fa-solid fa-calendar-days"></i>
+                                        {{ $date }}</label>
+                                    <label class="pl-3 text-muted"><i class="fa-solid fa-clock"></i>
+                                        {{ $timeWithAMPM }}</label>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

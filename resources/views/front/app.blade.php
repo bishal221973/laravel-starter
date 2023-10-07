@@ -175,6 +175,20 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+    <script>
+        $(function() {
+            $("#rateYo1").rateYo({
+                readOnly: true
+            });
+        });
+
+        $(function() {
+            $(".rateYo").rateYo({
+                readOnly: true
+            });
+        });
+    </script>
 </body>
 
 @yield('datatable')

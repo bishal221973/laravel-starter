@@ -5,120 +5,34 @@
         <div class="col-xl-1"></div>
         <div class="col-xl-10">
             <div class="row mt-5">
-                <div class="col-xl-3">
 
-                    <div class="card" style="z-index: 9">
-                        <div class="card-body">
-                            <i class="fa-solid fa-quote-right comment-icon"></i>
-                            <label class="mt-3 mb-3">"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur nisi assumenda quia
-                                incidunt vitae animi dolore nesciunt impedit vero praesentium!"</label>
+                @foreach ($reviews as $review)
+                    <div class="col-xl-3">
 
-                                <h5 class="">Bishal Chaudhary</h5>
+                        <div class="card" style="z-index: 9">
+                            <div class="card-body">
+                                <i class="fa-solid fa-quote-right comment-icon"></i>
+                                <label class="mt-3 mb-3">"{{ Str::substr($review->comment, 0, 200) . "..." }}"</label>
 
-                                <div class="d-flex mt-2">
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-xl-3">
-
-                    <div class="card" style="z-index: 9">
-                        <div class="card-body">
-                            <i class="fa-solid fa-quote-right comment-icon"></i>
-                            <label class="mt-3 mb-3">"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur nisi assumenda quia
-                                incidunt vitae animi dolore nesciunt impedit vero praesentium!"</label>
-
-                                <h5 class="">Bishal Chaudhary</h5>
+                                <h5 class="">{{$review->name}}</h5>
 
                                 <div class="d-flex mt-2">
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
+                                    <div id="" class="rateYo m-0 p-0" data-rateyo-rating="{{$review->rating}}"></div>
                                 </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-
-
-
-
-
-
-                <div class="col-xl-3">
-
-                    <div class="card" style="z-index: 9">
-                        <div class="card-body">
-                            <i class="fa-solid fa-quote-right comment-icon"></i>
-                            <label class="mt-3 mb-3">"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur nisi assumenda quia
-                                incidunt vitae animi dolore nesciunt impedit vero praesentium!"</label>
-
-                                <h5 class="">Bishal Chaudhary</h5>
-
-                                <div class="d-flex mt-2">
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-                <div class="col-xl-3">
-
-                    <div class="card" style="z-index: 9">
-                        <div class="card-body">
-                            <i class="fa-solid fa-quote-right comment-icon"></i>
-                            <label class="mt-3 mb-3">"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur nisi assumenda quia
-                                incidunt vitae animi dolore nesciunt impedit vero praesentium!"</label>
-
-                                <h5 class="">Bishal Chaudhary</h5>
-
-                                <div class="d-flex mt-2">
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="col-12 mt-5">
-                <h3>Excellent</h3>
+                <h3>{{$ststus}}</h3>
                 <div class="d-flex mt-2">
-                    <i class="fa-regular fa-star fa-2x"></i>
-                    <i class="fa-regular fa-star fa-2x"></i>
-                    <i class="fa-regular fa-star fa-2x"></i>
-                    <i class="fa-regular fa-star fa-2x"></i>
-                    <i class="fa-regular fa-star fa-2x"></i>
+                    <div id="rateYo1" class=" m-0 p-0" data-rateyo-rating="{{$rating}}"></div>
                 </div>
-                <label class="mt-3">Based on <a href="{{route('flight.review')}}" class="text-info">52555 reviews</a></label>
+                <label class="mt-3">Based on <a href="{{ route('flight.review') }}" class="text-dark"><u>{{$total}}
+                    reviews</u></a></label>
             </div>
         </div>
     </div>

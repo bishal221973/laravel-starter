@@ -317,6 +317,7 @@
             </div>
         </div>
 
+        <x-contact-component/>
         <x-comment-section/>
     </section>
 @endsection

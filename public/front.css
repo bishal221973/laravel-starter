@@ -1522,3 +1522,15 @@ ul {
 .comment-icon{
     font-size: 45px;
 }
+.contact-icon{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+.contact-icon i{
+    font-size: 25px !important;
+}

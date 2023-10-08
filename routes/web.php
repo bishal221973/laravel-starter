@@ -12,6 +12,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,6 +66,12 @@ Route::resource('country',CountryController::class)->middleware('role');
 Route::get('report',[ReportController::class,'report'])->name('report')->middleware('role');
 Route::get('report-filter',[ReportController::class,'reportFilter'])->name('reportFilter')->middleware('role');
 Route::get('export-excel',[ReportController::class,'exportExcel'])->name('exportExcel')->middleware('role');
+
+Route::get('users',[UserController::class,'index'])->name('user.index')->middleware('role');
+Route::post('users',[UserController::class,'store'])->name('user.store')->middleware('role');
+Route::get('users/{id}',[UserController::class,'edit'])->name('user.edit')->middleware('role');
+Route::put('users/{id}',[UserController::class,'update'])->name('user.update')->middleware('role');
+Route::get('users/{id}/delete',[UserController::class,'destroy'])->name('user.destroy')->middleware('role');
 Route::resource('agency',AgencyController::class)->middleware('role');
 
 

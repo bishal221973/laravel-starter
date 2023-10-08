@@ -60,12 +60,12 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
+                    <a href="{{ route('user.index') }}" class="dropdown-toggle">
                         <span class="myicon fa-solid fa-users"></span><span class="mtext">Users</span>
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
+                    <a href="{{ route('setting.index') }}" class="dropdown-toggle">
                         <span class="myicon fa-solid fa-gear"></span><span class="mtext">Settings</span>
                     </a>
                 </li>

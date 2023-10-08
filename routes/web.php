@@ -72,6 +72,7 @@ Route::resource('agency',AgencyController::class)->middleware('role');
 
 
 Route::get('/flight-lists',[FrontController::class,'list'])->name('front.list');
+Route::post('/contacts-us',[FrontController::class,'contactUs'])->name('front.contactUs');
 Route::post('/flight-detail/{amadeus}',[FrontController::class,'detail'])->name('front.detail');
 Route::get('/flight-details',[FrontController::class,'showDetails'])->name('front.showDetails');
 Route::post('/flight-booking',[FrontController::class,'book'])->name('front.book');

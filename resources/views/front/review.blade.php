@@ -159,7 +159,8 @@
                             <div class="card-body">
                                 <h5>Contact Us</h5>
 
-                                <form action="#">
+                                <form action="{{ route('front.contactUs') }}" method="POST">
+                                    @csrf
                                     <div class="wrapper">
                                         <label class="text-secondary text-uppercase label-13">Name :</label>
                                         <div class="search-input search-input1">
@@ -188,7 +189,7 @@
                                         <label class="text-secondary text-uppercase label-13">Message :</label>
                                         <div class="search-input search-input1">
                                             <a href="" target="_blank" hidden></a>
-                                            <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                                            <textarea name="message" class="form-control" id="" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-xl-12 mt-4">

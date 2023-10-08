@@ -10,7 +10,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Client\HttpClientException;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Mail;
 
 use Amadeus\Client\Provider;
 use App\Models\Agency;
@@ -464,5 +464,33 @@ class FrontController extends Controller
             $ststus = "Ok";
         }
         return view('front.review', compact('rating', 'num', 'reviews', 'ststus'));
+    }
+
+    public function contactUs(Request $request){
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['subject'] = $request->subject;
+
+        // Create an OTP code array
+        $code = ['otp' => '900'];
+
+        // Create an array with more data (not used in your provided code)
+        $myData = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message
+        ];
+
+        // Send an email using Laravel's Mail functionality
+        $sent = Mail::send('layouts.mail', ['myData' => $myData], function ($message) use ($data) {
+            $message->to('bishalcodeslaravel@gmail.com'); // Recipient's email address
+            $message->subject($data['subject']); // Email subject
+        });
+
+
+        return redirect()->back()->with('success',"Mail Send");
+
+
     }
 }

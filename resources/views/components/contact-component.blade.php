@@ -4,7 +4,8 @@
         <div class="row px-3">
             <div class="col-xl-6  col-lg-6 col-md-5 mb-3">
                 <h1>For all enquiries, please send a message</h1>
-                <label class="mt-4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                <label class="mt-4">There are many variations of passages of Lorem Ipsum available, but the majority
+                    have suffered
                     alteration.</label>
 
                 <div class="card bg-info mt-5">
@@ -39,56 +40,61 @@
             <div class="col-xl-6 col-lg-6 col-md-7">
                 <div class="card h-100">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 mb-4">
-                                <div class="wrapper">
-                                    <label class="text-secondary text-uppercase label-13">Name :</label>
-                                    <div class="search-input search-input1">
-                                        <a href="" target="_blank" hidden></a>
-                                        <input type="text" required name="name" value=""
-                                            placeholder="Full Name">
+                        <form action="{{ route('front.contactUs') }}" method="POST">
+                            @csrf
+
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 mb-4">
+                                    <div class="wrapper">
+                                        <label class="text-secondary text-uppercase label-13">Name :</label>
+                                        <div class="search-input search-input1">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" required name="name" value=""
+                                                placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 mb-4">
+                                    <div class="wrapper">
+                                        <label class="text-secondary text-uppercase label-13">Email :</label>
+                                        <div class="search-input search-input1">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" required name="email" value=""
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12 mb-4">
+                                    <div class="wrapper">
+                                        <label class="text-secondary text-uppercase label-13">Subject :</label>
+                                        <div class="search-input search-input1">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" required name="subject" value=""
+                                                placeholder="Subject">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12 mb-4">
+                                    <div class="wrapper">
+                                        <label class="text-secondary text-uppercase label-13">Message :</label>
+                                        <div class="search-input search-input1">
+                                            <a href="" target="_blank" hidden></a>
+                                            <textarea name="message" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12 mb-4">
+                                    <div class="wrapper">
+                                        <input type="submit" required name="subject" value="Send"
+                                            class="btn btn-info" placeholder="Subject">
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-xl-6 col-lg-6 mb-4">
-                                <div class="wrapper">
-                                    <label class="text-secondary text-uppercase label-13">Email :</label>
-                                    <div class="search-input search-input1">
-                                        <a href="" target="_blank" hidden></a>
-                                        <input type="text" required name="email" value=""
-                                            placeholder="Email">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12 mb-4">
-                                <div class="wrapper">
-                                    <label class="text-secondary text-uppercase label-13">Subject :</label>
-                                    <div class="search-input search-input1">
-                                        <a href="" target="_blank" hidden></a>
-                                        <input type="text" required name="subject" value=""
-                                            placeholder="Subject">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12 mb-4">
-                                <div class="wrapper">
-                                    <label class="text-secondary text-uppercase label-13">Message :</label>
-                                    <div class="search-input search-input1">
-                                        <a href="" target="_blank" hidden></a>
-                                        <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12 mb-4">
-                                <div class="wrapper">
-                                    <input type="submit" required name="subject" value="Send" class="btn btn-info" placeholder="Subject">
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

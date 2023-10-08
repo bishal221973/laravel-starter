@@ -578,9 +578,7 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    @php
-                                        break;
-                                    @endphp
+
                                 @endforeach
                             </tr>
                         </table>

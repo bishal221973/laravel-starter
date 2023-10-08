@@ -54,6 +54,7 @@ Route::post('/change-address', [SettingController::class, "changeAddress"])->nam
 Route::get('/verify-email', [SettingController::class, "verifyEmail"])->name('setting.verifyEmail')->middleware('role');
 Route::get('/enter-verification-code', [SettingController::class, "verifyCode"])->name('setting.verifyCode')->middleware('role');
 Route::get('/email-verification-code', [SettingController::class, "verifyEmailCode"])->name('setting.verifyEmailCode')->middleware('role');
+Route::post('/api-setting', [SettingController::class, "api"])->name('setting.api')->middleware('role');
 
 Route::post('/app-setting', [SettingController::class, "appSetting"])->name('setting.appSetting')->middleware('role');
 Route::post('/mail-setting', [SettingController::class, "mailSetting"])->name('setting.mailSetting')->middleware('role');
@@ -83,6 +84,7 @@ Route::post('/contacts-us',[FrontController::class,'contactUs'])->name('front.co
 Route::post('/flight-detail/{amadeus}',[FrontController::class,'detail'])->name('front.detail');
 Route::get('/flight-details',[FrontController::class,'showDetails'])->name('front.showDetails');
 Route::post('/flight-booking',[FrontController::class,'book'])->name('front.book');
+Route::get('/flight-booking-cancel/{id}',[FrontController::class,'bookCancel'])->name('front.bookCancel');
 
 Route::post('/user-registration',[RegisterController::class,'register'])->name('user.register');
 Route::get('/user-profile',[RegisterController::class,'profile'])->name('user.profile');

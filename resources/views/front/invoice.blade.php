@@ -352,18 +352,18 @@
 
                         <div class="row">
                             <div class="col-xl-3 zero">
-                                {{-- <a href="{{ route('user.pdf', $payment->id) }}"
+                                <a href="{{ route('user.pdf', $payment->id) }}"
                                     class="btn btn-info col-12 fw-bold text-uppercase  zeor label-13 d-flex align-items-center"><i
-                                        class="fa-solid fa-download fa-2x mr-3"></i> Download as PDF</a> --}}
+                                        class="fa-solid fa-download fa-2x mr-3"></i> Download as PDF</a>
                             </div>
-                            <div class="col-xl-3">
+                            {{-- <div class="col-xl-3">
                                 <button class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i
                                         class="fa-brands fa-whatsapp fa-2x mr-3"></i>Send to whatsapp</button>
-                            </div>
-                            <div class="col-xl-3">
+                            </div> --}}
+                            {{-- <div class="col-xl-3">
                                 <button class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i
                                         class="fa-solid fa-money-bill-transfer fa-2x mr-3"></i>Payment</button>
-                            </div>
+                            </div> --}}
                             <div class="col-xl-3">
                                 <button id="btnCancel"
                                     class="btn btn-info col-12 fw-bold text-uppercase d-flex align-items-center"><i
@@ -380,20 +380,34 @@
 
 @push('script')
     <script>
-        $("#btnCancel").on('click',function(){
-            var token="{{$token}}";
-            var url = "https://test.api.amadeus.com/v1/booking/flight-orders/" + "{{$flightDetail->data->id}}";
-            axios.delete(url,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
+        $("#btnCancel").on('click', function() {
+            var id = "{{ $booking->id }}";
+            var deleteUrl = "{{ route('front.bookCancel', ':id') }}";
+            deleteUrl = deleteUrl.replace(':id', id);
+            // alert(url);
+            var token = "{{ $token }}";
+            var url = "https://test.api.amadeus.com/v1/booking/flight-orders/" + "{{ $flightDetail->data->id }}";
+            axios.delete(url, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            }).then((response) => {
+                $.ajax({
+                    url: deleteUrl,
+                    type: "GET",
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    cache: false,
+                    dataType: 'json',
+                    success: function(dataResult) {
                     }
-                }).then((response) => {
-                    console.log(response);
-                }).catch(error => {
-
-                    console.log(error);
                 });
+                window.location.href = "http://127.0.0.1:8001";
+            }).catch(error => {
+
+                console.log(error);
+            });
         });
     </script>
 @endpush

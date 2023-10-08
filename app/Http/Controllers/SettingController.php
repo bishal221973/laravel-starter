@@ -258,4 +258,21 @@ class SettingController extends Controller
 
 
     }
+
+
+    public function api(Request $request){
+        if ($request->key) {
+            settings()->set("key", $request->key);
+        }
+
+        if ($request->secret) {
+            settings()->set("secret", $request->secret);
+        }
+
+        if ($request->max) {
+            settings()->set("max", $request->max);
+        }
+
+        return redirect()->back()->with('success',"Key was saved.");
+    }
 }

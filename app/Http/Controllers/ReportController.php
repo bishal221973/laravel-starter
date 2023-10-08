@@ -12,14 +12,14 @@ class ReportController extends Controller
 {
     public function report()
     {
-       return $reports = Booking::latest()->with('user')->get();
-        $bookings = DB::table('bookings')
-            ->select('*')
-            ->join('users', 'users.id', '=', 'bookings.user_id');
+       $reports = Booking::latest()->with('user')->get();
+        // $bookings = DB::table('bookings')
+        //     ->select('*')
+        //     ->join('users', 'users.id', '=', 'bookings.user_id');
 
-        $bookings = $bookings->latest()->get()->toArray();
+        // $bookings = $bookings->latest()->get()->toArray();
 
-        $reports = $bookings;
+        // $reports = $bookings;
         return view('layouts.report', compact('reports'));
     }
     public function reportFilter(Request $request)

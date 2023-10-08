@@ -61,20 +61,22 @@
 
 
                                 {{-- ============================================ --}}
-                                <input type="hidden" value="{{ $_GET['customer'] ? $_GET['customer'] : '' }}"
+
+                                <input type="hidden" value="{{ isset($_GET['customer']) ? $_GET['customer'] : '' }}"
                                     name="customer">
-                                <input type="hidden" value="{{ $_GET['origin'] ? $_GET['origin'] : '' }}" name="origin">
-                                <input type="hidden" value="{{ $_GET['destination'] ? $_GET['destination'] : '' }}"
+                                <input type="hidden" value="{{ isset($_GET['origin']) ? $_GET['origin'] : '' }}"
+                                    name="origin">
+                                <input type="hidden" value="{{ isset($_GET['destination']) ? $_GET['destination'] : '' }}"
                                     name="destination">
                                 <input type="hidden"
-                                    value="{{ $_GET['departureTime'] ? $_GET['departureTime'] : '' }}" name="departureTime"
-                                    placeholder="Destination" class="form-control">
-                                {{-- <hr> --}}
-                                <input type="hidden" value="{{ $_GET['arrivalTime'] ? $_GET['arrivalTime'] : '' }}"
+                                    value="{{ isset($_GET['departureTime']) ? $_GET['departureTime'] : '' }}"
+                                    name="departureTime" placeholder="Destination" class="form-control">
+                                <input type="hidden" value="{{ isset($_GET['arrivalTime']) ? $_GET['arrivalTime'] : '' }}"
                                     name="arrivalTime">
-                                <input type="hidden" value="{{ $_GET['bookingId'] ? $_GET['bookingId'] : '' }}"
+                                <input type="hidden" value="{{ isset($_GET['bookingId']) ? $_GET['bookingId'] : '' }}"
                                     name="bookingId">
-                                <input type="hidden" value="{{ $_GET['status'] ? $_GET['status'] : '' }}" name="status">
+                                <input type="hidden" value="{{ isset($_GET['status']) ? $_GET['status'] : '' }}"
+                                    name="status">
                                 {{-- ============================================ --}}
 
 
@@ -83,22 +85,24 @@
                                     EXCEL</button>
                             </form>
                             {{-- <button class="btn btn-info"><i class="fa-solid fa-file-csv"></i> CSV</button> --}}
-                            <button class="btn btn-info mx-3"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+                            {{-- <button class="btn btn-info mx-3"><i class="fa-solid fa-file-pdf"></i> PDF</button> --}}
                         </div>
                     </div>
+                    <hr>
                     <div class="col-12">
                         <form action="{{ route('reportFilter') }}" method="GET">
                             <div class="row">
                                 <div class="col-xl-2">
-                                    <input type="text" value="{{ $_GET['customer'] ? $_GET['customer'] : '' }}"
+                                    <input type="text" value="{{ isset($_GET['customer']) ? $_GET['customer'] : '' }}"
                                         name="customer" placeholder="Customer" class="form-control">
                                 </div>
                                 <div class="col-xl-2">
-                                    <input type="text" value="{{ $_GET['origin'] ? $_GET['origin'] : '' }}"
+                                    <input type="text" value="{{ isset($_GET['origin']) ? $_GET['origin'] : '' }}"
                                         name="origin" placeholder="Origin" class="form-control">
                                 </div>
                                 <div class="col-xl-2">
-                                    <input type="text" value="{{ $_GET['destination'] ? $_GET['destination'] : '' }}"
+                                    <input type="text"
+                                        value="{{ isset($_GET['destination']) ? $_GET['destination'] : '' }}"
                                         name="destination" placeholder="Destination" class="form-control">
                                 </div>
                                 <div class="col-xl-2 m-0 p-0 pt-1">
@@ -113,23 +117,23 @@
                                             <div class="p-2">
                                                 <label class="text-muted">Departure</label>
                                                 <input type="datetime-local"
-                                                    value="{{ $_GET['departureTime'] ? $_GET['departureTime'] : '' }}"
+                                                    value="{{ isset($_GET['departureTime']) ? $_GET['departureTime'] : '' }}"
                                                     name="departureTime" placeholder="Destination" class="form-control">
                                                 {{-- <hr> --}}
                                                 <label class="text-muted mt-2">Arrival</label>
                                                 <input type="datetime-local"
-                                                    value="{{ $_GET['arrivalTime'] ? $_GET['arrivalTime'] : '' }}"
+                                                    value="{{ isset($_GET['arrivalTime']) ? $_GET['arrivalTime'] : '' }}"
                                                     name="arrivalTime" placeholder="Destination" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-2">
-                                    <input type="text" value="{{ $_GET['bookingId'] ? $_GET['bookingId'] : '' }}"
+                                    <input type="text" value="{{ isset($_GET['bookingId']) ? $_GET['bookingId'] : '' }}"
                                         name="bookingId" placeholder="Booking ID" class="form-control">
                                 </div>
                                 <div class="col-xl-2">
-                                    <input type="text" value="{{ $_GET['status'] ? $_GET['status'] : '' }}"
+                                    <input type="text" value="{{ isset($_GET['status']) ? $_GET['status'] : '' }}"
                                         name="status" placeholder="Status" class="form-control">
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
@@ -147,6 +151,8 @@
                             </div>
                         </form>
                     </div>
+
+                    <hr>
 
                     <div class="pb-20">
                         <table class="data-table table hover multiple-select-row nowrap">
@@ -175,7 +181,13 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            {{ $report->first_name }} {{ $report->last_name }} <br> {{ $report->email }}
+                                            @if (isset($_GET['arrivalTime']))
+                                            {{ $report->first_name }} {{ $report->last_name }} <br>
+                                            {{ $report->email }}
+                                            @else
+                                                {{ $report->user->first_name }} {{ $report->user->last_name }} <br>
+                                                {{ $report->email }}
+                                            @endif
                                         </td>
                                         <td>
                                             {{ getCity($report->fromIataCode) }} ({{ $report->fromIataCode }})

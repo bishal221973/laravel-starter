@@ -275,11 +275,11 @@
                                         <th class="label-13">Price</th>
                                         {{-- <th>Booking Id</th> --}}
                                         <th class="label-13">Payment Ststus</th>
-                                        <th class="label-13">Invoice</th>
+                                        {{-- <th class="label-13">Invoice</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (App\Models\Booking::where('user_id', Auth()->user()->id)->get() as $booking)
+                                    @foreach (App\Models\Booking::where('user_id', Auth()->user()->id)->latest()->get() as $booking)
                                         <tr>
                                             <td class="table-plus label-13">{{ $loop->iteration }}</td>
                                             <td class="label-13">
@@ -297,9 +297,9 @@
                                             <td>{{$booking->price}}</td>
                                             {{-- <td>{{$booking->booking_id}}</td> --}}
                                             <td>{{$booking->status}}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <a href="#"><i class="fa-solid fa-download fa-2x"></i></a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
 

@@ -86,9 +86,13 @@
                                             <a class="nav-link rounded py-3" data-toggle="tab" href="#mailSetting" role="tab"
                                                 aria-selected="false"><i class="fa-solid fa-envelope pr-2"></i>Mail Setting</a>
                                         </li>
-                                        <li class="nav-item ">
+                                        {{-- <li class="nav-item ">
                                             <a class="nav-link rounded py-3" data-toggle="tab" href="#orgSetting" role="tab"
                                                 aria-selected="false"><i class="fa-solid fa-envelope pr-2"></i>Organization Setting</a>
+                                        </li> --}}
+                                        <li class="nav-item ">
+                                            <a class="nav-link rounded py-3" data-toggle="tab" href="#apiSetting" role="tab"
+                                                aria-selected="false"><i class="fa-solid fa-envelope pr-2"></i>API Setting</a>
                                         </li>
                                     @endrole
                                 </ul>
@@ -547,7 +551,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade show active" id="orgSetting" role="tabpanel"
+                                    <div class="tab-pane fade" id="orgSetting" role="tabpanel"
                                         style="overflow: scroll">
                                         <div class="pd-20">
                                             <h5 class="text-uppercase">Organization Setting</h5>
@@ -586,6 +590,49 @@
                                                         <x-input required="true" type="text" name="org_address"
                                                             label="Organization Address :" placeholder="Organization Address"
                                                             default="{{ settings()->get('org_address', $default = null) }}" />
+                                                    </div>
+
+                                                </div>
+
+                                                <input type="submit" value="Change  " class="btn btn-info col-12">
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade show active" id="orgSetting" role="tabpanel"
+                                        style="overflow: scroll">
+                                        <div class="pd-20">
+                                            <h5 class="text-uppercase">API Setting</h5>
+                                            <small style="font-size: 14px"
+                                                class="p-0 m-0">{{ Auth()->user()->first_name . ' ' . Auth()->user()->middel_name . ' ' . Auth()->user()->last_name }}
+                                                <i
+                                                    class="fa-solid fa-minus text-secondary px-2"></i>{{ settings()->get('full_name', $default = null) }}
+                                                {{ settings()->get('short_name') ? '(' . settings()->get('short_name') . ')' : '' }}</small>
+                                            <br>
+
+
+
+
+                                            <hr>
+                                            <h5 class="text-uppercase mb-3">Change API Setting</h5>
+                                            <form action="{{ route('setting.api') }}" method="POST">
+                                                @csrf
+
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <x-input required="true" type="text" name="key"
+                                                            label="API Key :" placeholder="API Key"
+                                                            default="{{ settings()->get('key', $default = null) }}" />
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <x-input required="true" type="text" name="secret"
+                                                            label="API Secret :" placeholder="API Secret"
+                                                            default="{{ settings()->get('secret', $default = null) }}" />
+                                                    </div>
+
+                                                    <div class="col-xl-12">
+                                                        <x-input required="true" type="number" name="max"
+                                                            label="Maximum response :" placeholder="Maximum response"
+                                                            default="{{ settings()->get('max', $default = null) }}" />
                                                     </div>
 
                                                 </div>

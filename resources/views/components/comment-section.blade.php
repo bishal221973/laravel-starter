@@ -7,7 +7,7 @@
             <div class="row mt-5">
 
                 @foreach ($reviews as $review)
-                    <div class="col-xl-3">
+                    <div class="col-xl-3 col-lg-6 mb-3 col-md-6">
 
                         <div class="card" style="z-index: 9">
                             <div class="card-body">

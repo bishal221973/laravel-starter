@@ -1,8 +1,8 @@
 <div class="row" style="background-color: #fbfcf8">
-    <div class="col-xl-2"></div>
-    <div class="col-xl-8 py-5">
-        <div class="row">
-            <div class="col-xl-6">
+    <div class="col-xl-1 col-lg-1"></div>
+    <div class="col-xl-10 col-lg-12 py-5">
+        <div class="row px-3">
+            <div class="col-xl-6  col-lg-6 col-md-5 mb-3">
                 <h1>For all enquiries, please send a message</h1>
                 <label class="mt-4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered
                     alteration.</label>
@@ -36,11 +36,11 @@
                 </div>
             </div>
 
-            <div class="col-xl-6">
+            <div class="col-xl-6 col-lg-6 col-md-7">
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xl-6 mb-4">
+                            <div class="col-xl-6 col-lg-6 mb-4">
                                 <div class="wrapper">
                                     <label class="text-secondary text-uppercase label-13">Name :</label>
                                     <div class="search-input search-input1">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-xl-6 mb-4">
+                            <div class="col-xl-6 col-lg-6 mb-4">
                                 <div class="wrapper">
                                     <label class="text-secondary text-uppercase label-13">Email :</label>
                                     <div class="search-input search-input1">

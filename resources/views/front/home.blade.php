@@ -255,19 +255,13 @@
             <div class="row bg-success bg-info mb-4">
                 <div class="col-xl-2 col-lg-1 col-md-12"></div>
                 <div class="col-xl-8 col-lg-10 col-md-12">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
-                            <img src="{{ asset('arc_icon.png') }}" alt="" width="100%" srcset="">
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
-                            <img src="{{ asset('asta_icon.png') }}" alt="" width="100%" srcset="">
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
-                            <img src="{{ asset('safty_icon.png') }}" alt="" width="100%" srcset="">
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
-                            <img src="{{ asset('trust_icon.png') }}" alt="" width="100%" srcset="">
-                        </div>
+                    <div class="row d-flex justify-content-center">
+                        @foreach ($agencies as $agency)
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
+                                <img src="{{ asset('storage') }}{{'/'}}{{$agency->image}}" alt="" style="height: 100px;width:100%" srcset="">
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-1 col-md-12"></div>
@@ -281,21 +275,22 @@
                     <div class="row px-3">
 
                         @foreach ($services as $service)
-
-                        <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
-                            <div class="card  front-card1 bg-white h-100">
-                                <div class="card-body h-100">
-                                    <h5 class="text-center mb-3 label-16">{{$service->name}}</h5>
-                                    <div class="col-12 d-flex justify-content-center mb-3">
-                                        <div class="img-div" style="background-image: url({{asset('storage')}}{{'/'}}{{$service->image}})">
+                            <div class="col-xl-4 col-lg-6 col-md-6 mb-3">
+                                <div class="card  front-card1 bg-white h-100">
+                                    <div class="card-body h-100">
+                                        <h5 class="text-center mb-3 label-16">{{ $service->name }}</h5>
+                                        <div class="col-12 d-flex justify-content-center mb-3">
+                                            <div class="img-div"
+                                                style="background-image: url({{ asset('storage') }}{{ '/' }}{{ $service->image }})">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <label class="col-12 text-center text-muted">{{ Str::substr($service->description, 0, 200) }}</label>
+                                        <label
+                                            class="col-12 text-center text-muted">{{ Str::substr($service->description, 0, 200) }}</label>
 
-                                    <br>
+                                        <br>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
 
                     </div>
@@ -303,9 +298,9 @@
                 <div class="col-xl-2 col-lg-1"></div>
             </div>
         </div>
-        <x-route-component/>
-        <x-contact-component/>
-        <x-comment-section/>
+        <x-route-component />
+        <x-contact-component />
+        <x-comment-section />
     </section>
 @endsection
 @push('script')

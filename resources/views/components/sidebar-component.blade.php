@@ -39,18 +39,18 @@
                         <li><a href="{{route('role.create')}}">Municipality</a></li>
                     </ul>
                 </li> --}}
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="{{ route('agency.index') }}" class="dropdown-toggle">
                         <span class="myicon fa-solid fa-plane"></span><span class="mtext">Airline</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="dropdown">
                     <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
                         <span class="myicon fa-solid fa-comments"></span><span class="mtext">Reviews</span>
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
+                    <a href="{{ route('agency.index') }}" class="dropdown-toggle">
                         <span class="myicon fa-solid fa-sitemap"></span><span class="mtext">Agency</span>
                     </a>
                 </li>

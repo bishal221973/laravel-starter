@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AgencyController extends Controller
 {
@@ -30,7 +31,7 @@ class AgencyController extends Controller
     public function store(Request $request)
     {
         $data=$request->validate([
-            'airline_name'=>'required',
+            'agency_name'=>'required',
             'phone'=>'required',
             'email'=>'required',
             'address'=>'required',
@@ -39,7 +40,12 @@ class AgencyController extends Controller
             'zip_code'=>'required',
             'country'=>'required',
             'website'=>'nullable',
+            'image'=>'required',
         ]);
+
+        if($request->hasFile('image')){
+            $data['image']=$request->file('image')->store();
+        }
 
         Agency::create($data);
 
@@ -70,7 +76,7 @@ class AgencyController extends Controller
     public function update(Request $request, string $id)
     {
         $data=$request->validate([
-            'airline_name'=>'required',
+            'agency_name'=>'required',
             'phone'=>'required',
             'email'=>'required',
             'address'=>'required',
@@ -79,9 +85,19 @@ class AgencyController extends Controller
             'zip_code'=>'required',
             'country'=>'required',
             'website'=>'nullable',
+            'image'=>'nullable',
         ]);
 
-        Agency::find($id)->update($data);
+        $agency=Agency::find($id);
+
+        if($request->hasFile('image')){
+            if($agency->image){
+                Storage::delete($agency->image);
+            }
+            $data['image']=$request->file('image')->store();
+        }
+
+        $agency->update($data);
 
         return redirect()->route('agency.index')->with('success',"Selected Airline update.");
     }
@@ -91,7 +107,12 @@ class AgencyController extends Controller
      */
     public function destroy(string $id)
     {
-        Agency::find($id)->delete();
+        $agency=Agency::find($id);
+        if($agency->image){
+            Storage::delete($agency->image);
+        }
+
+        $agency->delete();
 
         return redirect()->route('agency.index')->with('success',"Selected Airline removed.");
     }

@@ -12,7 +12,7 @@
                                 <a href="index.html">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Airline
+                                Agency
                             </li>
                         </ol>
                     </nav>
@@ -49,7 +49,7 @@
         @endif
         <div class="row">
             <div class="col-xl-12">
-                <form action="{{$agency->id ? route('agency.update',$agency) : route('agency.store') }}" method="POST">
+                <form action="{{$agency->id ? route('agency.update',$agency) : route('agency.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($agency->id)
                         @method('PUT')
@@ -57,49 +57,53 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-xl-4">
-                                    <x-input name="airline_name" type="text" placeholder="Airline Name"
-                                        label="Airline Name * :" required="true" default="{{$agency->id ? $agency->airline_name : ''}}" />
+                                <div class="col-xl-3">
+                                    <x-input name="agency_name" type="text" placeholder="Agency Name"
+                                        label="Agency Name * :" required="true" default="{{$agency->id ? $agency->agency_name : ''}}" />
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-3">
                                     <x-input name="phone" type="text" placeholder="Phone Number"
                                         label="Phone Number * :" required="true" default="{{$agency->id ? $agency->phone : ''}}"/>
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-3">
                                     <x-input name="email" type="text" placeholder="Email Address" label="Email * :"
                                         required="true" default="{{$agency->id ? $agency->email : ''}}"/>
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-3">
                                     <x-input name="address" type="text" placeholder="Airline Address"
                                         label="Airline Address * :" required="true" default="{{$agency->id ? $agency->address : ''}}"/>
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-3">
                                     <x-input name="city" type="text" placeholder="City" label="City * :"
                                         required="true" default="{{$agency->id ? $agency->city : ''}}"/>
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-3">
                                     <x-input name="state" type="text" placeholder="State/Province"
                                         label="State/Province * :" required="true" default="{{$agency->id ? $agency->state : ''}}"/>
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-3">
                                     <x-input name="zip_code" type="text" placeholder="Zip Code" label="Zip Code * :"
                                         required="true" default="{{$agency->id ? $agency->zip_code : ''}}"/>
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-3">
                                     <x-input name="country" type="text" placeholder="Country" label="Country * :"
                                         required="true" default="{{$agency->id ? $agency->country : ''}}"/>
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-3">
                                     <x-input name="website" type="text" placeholder="Website" label="Website * :"
                                         required="true" default="{{$agency->id ? $agency->website : ''}}"/>
+                                </div>
+                                <div class="col-xl-3">
+                                    <x-input name="image" type="file" placeholder="Website" label="Image * :"
+                                        required="true" />
                                 </div>
                             </div>
                             <div class=" d-flex justify-content-end">
@@ -115,20 +119,19 @@
                 <div class="card mb-30">
 
                     <div class="pb-20">
-                        <table class="data-table table hover multiple-select-row nowrap">
+                        <table class="data-table table hover multiple-select-row nowrap" style="overflow: scroll">
                             <thead>
                                 <tr>
                                     <th class="table-plus datatable-nosort">S.N.</th>
-                                    <th>Airline Name</th>
-                                    <th>Phone Number</th>
-                                    <th>Email</th>
+                                    <th>Agency Name</th>
+                                    {{-- <th>Phone Number</th> --}}
+                                    <th>Contact</th>
                                     <th>Address</th>
                                     <th>City</th>
                                     <th>State/Province</th>
                                     <th>Zip Code</th>
                                     <th>Country</th>
-                                    <th>Website</th>
-                                    <th>Action</th>
+                                    {{-- <th>Website</th> --}}
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -136,15 +139,20 @@
                                 @foreach ($agencies as $agency)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $agency->airline_name}}</td>
-                                        <td>{{ $agency->phone}}</td>
-                                        <td>{{ $agency->email}}</td>
+                                        <td>
+                                            <img src="{{asset('storage')}}{{'/'}}{{$agency->image}}" alt="" style="height: 50px">
+                                            {{ $agency->agency_name}}
+
+                                        </td>
+                                        {{-- <td>{{ }}</td> --}}
+                                        <td>{{ $agency->email}} <br> {{$agency->phone}} <br>
+                                            {{ $agency->website ? $agency->website : ''}} </td>
                                         <td>{{ $agency->address}}</td>
                                         <td>{{ $agency->city}}</td>
                                         <td>{{ $agency->state}}</td>
                                         <td>{{ $agency->zip_code}}</td>
                                         <td>{{ $agency->country}}</td>
-                                        <td>{{ $agency->website ? $agency->website : ''}}</td>
+                                        {{-- <td>{{ $agency->website ? $agency->website : ''}}</td> --}}
                                         <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle text-decoration-none"

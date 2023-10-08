@@ -1,28 +1,30 @@
-<div class="row bg-white py-5">
-    <div class="col-xl-2"></div>
-    <div class="col-xl-8">
+<div class="row  py-5" style="background-color: #aeadad">
+    <div class="col-xl-1 col-lg-1"></div>
+    <div class="col-xl-10 col-lg-10">
         <h3 class="text-center">Popular Routes</h3>
         {{-- <label>Most searched </label> --}}
 
-        <div class="row mt-5">
+        <div class="row mt-5 px-3">
             @foreach ($routes as $route)
-                <div class="col-xl-6 mb-3">
+                <div class="col-xl-4 col-lg-4 mb-3">
+
                     <a href="#" class="card text-dark" data-toggle="modal" data-target="#model{{ $route->id }}">
+                        <div class="d-flex justify-content-center bg-info py-3">
+                            <i class="fa-solid fa-plane-circle-check text-white" style="font-size: 70px"></i>
+                        </div>
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <h5 class="m-0 p-0">{{ $route->from }}</h5>
                                     <span class="m-0 p-0">
-                                        {{ getCity($route->from) }} , {{ getCountry($route->from) }}
+                                        {{ getCity($route->from) }}
                                     </span>
                                 </div>
-                                <div>
-                                    <i class="fa-solid fa-plane-circle-check text-info" style="font-size: 30px"></i>
-                                </div>
+                                <i class="fa-solid fa-arrows-left-right-to-line" style="font-size: 30px"></i>
                                 <div>
                                     <h5 class="m-0 p-0">{{ $route->to }}</h5>
                                     <span class="m-0 p-0">
-                                        {{ getCity($route->to) }} , {{ getCountry($route->to) }}
+                                        {{ getCity($route->to) }}
                                     </span>
                                 </div>
                             </div>
@@ -38,7 +40,8 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">{{$route->from}} - {{$route->to}}</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">{{ $route->from }} -
+                                    {{ $route->to }}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -111,8 +114,8 @@
                                                     :</label>
                                                 <div class="search-input">
                                                     <a href="" target="_blank" hidden></a>
-                                                    <input type="date" id="returnDates1"  required name="returnTime"
-                                                        placeholder="Type to search..">
+                                                    <input type="date" id="returnDates1" required
+                                                        name="returnTime" placeholder="Type to search..">
                                                     <div class="icon"><i class="fa-solid fa-calendar-days"></i>
                                                     </div>
                                                 </div>
@@ -282,7 +285,7 @@
     <script>
         var roundUp1 = document.getElementById("roundUp1");
         var oneWay1 = document.getElementById("oneWay1");
-        var returnDate1 = document.getElementById("returnDates1" );
+        var returnDate1 = document.getElementById("returnDates1");
 
         // Add event listeners to each radio button
         roundUp1.addEventListener("change", function(e) {

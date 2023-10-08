@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Http;
 
 
 use Amadeus\Client\Provider;
+use App\Models\Agency;
 use App\Models\Review;
 use App\Models\Search;
 use App\Models\Service;
@@ -28,7 +29,8 @@ class FrontController extends Controller
     public function index()
     {
         $services=Service::latest()->limit(3)->get();
-        return view('front.home',compact('services'));
+        $agencies=Agency::latest()->limit(4)->get();
+        return view('front.home',compact('services','agencies'));
     }
 
     public function list(Request $request)
@@ -40,7 +42,7 @@ class FrontController extends Controller
             Search::create([
                 'from' => $request->depart,
                 'to' => $request->destination,
-                'count' => $count->count + 1
+                'count' => 1
             ]);
         } else {
             $search->update([

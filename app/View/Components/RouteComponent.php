@@ -22,7 +22,7 @@ class RouteComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        $routes=Search::orderBy('count','desc')->limit(8)->get();
+        $routes=Search::orderBy('count','desc')->limit(6)->get();
         return view('components.route-component',compact('routes'));
     }
 }

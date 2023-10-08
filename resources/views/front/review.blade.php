@@ -10,7 +10,7 @@
                     </div>
                     <div class="pl-3">
                         <h5>Flights Mojo</h5>
-                        <label>Reviews {{ $num }} ({{$ststus}})</label>
+                        <label>Reviews {{ $num }} ({{ $ststus }})</label>
                         <div class="d-flex mt-2 align-items-center">
                             <div id="rateYo1" class="m-0 p-0" data-rateyo-rating="{{ $rating }}"></div>
                             <label class="pl-3">{{ Str::substr($rating, 0, 3) }}</label>
@@ -24,10 +24,10 @@
         <hr>
 
         <div class="row">
-            <div class="col-xl-2"></div>
-            <div class="col-xl-8 mb-5">
-                <div class="row">
-                    <div class="col-xl-8">
+            <div class="col-xl-1"></div>
+            <div class="col-xl-10 col-lg-12 mb-5">
+                <div class="row px-3">
+                    <div class="col-xl-7 col-lg-7 col-md-6">
                         <form action="{{ route('reviews.store') }}">
                             <div class="card">
                                 <div class="card-body">
@@ -153,6 +153,53 @@
                                 </div>
                             </div>
                         @endforeach
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-6 sticky" style="position: sticky;top:10px">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Contact Us</h5>
+
+                                <form action="#">
+                                    <div class="wrapper">
+                                        <label class="text-secondary text-uppercase label-13">Name :</label>
+                                        <div class="search-input search-input1">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" required name="name" value=""
+                                                placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <label class="text-secondary text-uppercase label-13">Email :</label>
+                                        <div class="search-input search-input1">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" required name="email" value=""
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <label class="text-secondary text-uppercase label-13">Subject :</label>
+                                        <div class="search-input search-input1">
+                                            <a href="" target="_blank" hidden></a>
+                                            <input type="text" required name="subject" value=""
+                                                placeholder="Subject">
+                                        </div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <label class="text-secondary text-uppercase label-13">Message :</label>
+                                        <div class="search-input search-input1">
+                                            <a href="" target="_blank" hidden></a>
+                                            <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 mt-4">
+                                        <div class="wrapper">
+                                            <input type="submit" required name="subject" value="Send"
+                                                class="btn btn-info" placeholder="Subject">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

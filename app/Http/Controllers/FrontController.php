@@ -36,6 +36,7 @@ class FrontController extends Controller
 
     public function list(Request $request)
     {
+
         $search = Search::where('from', $request->depart)->where('to', $request->destination)->first();
 
         $count = $search;
@@ -51,22 +52,32 @@ class FrontController extends Controller
             ]);
         }
         if ($request->returnTime == "") {
-            $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&adults=' . $request->adult . '&children=' . $request->child . '&infants=' . $request->infants . '&nonStop=false&max=' . settings()->get('max', $default = 10); // Replace with your API URL
+            $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&adults=' . $request->adult . '&children=' . $request->child . '&infants=' . $request->infants . '&travelClass=' . $request->cabin . '&nonStop=false&max=' . settings()->get('max', $default = 10); // Replace with your API URL
         } else {
-            $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&returnDate=' . $request->returnTime . '&adults=' . $request->adult . '&children=' . $request->child . '&infants=' . $request->infants . '&nonStop=false&max=' . settings()->get('max', $default = 10); // Replace with your API URL
+            $apiUrl = '/v2/shopping/flight-offers?originLocationCode=' . $request->depart . '&destinationLocationCode=' . $request->destination . '&departureDate=' . $request->departTime . '&returnDate=' . $request->returnTime . '&adults=' . $request->adult . '&children=' . $request->child . '&infants=' . $request->infants . '&travelClass=' . $request->cabin . '&nonStop=false&max=' . settings()->get('max', $default = 10); // Replace with your API URL
         }
 
+        // return $apiUrl;
+
+        // return "Hello";
         try {
             $response = $this->amadeus->getClient()->getWithOnlyPath($apiUrl);
             $flightList = $response->getBody();
-            // return "sdds";
 
             session()->put('lists', $flightList);
 
             $flightList = session()->get('lists');
             $flightList = json_decode($flightList);
             $flightLists = $flightList->data;
-            $dictionaries = $flightList->dictionaries;
+
+
+            if($flightList->meta->count==0){
+                $dictionaries=[];
+            }else{
+                $dictionaries = $flightList->dictionaries;
+
+            }
+
             return view('front.flightList', compact('flightLists', 'dictionaries'));
         } catch (Exception $e) {
             $fullResponse = $e->getMessage();

@@ -141,9 +141,6 @@
 </head>
 
 <body>
-    <div id="preloader" class="preloader">
-        <!-- Your preloader content goes here -->
-    </div>
 
     <x-top-nav />
     <x-bottom-nav />
@@ -188,6 +185,12 @@
                 readOnly: true
             });
         });
+    </script>
+    <script>
+
+        // window.addEventListener('load', function() {
+        //     document.getElementById('preloader').style.display = 'none';
+        // });
     </script>
 </body>
 

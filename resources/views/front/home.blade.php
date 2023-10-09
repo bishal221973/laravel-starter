@@ -23,7 +23,8 @@
 
                         <div class="card">
                             <div class="card-body text-dark">
-                                <form action="{{ route('front.list') }}" method="GET" id="myForm">
+                                <form action="{{ route('front.list') }}" method="GET" id="myForm"
+                                    onsubmit="document.getElementById('preloader').style.display = 'block';">
 
                                     <div class="row ml-3">
                                         <div class="form-check form-check-inline">
@@ -167,10 +168,10 @@
                                                     <div class="search-input">
                                                         <a href="" target="_blank" hidden></a>
                                                         <select name="cabin" id="" class="form-control">
-                                                            <option value="Economy">Economy</option>
-                                                            <option value="Permium Economy">Permium Economy</option>
-                                                            <option value="Business">Business</option>
-                                                            <option value="First">First</option>
+                                                            <option value="ECONOMY">Economy</option>
+                                                            <option value="PREMIUM_ECONOMY">Permium Economy</option>
+                                                            <option value="BUSINESS">Business</option>
+                                                            <option value="FIRST">First</option>
                                                         </select>
                                                         <div class="icon"><i class="fa-solid fa-chair"></i></div>
                                                     </div>
@@ -258,7 +259,8 @@
                     <div class="row d-flex justify-content-center">
                         @foreach ($agencies as $agency)
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 px-5 py-2">
-                                <img src="{{ asset('storage') }}{{'/'}}{{$agency->image}}" alt="" style="height: 100px;width:100%" srcset="">
+                                <img src="{{ asset('storage') }}{{ '/' }}{{ $agency->image }}" alt=""
+                                    style="height: 100px;width:100%" srcset="">
                             </div>
                         @endforeach
 
@@ -327,6 +329,10 @@
                 adultNumber = adultNumber + 1;
                 $("#adultNums").text(adultNumber);
                 $('#txtAdultNum').val(adultNumber);
+
+                var text = "Passenger (s)"
+                var passengerNum = parseInt(adultNumber) + parseInt(childNumber) + parseInt(infantNumber);
+                $('#dropdownMenuButton').val(passengerNum + " " + text);
             }
         });
         $('#adultSub').on('click', function() {
@@ -335,6 +341,10 @@
                 adultNumber = adultNumber - 1;
                 $("#adultNums").text(adultNumber);
                 $('#txtAdultNum').val(adultNumber);
+
+                var text = "Passenger (s)"
+                var passengerNum = parseInt(adultNumber) + parseInt(childNumber) + parseInt(infantNumber);
+                $('#dropdownMenuButton').val(passengerNum + " " + text);
             }
         });
         $('#childAdd').on('click', function() {
@@ -343,6 +353,10 @@
                 childNumber = childNumber + 1;
                 $("#childNums").text(childNumber);
                 $('#txtChildNum').val(childNumber);
+
+                var text = "Passenger (s)"
+                var passengerNum = parseInt(adultNumber) + parseInt(childNumber) + parseInt(infantNumber);
+                $('#dropdownMenuButton').val(passengerNum + " " + text);
             }
         });
         $('#childSub').on('click', function() {
@@ -351,6 +365,10 @@
                 childNumber = childNumber - 1;
                 $("#childNums").text(childNumber);
                 $('#txtChildNum').val(childNumber);
+
+                var text = "Passenger (s)"
+                var passengerNum = parseInt(adultNumber) + parseInt(childNumber) + parseInt(infantNumber);
+                $('#dropdownMenuButton').val(passengerNum + " " + text);
             }
         });
         $('#infantAdd').on('click', function() {
@@ -359,6 +377,10 @@
                 infantNumber = infantNumber + 1;
                 $("#infantNums").text(infantNumber);
                 $('#txtInfantNum').val(infantNumber);
+
+                var text = "Passenger (s)"
+                var passengerNum = parseInt(adultNumber) + parseInt(childNumber) + parseInt(infantNumber);
+                $('#dropdownMenuButton').val(passengerNum + " " + text);
             }
         });
         $('#infantSub').on('click', function() {
@@ -367,6 +389,10 @@
                 infantNumber = infantNumber - 1;
                 $("#infantNums").text(infantNumber);
                 $('#txtInfantNum').val(infantNumber);
+
+                var text = "Passenger (s)"
+                var passengerNum = parseInt(adultNumber) + parseInt(childNumber) + parseInt(infantNumber);
+                $('#dropdownMenuButton').val(passengerNum + " " + text);
             }
         });
     </script>

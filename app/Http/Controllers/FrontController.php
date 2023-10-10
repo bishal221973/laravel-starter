@@ -25,7 +25,7 @@ class FrontController extends Controller
     public function __construct()
     {
 
-        $this->amadeus = Amadeus::builder(settings()->get('key', $default = null), settings()->get('secret', $default = null))->build();
+        $this->amadeus = Amadeus::builder(settings()->get('key', $default = "eQFciNmTZEqJuigATaLulgJi1W8037Ys"), settings()->get('secret', $default = "CWMTaAudAVSLmPYn"))->build();
     }
     public function index()
     {

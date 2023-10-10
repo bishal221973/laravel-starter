@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-md-9 col-sm-12 ">
                                 <div class="tab-content" style="max-height: 100%;">
-                                    <div class="tab-pane fade " id="home7" role="tabpanel">
+                                    <div class="tab-pane fade show active" id="home7" role="tabpanel">
                                         <h5 class="text-uppercase">personal details</h5>
                                         <small style="font-size: 14px"
                                             class="p-0 m-0">{{ Auth()->user()->first_name . ' ' . Auth()->user()->middel_name . ' ' . Auth()->user()->last_name }}
@@ -598,7 +598,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade show active" id="orgSetting" role="tabpanel"
+                                    <div class="tab-pane fade " id="apiSetting" role="tabpanel"
                                         style="overflow: scroll">
                                         <div class="pd-20">
                                             <h5 class="text-uppercase">API Setting</h5>

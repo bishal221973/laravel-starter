@@ -1,8 +1,13 @@
 <div class="left-side-bar">
-    <div class="brand-logo">
-        <a href="index.html">
-            <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
-            <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo" />
+    <div class="brand-logo mt-3">
+        <a href="{{route('home')}}">
+            @if (settings()->get('logo'))
+                <img src="{{asset('storage')}}{{'/'}}{{settings()->get('logo')}}" style="height: 70px;width:70px" alt="" class="light-logo" />
+                <h3 class="text-white pl-3">{{settings()->get('short_name')}}</h3>
+            @else
+                <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo" />
+            @endif
+            {{-- <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" /> --}}
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -18,32 +23,7 @@
 
                 </li>
 
-                {{-- <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="myicon fa-solid fa-shield-halved"></span><span class="mtext">Role Management</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="#">Role List</a></li>
-                        <li><a href="{{route('role.create')}}">New Role</a></li>
-                    </ul>
-                </li> --}}
 
-                {{-- <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="myicon fa-solid fa-map"></span><span class="mtext">Address</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="{{route('country.index')}}">Country</a></li>
-                        <li><a href="{{route('role.create')}}">Province</a></li>
-                        <li><a href="{{route('role.create')}}">District</a></li>
-                        <li><a href="{{route('role.create')}}">Municipality</a></li>
-                    </ul>
-                </li> --}}
-                {{-- <li class="dropdown">
-                    <a href="{{ route('agency.index') }}" class="dropdown-toggle">
-                        <span class="myicon fa-solid fa-plane"></span><span class="mtext">Airline</span>
-                    </a>
-                </li> --}}
                 <li class="dropdown">
                     <a href="{{ route('reviews.index') }}" class="dropdown-toggle">
                         <span class="myicon fa-solid fa-comments"></span><span class="mtext">Reviews</span>
